@@ -29,7 +29,8 @@ module.exports = {
             //下面是使用 ant-design 的配置文件
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                loader: 'style-loader!css-loader',
+                include: /flexboxgrid/
             },
             {
                 test: /\.(jpg|png|svg)$/,

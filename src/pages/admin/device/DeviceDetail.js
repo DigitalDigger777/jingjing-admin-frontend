@@ -2,19 +2,19 @@
  * Created by korman on 06.02.18.
  */
 import React from 'react';
-import {Page,
-        Cells,
-        CellsTitle,
-        Cell,
-        CellHeader,
-        CellBody,
-        CellFooter,
-        Form,
-        FormCell,
-        Label,
-        Input,
-        Button
-} from 'react-weui';
+// import {Page,
+//         Cells,
+//         CellsTitle,
+//         Cell,
+//         CellHeader,
+//         CellBody,
+//         CellFooter,
+//         Form,
+//         FormCell,
+//         Label,
+//         Input,
+//         Button
+// } from 'react-weui';
 import axios from 'axios';
 import Config from '../../../Config';
 import Core from '../Core';
@@ -106,37 +106,37 @@ export default class DeviceDetail extends React.Component {
 
         return (
             <Core>
-                <Form>
-                    <FormCell>
-                        <CellHeader>
-                            <Label style={{color: '#999999', marginRight: '10px'}}>Room</Label>
-                        </CellHeader>
-                        <CellBody>
-                            <Input type="text" placeholder="Enter Room" value={this.state.item.name} onChange={ e => this.changeName(e)}/>
-                        </CellBody>
-                    </FormCell>
-                    <FormCell>
-                        <CellHeader>
-                            <Label style={{color: '#999999', marginRight: '10px'}}>Shopper ID</Label>
-                        </CellHeader>
-                        <CellBody>
-                            <Input type="text" placeholder="Enter Shopper #" value={this.state.item.shopperId} onChange={ e => this.changeShopper(e)}/>
-                        </CellBody>
-                    </FormCell>
-                    <FormCell>
-                        <CellHeader>
-                            <Label style={{color: '#999999', marginRight: '10px'}}>MAC address</Label>
-                        </CellHeader>
-                        <CellBody>
-                            <Input type="text" disabled  value={this.state.item.mac} />
-                        </CellBody>
-                    </FormCell>
-                    <FormCell>
-                        <CellBody>
-                            <Button onClick={this.save.bind(this)}>Save</Button>
-                        </CellBody>
-                    </FormCell>
-                </Form>
+                {/*<Form>*/}
+                    {/*<FormCell>*/}
+                        {/*<CellHeader>*/}
+                            {/*<Label style={{color: '#999999', marginRight: '10px'}}>Room</Label>*/}
+                        {/*</CellHeader>*/}
+                        {/*<CellBody>*/}
+                            {/*<Input type="text" placeholder="Enter Room" value={this.state.item.name} onChange={ e => this.changeName(e)}/>*/}
+                        {/*</CellBody>*/}
+                    {/*</FormCell>*/}
+                    {/*<FormCell>*/}
+                        {/*<CellHeader>*/}
+                            {/*<Label style={{color: '#999999', marginRight: '10px'}}>Shopper ID</Label>*/}
+                        {/*</CellHeader>*/}
+                        {/*<CellBody>*/}
+                            {/*<Input type="text" placeholder="Enter Shopper #" value={this.state.item.shopperId} onChange={ e => this.changeShopper(e)}/>*/}
+                        {/*</CellBody>*/}
+                    {/*</FormCell>*/}
+                    {/*<FormCell>*/}
+                        {/*<CellHeader>*/}
+                            {/*<Label style={{color: '#999999', marginRight: '10px'}}>MAC address</Label>*/}
+                        {/*</CellHeader>*/}
+                        {/*<CellBody>*/}
+                            {/*<Input type="text" disabled  value={this.state.item.mac} />*/}
+                        {/*</CellBody>*/}
+                    {/*</FormCell>*/}
+                    {/*<FormCell>*/}
+                        {/*<CellBody>*/}
+                            {/*<Button onClick={this.save.bind(this)}>Save</Button>*/}
+                        {/*</CellBody>*/}
+                    {/*</FormCell>*/}
+                {/*</Form>*/}
             </Core>
         );
     };

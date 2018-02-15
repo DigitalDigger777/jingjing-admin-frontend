@@ -2,20 +2,33 @@
  * Created by korman on 06.02.18.
  */
 import React from 'react';
-import {Page,
-        Cells,
-        CellsTitle,
-        Cell,
-        CellHeader,
-        CellBody,
-        CellFooter,
-        SearchBar
-} from 'react-weui';
+// import {Page,
+//         Cells,
+//         CellsTitle,
+//         Cell,
+//         CellHeader,
+//         CellBody,
+//         CellFooter,
+//         SearchBar
+// } from 'react-weui';
+
+import {
+    Table,
+    TableBody,
+    TableHeader,
+    TableHeaderColumn,
+    TableRow,
+    TableRowColumn,
+} from 'material-ui/Table';
+import RaisedButton from 'material-ui/RaisedButton';
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import SearchBar from 'material-ui-search-bar'
+
 import axios from 'axios';
 import Config from '../../../Config';
 import Core from '../Core';
 
-class DeviceList extends React.Component {
+export default class DeviceList extends React.Component {
 
     constructor(props){
         super(props);
@@ -51,29 +64,50 @@ class DeviceList extends React.Component {
     render() {
         return (
             <Core>
-                <SearchBar
-                    onChange={this.changeSearch.bind(this)}
-                    defaultValue={this.state.searchText}
-                    placeholder="Purifiers Name or MAC or Room Search"
-                    lang={{
-                        cancel: 'Cancel'
-                    }}
-                />
-                <Cells style={{paddingBottom: '100px'}}>
-                    {this.state.items.map((item, key) => {
-                        return (
-                            <Cell key={key} access onClick={(id) => this.openDeviceDetail(item.id)}>
-                                <CellBody>{item.name}</CellBody>
-                                <CellFooter>{item.room}</CellFooter>
-                            </Cell>
-                        );
-                    })}
-                </Cells>
+                <Toolbar style={{marginTop: '15px', paddingTop: '15px', paddingBottom: '15px'}}>
+                    <ToolbarGroup>
+                        <SearchBar
+                            onChange={() => console.log('onChange')}
+                            onRequestSearch={() => console.log('onRequestSearch')}
+                            style={{
+                                margin: '0 auto',
+                                maxWidth: 800
+                            }}
+                        />
+                    </ToolbarGroup>
+                    <ToolbarGroup>
+                        <RaisedButton label="Add Device" primary={true} />
+                    </ToolbarGroup>
+                </Toolbar>
+                <Table selectable={false}>
+                    <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                        <TableRow>
+                            <TableHeaderColumn>ID</TableHeaderColumn>
+                            <TableHeaderColumn>Name</TableHeaderColumn>
+                            <TableHeaderColumn>Room</TableHeaderColumn>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody displayRowCheckbox={false} showRowHover={true}>
+                        { this.state.items.map((item, key) =>
+                            <TableRow  key={key} onClick={ id => this.openDetailShopper(item.id) }>
+                                <TableRowColumn>{item.id}</TableRowColumn>
+                                <TableRowColumn>{item.name}</TableRowColumn>
+                                <TableRowColumn>{item.room}</TableRowColumn>
+                            </TableRow>
+                        )}
+                    </TableBody>
+                </Table>
+                {/*<Cells style={{paddingBottom: '100px'}}>*/}
+                    {/*{this.state.items.map((item, key) => {*/}
+                        {/*return (*/}
+                            {/*<Cell key={key} access onClick={(id) => this.openDeviceDetail(item.id)}>*/}
+                                {/*<CellBody>{item.name}</CellBody>*/}
+                                {/*<CellFooter>{item.room}</CellFooter>*/}
+                            {/*</Cell>*/}
+                        {/*);*/}
+                    {/*})}*/}
+                {/*</Cells>*/}
             </Core>
         );
     };
 }
-
-import { withRouter } from 'react-router-dom';
-
-export default withRouter(DeviceList);

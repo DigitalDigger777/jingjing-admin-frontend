@@ -2,7 +2,11 @@
  * Created by korman on 07.02.18.
  */
 import React from 'react';
-import {Page, Form, FormCell, CellHeader, CellBody, Label, Input, Button} from 'react-weui';
+// import {Page, Form, FormCell, CellHeader, CellBody, Label, Input, Button} from 'react-weui';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+
 import Core from '../Core';
 import axios from 'axios';
 import Config from '../../../Config';
@@ -10,8 +14,19 @@ import Config from '../../../Config';
 import injectSheet from 'react-jss';
 
 const styles  = {
-    cells: {
-        marginTop: '0px'
+    shopperForm: {
+        padding: '20px',
+        '& .saveButton': {
+            width: '100%',
+            marginTop: '20px'
+        },
+        '& .shopperListButton': {
+            width: '100%',
+            marginTop: '20px'
+        },
+        '& .formInput': {
+            width: ['100% !important']
+        }
     }
 };
 
@@ -130,66 +145,112 @@ export default class ShopperForm extends React.Component {
 
         return (
             <Core>
-                <Form>
-                    <FormCell>
-                        <CellHeader>
-                            <Label>Email</Label>
-                        </CellHeader>
-                        <CellBody>
-                            <Input type="text" placeholder="Enter email" value={this.state.item.email} onChange={e => this.changeEmail(e)}/>
-                        </CellBody>
-                    </FormCell>
-                    <FormCell>
-                        <CellHeader>
-                            <Label>Password</Label>
-                        </CellHeader>
-                        <CellBody>
-                            <Input type="password" placeholder="Enter Password" value={this.state.item.password} onChange={e => this.changePassword(e)}/>
-                        </CellBody>
-                    </FormCell>
-                    <FormCell>
-                        <CellHeader>
-                            <Label>Name</Label>
-                        </CellHeader>
-                        <CellBody>
-                            <Input type="text" placeholder="Shopper Name" value={this.state.item.name} onChange={e => this.changeName(e)}/>
-                        </CellBody>
-                    </FormCell>
-                    <FormCell>
-                        <CellHeader>
-                            <Label>Address</Label>
-                        </CellHeader>
-                        <CellBody>
-                            <Input type="text" placeholder="Shoppe Address" value={this.state.item.address} onChange={e => this.changeAddress(e)}/>
-                        </CellBody>
-                    </FormCell>
-                    <FormCell>
-                        <CellHeader>
-                            <Label>Contact</Label>
-                        </CellHeader>
-                        <CellBody>
-                            <Input type="text" placeholder="Contact Person" value={this.state.item.contact} onChange={e => this.changeContact(e)}/>
-                        </CellBody>
-                    </FormCell>
-                    <FormCell>
-                        <CellHeader>
-                            <Label>Cell</Label>
-                        </CellHeader>
-                        <CellBody>
-                            <Input type="text" placeholder="Contact Person Cell Number" value={this.state.item.cell} onChange={e => this.changeCell(e)}/>
-                        </CellBody>
-                    </FormCell>
-                    <FormCell>
-                        <CellBody>
-                            <Button onClick={this.save.bind(this)}>{this.state.id == 0 ? `Add` : `Save`}</Button>
-                        </CellBody>
-                    </FormCell>
-                    <FormCell>
-                        <CellBody>
-                            <Button onClick={() => this.openShopperList()}>Access To Shopper List</Button>
-                        </CellBody>
-                    </FormCell>
-                </Form>
+                <Grid className={classes.shopperForm}>
+                    <Row>
+                        <Col md={6} xsOffset={3}>
+                            <Row>
+                                <Col md={12}>
+                                    <TextField className="formInput" hintText="Enter Email"  value={this.state.item.email} onChange={e => this.changeEmail(e)}/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={12}>
+                                    <TextField className="formInput" hintText="Enter Password" type="password" value={this.state.item.password} onChange={e => this.changePassword(e)}/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={12}>
+                                    <TextField className="formInput" hintText="Shopper Name" value={this.state.item.name} onChange={e => this.changeName(e)}/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={12}>
+                                    <TextField className="formInput" hintText="Shopper Address" value={this.state.item.address} onChange={e => this.changeAddress(e)}/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={12}>
+                                    <TextField className="formInput" hintText="Contact Person" value={this.state.item.contact} onChange={e => this.changeContact(e)}/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={12}>
+                                    <TextField className="formInput" hintText="Contact Person Cell Number" value={this.state.item.cell} onChange={e => this.changeCell(e)}/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={12}>
+                                    <RaisedButton className="saveButton" label={this.state.id == 0 ? `Add` : `Save`} primary={true} onClick={this.save.bind(this)}/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={12}>
+                                    <RaisedButton className="shopperListButton" label="Access To Shopper List" primary={true} onClick={() => this.openShopperList()}/>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Grid>
+                {/*<Form>*/}
+                    {/*<FormCell>*/}
+                        {/*<CellHeader>*/}
+                            {/*<Label>Email</Label>*/}
+                        {/*</CellHeader>*/}
+                        {/*<CellBody>*/}
+                            {/*<Input type="text" placeholder="Enter email" value={this.state.item.email} onChange={e => this.changeEmail(e)}/>*/}
+                        {/*</CellBody>*/}
+                    {/*</FormCell>*/}
+                    {/*<FormCell>*/}
+                        {/*<CellHeader>*/}
+                            {/*<Label>Password</Label>*/}
+                        {/*</CellHeader>*/}
+                        {/*<CellBody>*/}
+                            {/*<Input type="password" placeholder="Enter Password" value={this.state.item.password} onChange={e => this.changePassword(e)}/>*/}
+                        {/*</CellBody>*/}
+                    {/*</FormCell>*/}
+                    {/*<FormCell>*/}
+                        {/*<CellHeader>*/}
+                            {/*<Label>Name</Label>*/}
+                        {/*</CellHeader>*/}
+                        {/*<CellBody>*/}
+                            {/*<Input type="text" placeholder="Shopper Name" value={this.state.item.name} onChange={e => this.changeName(e)}/>*/}
+                        {/*</CellBody>*/}
+                    {/*</FormCell>*/}
+                    {/*<FormCell>*/}
+                        {/*<CellHeader>*/}
+                            {/*<Label>Address</Label>*/}
+                        {/*</CellHeader>*/}
+                        {/*<CellBody>*/}
+                            {/*<Input type="text" placeholder="Shoppe Address" value={this.state.item.address} onChange={e => this.changeAddress(e)}/>*/}
+                        {/*</CellBody>*/}
+                    {/*</FormCell>*/}
+                    {/*<FormCell>*/}
+                        {/*<CellHeader>*/}
+                            {/*<Label>Contact</Label>*/}
+                        {/*</CellHeader>*/}
+                        {/*<CellBody>*/}
+                            {/*<Input type="text" placeholder="Contact Person" value={this.state.item.contact} onChange={e => this.changeContact(e)}/>*/}
+                        {/*</CellBody>*/}
+                    {/*</FormCell>*/}
+                    {/*<FormCell>*/}
+                        {/*<CellHeader>*/}
+                            {/*<Label>Cell</Label>*/}
+                        {/*</CellHeader>*/}
+                        {/*<CellBody>*/}
+                            {/*<Input type="text" placeholder="Contact Person Cell Number" value={this.state.item.cell} onChange={e => this.changeCell(e)}/>*/}
+                        {/*</CellBody>*/}
+                    {/*</FormCell>*/}
+                    {/*<FormCell>*/}
+                        {/*<CellBody>*/}
+                            {/*<Button onClick={this.save.bind(this)}>{this.state.id == 0 ? `Add` : `Save`}</Button>*/}
+                        {/*</CellBody>*/}
+                    {/*</FormCell>*/}
+                    {/*<FormCell>*/}
+                        {/*<CellBody>*/}
+                            {/*<Button onClick={() => this.openShopperList()}>Access To Shopper List</Button>*/}
+                        {/*</CellBody>*/}
+                    {/*</FormCell>*/}
+                {/*</Form>*/}
             </Core>
         );
     };

@@ -3,20 +3,22 @@
  */
 import React from 'react';
 import injectSheet from 'react-jss';
-import Core from '../Core';
 
-import {Page,
-    Panel,
-    PanelHeader,
-    PanelBody,
+import {
+    Table,
+    TableBody,
+    TableHeader,
+    TableHeaderColumn,
+    TableRow,
+    TableRowColumn,
+} from 'material-ui/Table';
+import RaisedButton from 'material-ui/RaisedButton';
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import SearchBar from 'material-ui-search-bar'
 
-
-    SearchBar,
-    Preview, PreviewHeader, PreviewFooter, PreviewBody, PreviewItem
-} from 'react-weui';
 import axios from 'axios';
+import Core from '../Core';
 import Config from '../../../Config';
-
 
 const styles = {
     page: {
@@ -60,35 +62,68 @@ export default class StatementList extends React.Component {
 
         return (
             <Core>
-                <SearchBar
-                    onChange={this.changeSearch.bind(this)}
-                    defaultValue={this.state.searchText}
-                    placeholder="Statement Search"
-                    lang={{
-                        cancel: 'Cancel'
-                    }}
-                />
-                <Panel className={classes.page}>
+                <Toolbar style={{marginTop: '15px', paddingTop: '15px', paddingBottom: '15px'}}>
+                    <ToolbarGroup>
+                        <SearchBar
+                            onChange={() => console.log('onChange')}
+                            onRequestSearch={() => console.log('onRequestSearch')}
+                            style={{
+                                margin: '0 auto',
+                                maxWidth: 800
+                            }}
+                        />
+                    </ToolbarGroup>
+                </Toolbar>
+                <Table selectable={false}>
+                    <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                        <TableRow>
+                            <TableHeaderColumn>Income</TableHeaderColumn>
+                            <TableHeaderColumn>Time</TableHeaderColumn>
+                            <TableHeaderColumn>Shopper Name</TableHeaderColumn>
+                            <TableHeaderColumn>Room</TableHeaderColumn>
+                            <TableHeaderColumn>Rate</TableHeaderColumn>
+                            <TableHeaderColumn>Hours</TableHeaderColumn>
+                            <TableHeaderColumn>Revenue</TableHeaderColumn>
+                            <TableHeaderColumn>Paid</TableHeaderColumn>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody displayRowCheckbox={false} showRowHover={true}>
+                        { this.state.items.map((item, key) =>
+                            <TableRow  key={key} onClick={ id => this.openDetailShopper(item.id) }>
+                                <TableRowColumn>{`¥` + item[0].amount}</TableRowColumn>
+                                <TableRowColumn>{item.date}</TableRowColumn>
+                                <TableRowColumn>{/*shopper name*/}</TableRowColumn>
+                                <TableRowColumn>{item[0].room.toString()}</TableRowColumn>
+                                <TableRowColumn>{item[0].rate}</TableRowColumn>
+                                <TableRowColumn>{item[0].hours}</TableRowColumn>
+                                <TableRowColumn>{/*revenue*/}</TableRowColumn>
+                                <TableRowColumn>{/*paid*/}</TableRowColumn>
+                            </TableRow>
+                        )}
+                    </TableBody>
+                </Table>
 
-                    <PanelBody>
-                        {this.state.items.map((item, key) => {
-                            return (
-                                <Preview key={key} style={{marginBottom: '20px'}}>
-                                    <PreviewHeader>
-                                        <PreviewItem label="Income" value={`¥` + item[0].amount}/>
-                                    </PreviewHeader>
-                                    <PreviewBody>
-                                        <PreviewItem label="Time" value={item.date}/>
-                                        <PreviewItem label="Hours" value={item[0].hours.toString()}/>
-                                        <PreviewItem label="Rate" value={`¥` + item[0].rate + ` per hour`}/>
-                                        <PreviewItem label="Room #" value={item[0].room.toString()}/>
-                                    </PreviewBody>
-                                    <PreviewFooter/>
-                                </Preview>
-                            );
-                        })}
-                    </PanelBody>
-                </Panel>
+                {/*<Panel className={classes.page}>*/}
+
+                    {/*<PanelBody>*/}
+                        {/*{this.state.items.map((item, key) => {*/}
+                            {/*return (*/}
+                                {/*<Preview key={key} style={{marginBottom: '20px'}}>*/}
+                                    {/*<PreviewHeader>*/}
+                                        {/*<PreviewItem label="Income" value={`¥` + item[0].amount}/>*/}
+                                    {/*</PreviewHeader>*/}
+                                    {/*<PreviewBody>*/}
+                                        {/*<PreviewItem label="Time" value={item.date}/>*/}
+                                        {/*<PreviewItem label="Hours" value={item[0].hours.toString()}/>*/}
+                                        {/*<PreviewItem label="Rate" value={`¥` + item[0].rate + ` per hour`}/>*/}
+                                        {/*<PreviewItem label="Room #" value={item[0].room.toString()}/>*/}
+                                    {/*</PreviewBody>*/}
+                                    {/*<PreviewFooter/>*/}
+                                {/*</Preview>*/}
+                            {/*);*/}
+                        {/*})}*/}
+                    {/*</PanelBody>*/}
+                {/*</Panel>*/}
             </Core>
         );
     };
