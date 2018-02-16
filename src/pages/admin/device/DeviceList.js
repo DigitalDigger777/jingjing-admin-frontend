@@ -76,7 +76,7 @@ export default class DeviceList extends React.Component {
                         />
                     </ToolbarGroup>
                     <ToolbarGroup>
-                        <RaisedButton label="Add Device" primary={true} />
+                        {/*<RaisedButton label="Add Device" primary={true} />*/}
                     </ToolbarGroup>
                 </Toolbar>
                 <Table selectable={false}>
@@ -85,6 +85,7 @@ export default class DeviceList extends React.Component {
                             <TableHeaderColumn>ID</TableHeaderColumn>
                             <TableHeaderColumn>Name</TableHeaderColumn>
                             <TableHeaderColumn>Room</TableHeaderColumn>
+                            <TableHeaderColumn>Action</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
@@ -93,6 +94,9 @@ export default class DeviceList extends React.Component {
                                 <TableRowColumn>{item.id}</TableRowColumn>
                                 <TableRowColumn>{item.name}</TableRowColumn>
                                 <TableRowColumn>{item.room}</TableRowColumn>
+                                <TableRowColumn>
+                                    <RaisedButton label="Change" primary={true} onClick={ id => this.openDeviceDetail(item.id) }/>
+                                </TableRowColumn>
                             </TableRow>
                         )}
                     </TableBody>
