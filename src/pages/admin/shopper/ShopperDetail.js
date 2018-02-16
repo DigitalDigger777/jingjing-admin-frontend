@@ -2,20 +2,11 @@
  * Created by korman on 07.02.18.
  */
 import React from 'react';
-// import {Page,
-//     Cells,
-//     CellsTitle,
-//     Cell,
-//     CellHeader,
-//     CellBody,
-//     CellFooter,
-//     Form,
-//     FormCell,
-//     Input,
-//     Button,
-//     Flex,
-//     FlexItem
-// } from 'react-weui';
+
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+
 import Core from '../Core';
 import axios from 'axios';
 import Config from '../../../Config';
@@ -23,8 +14,19 @@ import Config from '../../../Config';
 import injectSheet from 'react-jss';
 
 const styles  = {
-    cells: {
-        marginTop: '0px'
+    shopperDetail: {
+        paddingBottom: '15px',
+        '& .changeButton': {
+            width: '100%',
+            marginTop: '15px'
+        },
+        '& .nextButton': {
+            width: '100%',
+            marginTop: '15px'
+        },
+        '& .formInput': {
+            width: ['100% !important']
+        }
     }
 };
 
@@ -56,19 +58,14 @@ export default class ShopperDetail extends React.Component {
             })
     }
 
-    editShopper(id) {
+    changeShopper(id) {
         window.location = '/admin/shopper-form/' + id;
     }
 
-    deleteShopper(id) {
-        axios.delete(this.state.baseUrl + 'shopper/delete/' + id)
-            .then(response => {
-                console.log(response.data.message);
-            })
-            .catch(response => {
-                console.log(response.data);
-            });
+    nextShopper(id) {
+        window.location = '/admin/shopper-detail/' + (parseInt(id) + 1);
     }
+
 
     render() {
         const {classes, children} = this.props;
@@ -76,6 +73,47 @@ export default class ShopperDetail extends React.Component {
         if (this.state.item) {
             return (
                 <Core>
+                    <Grid className={classes.shopperDetail}>
+                        <Row>
+                            <Col md={6} xsOffset={3}>
+                                <Row>
+                                    <Col md={12}>
+                                        <TextField className="formInput" hintText="Enter Email"  value={this.state.item.email}  disabled={true}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={12}>
+                                        <TextField className="formInput" hintText="Shopper Name" value={this.state.item.name} disabled={true}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={12}>
+                                        <TextField className="formInput" hintText="Shopper Address" value={this.state.item.address} disabled={true}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={12}>
+                                        <TextField className="formInput" hintText="Contact Person" value={this.state.item.contact} disabled={true}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={12}>
+                                        <TextField className="formInput" hintText="Contact Person Cell Number" value={this.state.item.cell} disabled={true}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={12}>
+                                        <RaisedButton className="changeButton" label={`Change`} primary={true} onClick={id => this.changeShopper(this.state.id)}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={12}>
+                                        <RaisedButton className="nextButton" label="Next" primary={true} onClick={id => this.nextShopper(this.state.id)}/>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                    </Grid>
                     {/*<Cells>*/}
                         {/*<Cell>*/}
                             {/*<CellBody>Shopper Name</CellBody>*/}

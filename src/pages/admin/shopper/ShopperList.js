@@ -97,6 +97,7 @@ export default class ShopperList extends React.Component {
                             <TableHeaderColumn>ID</TableHeaderColumn>
                             <TableHeaderColumn>Name</TableHeaderColumn>
                             <TableHeaderColumn>Count Purifiers</TableHeaderColumn>
+                            <TableHeaderColumn>Action</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
@@ -105,6 +106,9 @@ export default class ShopperList extends React.Component {
                                 <TableRowColumn>{item.id}</TableRowColumn>
                                 <TableRowColumn>{item.name}</TableRowColumn>
                                 <TableRowColumn>72 Purifiers</TableRowColumn>
+                                <TableRowColumn>
+                                    <RaisedButton label="Detail" primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
+                                </TableRowColumn>
                             </TableRow>
                         )}
                     </TableBody>
