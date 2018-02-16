@@ -167,9 +167,7 @@ export default class ShopperForm extends React.Component {
                                 </Row>
                                 <Row>
                                     <Col md={12}>
-                                        <TextField className="formInput" hintText="Enter Password" type="password"
-                                                   value={this.state.item.password}
-                                                   onChange={e => this.changePassword(e)}/>
+                                        <TextField className="formInput" hintText="Enter Password" type="password" onChange={e => this.changePassword(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
