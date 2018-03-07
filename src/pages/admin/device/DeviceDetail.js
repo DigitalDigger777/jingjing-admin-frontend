@@ -169,7 +169,7 @@ export default class DeviceDetail extends React.Component {
                                 </Row>
                                 <Row>
                                     <Col md={12}>
-                                        <RaisedButton className="purifiersListButton" label="Access To Purifiers List"
+                                        <RaisedButton className="purifiersListButton" label="Access To Massage List"
                                                       primary={true} onClick={() => this.openPurifiersList()}/>
                                     </Col>
                                 </Row>

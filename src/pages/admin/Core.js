@@ -97,7 +97,7 @@ export default class Core extends React.Component {
                             <Paper className="menu">
                                 <List>
                                     <ListItem primaryText="Shoppers" onClick={this.openShopperList.bind(this)}/>
-                                    <ListItem primaryText="Purifiers" onClick={this.openPurifierList.bind(this)}/>
+                                    <ListItem primaryText="Massage" onClick={this.openPurifierList.bind(this)}/>
                                     <ListItem primaryText="Statement" onClick={this.openStatement.bind(this)}/>
                                     <ListItem primaryText="Invoice" onClick={this.openInvoice.bind(this)}/>
                                 </List>
