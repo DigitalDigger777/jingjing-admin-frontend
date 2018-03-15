@@ -48,8 +48,8 @@ export default class ShopperList extends React.Component {
             });
     }
 
-    openDetailShopper(id) {
-        window.location = '/admin/shopper-detail/' + id;
+    openMassagersList(id) {
+        window.location = '/admin/device-list/' + id;
     }
 
     openFormShopper(){
@@ -87,9 +87,9 @@ export default class ShopperList extends React.Component {
                             hintText="Shopper ID / Shopper Name"
                         />
                     </ToolbarGroup>
-                    <ToolbarGroup>
-                        <RaisedButton label="Add Shopper" primary={true} onClick={this.openFormShopper.bind(this)}/>
-                    </ToolbarGroup>
+                    {/*<ToolbarGroup>*/}
+                        {/*<RaisedButton label="Add Shopper" primary={true} onClick={this.openFormShopper.bind(this)}/>*/}
+                    {/*</ToolbarGroup>*/}
                 </Toolbar>
 
                 <Table selectable={false}>
@@ -108,7 +108,7 @@ export default class ShopperList extends React.Component {
                                 <TableRowColumn>{item.name}</TableRowColumn>
                                 <TableRowColumn>{item.devices ? item.devices.length : 0} Massagers</TableRowColumn>
                                 <TableRowColumn>
-                                    <RaisedButton label="Detail" primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
+                                    <RaisedButton label="Massagers List" primary={true} onClick={ id => this.openMassagersList(item.id) }/>
                                 </TableRowColumn>
                             </TableRow>
                         )}

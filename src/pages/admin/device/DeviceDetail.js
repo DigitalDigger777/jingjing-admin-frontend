@@ -136,15 +136,11 @@ export default class DeviceDetail extends React.Component {
                         <Row>
                             <Col md={6} xsOffset={3}>
                                 <Row>
-                                    <Col md={12}>
-                                        <TextField className="formInput" hintText="Name"
-                                                   value={this.state.item.name} onChange={ e => this.changeName(e)}/>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={12}>
-                                        <TextField className="formInput" hintText="Room"
-                                                   value={this.state.item.room} onChange={ e => this.changeRoom(e)}/>
+                                    <Col md={4}>Massage ID</Col>
+                                    <Col md={8}>
+
+                                        <TextField className="formInput" hintText="Massage ID"
+                                                   value={this.state.item.id}  disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
@@ -152,6 +148,12 @@ export default class DeviceDetail extends React.Component {
                                         <TextField className="formInput" hintText="Shopper ID"
                                                    value={this.state.item.shopperId}
                                                    onChange={ e => this.changeShopper(e)}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={12}>
+                                        <TextField className="formInput" hintText="Room"
+                                                   value={this.state.item.room} onChange={ e => this.changeRoom(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>

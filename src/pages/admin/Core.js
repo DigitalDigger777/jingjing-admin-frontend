@@ -75,7 +75,7 @@ export default class Core extends React.Component {
     }
 
     openPurifierList() {
-        window.location = '/admin/device-list';
+        window.location = '/admin/device/shopper-list';
     }
 
     openStatement() {

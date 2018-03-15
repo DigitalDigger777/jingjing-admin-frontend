@@ -48,7 +48,8 @@ export default class ShopperForm extends React.Component {
                 name: '',
                 address: '',
                 contact: '',
-                cell: ''
+                cell: '',
+                rate: ''
             },
             load: false,
             baseUrl: config.baseUrl
@@ -123,6 +124,14 @@ export default class ShopperForm extends React.Component {
         });
     }
 
+    changeRate(e){
+        const item = this.state.item;
+        item.rate = e.target.value;
+        this.setState({
+            item: item
+        });
+    }
+
     save(){
         this.setState({
             load: true
@@ -136,6 +145,7 @@ export default class ShopperForm extends React.Component {
             address: this.state.item.address,
             contact: this.state.item.contact,
             cell: this.state.item.cell,
+            rate: this.state.item.rate,
             role: 'ROLE_SHOPPER'
         })
             .then(response => {
@@ -159,17 +169,6 @@ export default class ShopperForm extends React.Component {
                     <Grid className={classes.shopperForm}>
                         <Row>
                             <Col md={6} xsOffset={3}>
-                                <Row>
-                                    <Col md={12}>
-                                        <TextField className="formInput" hintText="Enter Email"
-                                                   value={this.state.item.email} onChange={e => this.changeEmail(e)}/>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={12}>
-                                        <TextField className="formInput" hintText="Enter Password" type="password" onChange={e => this.changePassword(e)}/>
-                                    </Col>
-                                </Row>
                                 <Row>
                                     <Col md={12}>
                                         <TextField className="formInput" hintText="Shopper Name"
@@ -196,6 +195,26 @@ export default class ShopperForm extends React.Component {
                                                    value={this.state.item.cell} onChange={e => this.changeCell(e)}/>
                                     </Col>
                                 </Row>
+
+                                <Row>
+                                    <Col md={12}>
+                                        <TextField className="formInput" hintText="Enter Email"
+                                                   value={this.state.item.email} onChange={e => this.changeEmail(e)}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={12}>
+                                        <TextField className="formInput" hintText="Rate"
+                                                   value={this.state.item.rate} onChange={e => this.changeRate(e)}/>
+                                    </Col>
+                                </Row>
+                                {/*<Row>*/}
+                                    {/*<Col md={12}>*/}
+                                        {/*<TextField className="formInput" hintText="Enter Password" type="password" onChange={e => this.changePassword(e)}/>*/}
+                                    {/*</Col>*/}
+                                {/*</Row>*/}
+
+
                                 <Row>
                                     <Col md={12}>
                                         <RaisedButton className="saveButton" label={this.state.id == 0 ? `Add` : `Save`}

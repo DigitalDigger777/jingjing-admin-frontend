@@ -33,15 +33,20 @@ export default class DeviceList extends React.Component {
     constructor(props){
         super(props);
         const config = new Config();
-
+        // console.log(props);
         this.state = {
+            shopperId: props.match.params.shopperId,
             items: [],
             baseUrl: config.baseUrl
         };
     }
 
     componentWillMount() {
-        axios.get(this.state.baseUrl + 'device/items')
+        axios.get(this.state.baseUrl + 'device/items', {
+            params: {
+                shopperId: this.state.shopperId
+            }
+        })
             .then(response => {
                 console.log(response);
                 this.setState({
@@ -57,6 +62,17 @@ export default class DeviceList extends React.Component {
         window.location = '/admin/device-detail/' + id;
     }
 
+    removeDevice(id){
+        ///shopper/device/delete/{id}
+        axios.get(this.state.baseUrl + 'shopper/device/delete/' + id)
+            .then(response => {
+                console.log(response);
+                window.location.reload();
+            })
+            .catch(response => {
+
+            });
+    }
     changeSearch(){
 
     }
@@ -83,19 +99,20 @@ export default class DeviceList extends React.Component {
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
                             <TableHeaderColumn>ID</TableHeaderColumn>
-                            <TableHeaderColumn>Name</TableHeaderColumn>
                             <TableHeaderColumn>Room</TableHeaderColumn>
+                            <TableHeaderColumn>Add Time</TableHeaderColumn>
                             <TableHeaderColumn>Action</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
                         { this.state.items.map((item, key) =>
-                            <TableRow  key={key} onClick={ id => this.openDetailShopper(item.id) }>
-                                <TableRowColumn>{item.id}</TableRowColumn>
-                                <TableRowColumn>{item.name}</TableRowColumn>
-                                <TableRowColumn>{item.room}</TableRowColumn>
+                            <TableRow  key={key} onClick={ id => this.openDetailShopper(item.device.id) }>
+                                <TableRowColumn>{item.device.id}</TableRowColumn>
+                                <TableRowColumn>{item.device.room}</TableRowColumn>
+                                <TableRowColumn>{item.date}</TableRowColumn>
                                 <TableRowColumn>
-                                    <RaisedButton label="Change" primary={true} onClick={ id => this.openDeviceDetail(item.id) }/>
+                                    <RaisedButton label="Edit" primary={true} onClick={ id => this.openDeviceDetail(item.device.id) }/>
+                                    <RaisedButton label="Remove" warning={true} onClick={ id => this.removeDevice(item.device.id) }/>
                                 </TableRowColumn>
                             </TableRow>
                         )}
