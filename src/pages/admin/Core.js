@@ -86,6 +86,10 @@ export default class Core extends React.Component {
         window.location = '/admin/invoice-list';
     }
 
+    openTesterManagement(){
+        window.location = '/admin/tester-list';
+    }
+
     render(){
         const {classes, children} = this.props;
 
@@ -100,6 +104,7 @@ export default class Core extends React.Component {
                                     <ListItem primaryText="Purifiers" onClick={this.openPurifierList.bind(this)}/>
                                     <ListItem primaryText="Statement" onClick={this.openStatement.bind(this)}/>
                                     <ListItem primaryText="Invoice" onClick={this.openInvoice.bind(this)}/>
+                                    <ListItem primaryText="Tester management" onClick={this.openTesterManagement.bind(this)}/>
                                 </List>
                             </Paper>
                         </Col>

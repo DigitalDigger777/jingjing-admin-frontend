@@ -21,6 +21,8 @@ import AdminDeviceList from './pages/admin/device/DeviceList';
 import AdminDeviceDetail from './pages/admin/device/DeviceDetail';
 import AdminStatementList from './pages/admin/statement/StatementList';
 
+import AdminTesterForm from './pages/admin/tester/TesterForm';
+import AdminTesterList from './pages/admin/tester/TesterList';
 //consumer pages
 // import ConsumerBuyHistory from './pages/consumer/buy_history/BuyHistory';
 // import ConsumerConfirmationSelectSlot from './pages/consumer/buy_time/ConfirmationSelectSlot';
@@ -56,6 +58,10 @@ class Index extends React.Component {
                             <Route exact path="/admin/device-detail/:id" component={AdminDeviceDetail}/>
                             <Route exact path="/admin/statement-list" component={AdminStatementList}/>
                             <Route exact path="/admin/invoice-list" component={AdminStatementList}/>
+
+                            <Route exact path="/admin/tester-form" component={AdminTesterForm}/>
+                            <Route exact path="/admin/tester-form/:id" component={AdminTesterForm}/>
+                            <Route exact path="/admin/tester-list" component={AdminTesterList}/>
 
                             {/*<Route exact path="/consumer/buy-history" component={ConsumerBuyHistory}/>*/}
                             {/*<Route exact path="/consumer/buy-time-confirmation-select-slot" component={ConsumerConfirmationSelectSlot}/>*/}
