@@ -59,33 +59,41 @@ export default class TesterList extends React.Component {
     }
 
 
-    changeName(e, id) {
+    changeName(e, name, id) {
         console.log(id);
-        axios.post(this.state.baseUrl + 'user/save', {
-            id: id,
-            pin: this.state.item.pin,
-            role: 'ROLE_TESTER'
-        })
-            .then(response => {
-                console.log(response);
-            })
-            .catch(response => {
 
-            });
+        setTimeout(() => {
+            axios.post(this.state.baseUrl + 'user/save', {
+                id: id,
+                name: name,
+                role: 'ROLE_TESTER'
+            })
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(response => {
+
+                });
+        }, 2000);
+
+
     }
 
-    changePin(e, id) {
-        axios.post(this.state.baseUrl + 'user/save', {
-            id: id,
-            name: this.state.item.name,
-            role: 'ROLE_TESTER'
-        })
-            .then(response => {
-                console.log(response);
+    changePin(e, pin, id) {
+        console.log(e);
+        setTimeout(() => {
+            axios.post(this.state.baseUrl + 'user/save', {
+                id: id,
+                pin: pin,
+                role: 'ROLE_TESTER'
             })
-            .catch(response => {
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(response => {
 
-            });
+                });
+        }, 2000);
     }
 
     changeSearch(){
@@ -128,14 +136,14 @@ export default class TesterList extends React.Component {
                                     <TextField id={`name` + item.id}
                                            type="text"
                                            defaultValue={item.name}
-                                           onChange={(e, id) => this.changeName(e, id)} />
+                                           onChange={(e, name, id) => this.changeName(e, name, item.id)} />
                                 </TableRowColumn>
                                 <TableRowColumn>
                                     {/*<span id={`textPin` + item.id} style={{cursor:'pointer'}} onClick={(id, name) => this.editPin(item.id, item.pin)}>{item.pin}</span>*/}
                                     <TextField id={`pin` + item.id}
                                                type="text"
                                                defaultValue={item.pin}
-                                               onChange={(e, id) => this.changePin(e, id)} />
+                                               onChange={(e, pin, id) => this.changePin(e, pin, item.id)} />
                                 </TableRowColumn>
                             </TableRow>
                         )}
