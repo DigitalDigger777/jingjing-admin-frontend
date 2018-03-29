@@ -90,12 +90,12 @@ export default class DeviceList extends React.Component {
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
                         { this.state.items.map((item, key) =>
-                            <TableRow  key={key} onClick={ id => this.openDetailShopper(item.id) }>
-                                <TableRowColumn>{item.id}</TableRowColumn>
-                                <TableRowColumn>{item.name}</TableRowColumn>
-                                <TableRowColumn>{item.room}</TableRowColumn>
+                            <TableRow  key={key} onClick={ id => this.openDetailShopper(item[0].id) }>
+                                <TableRowColumn>{item[0].id}</TableRowColumn>
+                                <TableRowColumn>{item[0].name}</TableRowColumn>
+                                <TableRowColumn>{item[0].room}</TableRowColumn>
                                 <TableRowColumn>
-                                    <RaisedButton label="Change" primary={true} onClick={ id => this.openDeviceDetail(item.id) }/>
+                                    <RaisedButton label="Change" primary={true} onClick={ id => this.openDeviceDetail(item[0].id) }/>
                                 </TableRowColumn>
                             </TableRow>
                         )}
