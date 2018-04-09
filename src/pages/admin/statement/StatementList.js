@@ -80,11 +80,11 @@ export default class StatementList extends React.Component {
                             <TableHeaderColumn>Income</TableHeaderColumn>
                             <TableHeaderColumn>Time</TableHeaderColumn>
                             <TableHeaderColumn>Shopper Name</TableHeaderColumn>
-                            <TableHeaderColumn>Room</TableHeaderColumn>
+                            <TableHeaderColumn>Purifier ID</TableHeaderColumn>
                             <TableHeaderColumn>Rate</TableHeaderColumn>
                             <TableHeaderColumn>Hours</TableHeaderColumn>
-                            <TableHeaderColumn>Revenue</TableHeaderColumn>
-                            <TableHeaderColumn>Paid</TableHeaderColumn>
+                            {/*<TableHeaderColumn>Revenue</TableHeaderColumn>*/}
+                            {/*<TableHeaderColumn>Paid</TableHeaderColumn>*/}
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
@@ -92,12 +92,12 @@ export default class StatementList extends React.Component {
                             <TableRow  key={key} onClick={ id => this.openDetailShopper(item.id) }>
                                 <TableRowColumn>{`¥` + item[0].amount}</TableRowColumn>
                                 <TableRowColumn>{item.date}</TableRowColumn>
-                                <TableRowColumn>{/*shopper name*/}</TableRowColumn>
-                                <TableRowColumn>{item[0].room.toString()}</TableRowColumn>
-                                <TableRowColumn>{item[0].rate}</TableRowColumn>
+                                <TableRowColumn>{item.name}</TableRowColumn>
+                                <TableRowColumn>{item[0].device.id}</TableRowColumn>
+                                <TableRowColumn>{`¥` + item[0].rate}</TableRowColumn>
                                 <TableRowColumn>{item[0].hours}</TableRowColumn>
-                                <TableRowColumn>{/*revenue*/}</TableRowColumn>
-                                <TableRowColumn>{/*paid*/}</TableRowColumn>
+                                {/*<TableRowColumn>/!*revenue*!/</TableRowColumn>*/}
+                                {/*<TableRowColumn>/!*paid*!/</TableRowColumn>*/}
                             </TableRow>
                         )}
                     </TableBody>
