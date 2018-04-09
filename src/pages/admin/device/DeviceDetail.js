@@ -81,14 +81,6 @@ export default class DeviceDetail extends React.Component {
 
     }
 
-    changeRoom(e){
-        const item = this.state.item;
-        item.room = e.target.value;
-
-        this.setState({
-            item: item
-        });
-    }
 
     changeShopper(e){
 
@@ -139,12 +131,6 @@ export default class DeviceDetail extends React.Component {
                                     <Col md={12}>
                                         <TextField className="formInput" hintText="Name"
                                                    value={this.state.item.name} onChange={ e => this.changeName(e)}/>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={12}>
-                                        <TextField className="formInput" hintText="Room"
-                                                   value={this.state.item.room} onChange={ e => this.changeRoom(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
