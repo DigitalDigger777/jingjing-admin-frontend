@@ -43,14 +43,29 @@ export default class DeviceList extends React.Component {
 
         this.state = {
             items: [],
+            deviceId: 0,
+            shopperId: 0,
             dialog: {
-                open: false
+                assignShopper: {
+                    open: false
+                },
+                reset: {
+                    open: false
+                },
+                remove: {
+                    open: false
+                }
             },
             baseFrontUrl: config.baseFrontUrl,
             baseUrl: config.baseUrl
         };
 
         this.closeDialog = this.closeDialog.bind(this);
+        this.actionMenuChange = this.actionMenuChange.bind(this);
+        this.remove = this.remove.bind(this);
+        this.reset = this.reset.bind(this);
+        this.assignShopper = this.assignShopper.bind(this);
+        this.changeShopperId = this.changeShopperId.bind(this);
     }
 
     componentWillMount() {
@@ -82,6 +97,9 @@ export default class DeviceList extends React.Component {
 
         console.log(action[1], id);
 
+        this.state.deviceId = id;
+        let dialog = this.state.dialog;
+
         switch (parseInt(action[1]))
         {
             case 0:
@@ -92,12 +110,27 @@ export default class DeviceList extends React.Component {
                 break;
             case 2:
                     //assign shopper
+
+                    dialog.assignShopper.open = true;
+
+                    this.setState({
+                        dialog: dialog
+                    });
                 break;
             case 3:
                     //reset
+                    dialog.reset.open = true;
+
+                    this.setState({
+                        dialog: dialog
+                    });
                 break;
             case 4:
                     //remove
+                    dialog.remove.open = true;
+                    this.setState({
+                        dialog: dialog
+                    });
                 break;
         }
     }
@@ -106,17 +139,109 @@ export default class DeviceList extends React.Component {
 
     }
 
-    save(){
+    changeShopperId(e, val) {
+        console.log(val);
+        this.state.shopperId = val;
+    }
 
+    remove(){
+        this.setState({
+            dialog: {
+                assignShopper: {
+                    open: false
+                },
+                reset: {
+                    open: false
+                },
+                remove: {
+                    open: false
+                }
+            }
+        });
+
+        axios.get(this.state.baseUrl + 'device/delete', {
+            params: {
+                id: this.state.deviceId
+            }
+        })
+            .then(response => {
+                console.log(response);
+
+                axios.get(this.state.baseUrl + 'device/items')
+                    .then(deviceResponse => {
+                        console.log(deviceResponse);
+                        this.setState({
+                            items: deviceResponse.data
+                        });
+                    })
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    reset(){
+        this.setState({
+            dialog: {
+                assignShopper: {
+                    open: false
+                },
+                reset: {
+                    open: false
+                },
+                remove: {
+                    open: false
+                }
+            }
+        });
+    }
+
+    assignShopper(){
+        this.setState({
+            dialog: {
+                assignShopper: {
+                    open: false
+                },
+                reset: {
+                    open: false
+                },
+                remove: {
+                    open: false
+                }
+            }
+        });
+
+        axios.post(this.state.baseUrl + 'device/save', {
+            id: this.state.deviceId,
+            shopperId: this.state.shopperId
+        })
+            .then(response => {
+                console.log(response);
+            })
+            .catch(response => {
+
+            });
     }
 
     closeDialog(){
-        this.setState({open: false});
+        this.setState({
+            dialog: {
+                assignShopper: {
+                    open: false
+                },
+                reset: {
+                    open: false
+                },
+                remove: {
+                    open: false
+                }
+            }
+        });
     }
 
     render() {
 
-        const actions = [
+        const actionsReset = [
             <FlatButton
                 label="Cancel"
                 primary={true}
@@ -126,7 +251,35 @@ export default class DeviceList extends React.Component {
                 label="Ok"
                 primary={true}
                 keyboardFocused={true}
-                onClick={this.save}
+                onClick={this.reset}
+            />,
+        ];
+
+        const actionsRmv = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onClick={this.closeDialog}
+            />,
+            <FlatButton
+                label="Ok"
+                primary={true}
+                keyboardFocused={true}
+                onClick={this.remove}
+            />,
+        ];
+
+        const actionsAssignShopper = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onClick={this.closeDialog}
+            />,
+            <FlatButton
+                label="Ok"
+                primary={true}
+                keyboardFocused={true}
+                onClick={this.assignShopper}
             />,
         ];
 
@@ -191,9 +344,9 @@ export default class DeviceList extends React.Component {
 
                 <Dialog
                     title="Warning"
-                    actions={actions}
+                    actions={actionsRmv}
                     modal={false}
-                    open={this.state.dialog.open}
+                    open={this.state.dialog.remove.open}
                     onRequestClose={this.closeDialog}
                 >
                     Are you sure you want to remove this Purifier?
@@ -202,9 +355,9 @@ export default class DeviceList extends React.Component {
 
                 <Dialog
                     title="Warning"
-                    actions={actions}
+                    actions={actionsReset}
                     modal={false}
-                    open={this.state.dialog.open}
+                    open={this.state.dialog.reset.open}
                     onRequestClose={this.closeDialog}
                 >
                     Are you sure you want to reset this Purifier?
@@ -212,14 +365,15 @@ export default class DeviceList extends React.Component {
 
                 <Dialog
                     title="Change Shopper ID"
-                    actions={actions}
+                    actions={actionsAssignShopper}
                     modal={false}
-                    open={this.state.dialog.open}
+                    open={this.state.dialog.assignShopper.open}
                     onRequestClose={this.closeDialog}
                 >
 
-                    Please Assign Shopper to This Purifier
-                    <TextField hintText="Input shopper ID" />
+                    <span>Please Assign Shopper to This Purifier</span>
+                    <br/>
+                    <TextField hintText="Input shopper ID" onChange={ this.changeShopperId}/>
                 </Dialog>
                 {/*<Cells style={{paddingBottom: '100px'}}>*/}
                     {/*{this.state.items.map((item, key) => {*/}
