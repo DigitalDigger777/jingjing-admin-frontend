@@ -83,8 +83,11 @@ export default class DeviceList extends React.Component {
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
                             <TableHeaderColumn>ID</TableHeaderColumn>
+                            <TableHeaderColumn>QR Code</TableHeaderColumn>
                             <TableHeaderColumn>Name</TableHeaderColumn>
-                            <TableHeaderColumn>Room</TableHeaderColumn>
+                            <TableHeaderColumn>Add Time</TableHeaderColumn>
+                            <TableHeaderColumn>Total Hour Used</TableHeaderColumn>
+                            <TableHeaderColumn>Total Revenue</TableHeaderColumn>
                             <TableHeaderColumn>Action</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
@@ -92,10 +95,15 @@ export default class DeviceList extends React.Component {
                         { this.state.items.map((item, key) =>
                             <TableRow  key={key} onClick={ id => this.openDetailShopper(item[0].id) }>
                                 <TableRowColumn>{item[0].id}</TableRowColumn>
+                                <TableRowColumn></TableRowColumn>
                                 <TableRowColumn>{item[0].name}</TableRowColumn>
-                                <TableRowColumn>{item[0].room}</TableRowColumn>
+                                <TableRowColumn>{item[1]}</TableRowColumn>
+                                <TableRowColumn>0</TableRowColumn>
+                                <TableRowColumn>0</TableRowColumn>
                                 <TableRowColumn>
                                     <RaisedButton label="Change" primary={true} onClick={ id => this.openDeviceDetail(item[0].id) }/>
+                                    <RaisedButton label="Reset" primary={true} />
+                                    <RaisedButton label="Remove" primary={true} />
                                 </TableRowColumn>
                             </TableRow>
                         )}
