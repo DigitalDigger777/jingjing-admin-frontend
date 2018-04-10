@@ -77,31 +77,63 @@ export default class ShopperDetail extends React.Component {
                         <Row>
                             <Col md={6} xsOffset={3}>
                                 <Row>
-                                    <Col md={12}>
-                                        <TextField className="formInput" hintText="Enter Email"  value={this.state.item.email}  disabled={true}/>
+                                    <Col md={6}>
+                                        Name
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={12}>
+                                    <Col md={6}>
                                         <TextField className="formInput" hintText="Shopper Name" value={this.state.item.name} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={12}>
+                                    <Col md={6}>
+                                        Address
+                                    </Col>
+                                    <Col md={6}>
                                         <TextField className="formInput" hintText="Shopper Address" value={this.state.item.address} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={12}>
+                                    <Col md={6}>
+                                        Contact
+                                    </Col>
+                                    <Col md={6}>
                                         <TextField className="formInput" hintText="Contact Person" value={this.state.item.contact} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={12}>
+                                    <Col md={6}>
+                                        Cell
+                                    </Col>
+                                    <Col md={6}>
                                         <TextField className="formInput" hintText="Contact Person Cell Number" value={this.state.item.cell} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
+                                    <Col md={6}>
+                                        Shopper #
+                                    </Col>
+                                    <Col md={6}>
+                                        <TextField className="formInput" hintText="Shopper #" value={this.state.item.cell} disabled={true}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={6}>
+                                        Hour Rate
+                                    </Col>
+                                    <Col md={6}>
+                                        <TextField className="formInput" hintText="Hour Rate" value={this.state.item.rate} disabled={true}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={6}>
+                                        Commission
+                                    </Col>
+                                    <Col md={6}>
+                                        <TextField className="formInput" hintText="Comission Rate" value={`30%`} disabled={true}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+
                                     <Col md={12}>
                                         <RaisedButton className="changeButton" label={`Change`} primary={true} onClick={id => this.changeShopper(this.state.id)}/>
                                     </Col>
