@@ -198,6 +198,18 @@ export default class ShopperForm extends React.Component {
                                 </Row>
                                 <Row>
                                     <Col md={12}>
+                                        <TextField className="formInput" hintText="Hour Rate"
+                                                   value={this.state.item.rate} onChange={e => this.changeCell(e)}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={12}>
+                                        <TextField className="formInput" hintText="Commission Rate"
+                                                   value={this.state.item.rateCommission} onChange={e => this.changeCell(e)}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={12}>
                                         <RaisedButton className="saveButton" label={this.state.id == 0 ? `Add` : `Save`}
                                                       primary={true} onClick={this.save.bind(this)}/>
                                     </Col>
