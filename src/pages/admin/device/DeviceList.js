@@ -320,7 +320,7 @@ export default class DeviceList extends React.Component {
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
                         { this.state.items.map((item, key) => {
 
-                                const qrURL = 'http://jingjing.fenglinfl.com/index.php/payment/start/' + item[0].id;
+                                const qrURL = 'http://jingjing.fenglinfl.com/public/index.php/payment/start/' + item[0].id;
                                 const totalHours = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].total_hours : 0;
                                 const totalRevenue = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].total_revenue : 0;
 
