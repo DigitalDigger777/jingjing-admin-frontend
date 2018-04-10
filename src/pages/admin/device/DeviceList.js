@@ -69,7 +69,13 @@ export default class DeviceList extends React.Component {
     }
 
     componentWillMount() {
-        axios.get(this.state.baseUrl + 'device/items')
+
+
+        axios.get(this.state.baseUrl + 'device/items', {
+            params: {
+                shopperId: this.props.match.params.shopperId
+            }
+        })
             .then(response => {
                 console.log(response);
                 this.setState({
@@ -315,6 +321,8 @@ export default class DeviceList extends React.Component {
                         { this.state.items.map((item, key) => {
 
                                 const qrURL = this.state.baseFrontUrl + 'public/index.php/payment/start/' + item[0].id;
+                                const totalHours = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].total_hours : 0;
+                                const totalRevenue = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].total_revenue : 0;
 
                                 return (<TableRow key={key} onClick={ id => this.openDetailShopper(item[0].id) }>
                                     <TableRowColumn>{item[0].id}</TableRowColumn>
@@ -325,8 +333,8 @@ export default class DeviceList extends React.Component {
 
                                     </TableRowColumn>
                                     <TableRowColumn>{item[1]}</TableRowColumn>
-                                    <TableRowColumn>{item[0].deviceStatistics[0].total_hours}</TableRowColumn>
-                                    <TableRowColumn>{item[0].deviceStatistics[0].total_revenue}</TableRowColumn>
+                                    <TableRowColumn>{totalHours}</TableRowColumn>
+                                    <TableRowColumn>{totalRevenue}</TableRowColumn>
                                     <TableRowColumn>
                                         <DropDownMenu value={this.state.value} onChange={this.actionMenuChange}>
                                             <MenuItem value={item[0].id + `:` + 0} primaryText="Select Action"/>

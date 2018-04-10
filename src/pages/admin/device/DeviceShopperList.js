@@ -19,7 +19,7 @@ import Core from '../Core';
 import axios from 'axios';
 import Config from '../../../Config';
 
-export default class DeviceShopperList extends React.Component {
+export default class ShopperList extends React.Component {
 
     constructor(props){
         super(props);
@@ -49,7 +49,7 @@ export default class DeviceShopperList extends React.Component {
     }
 
     openDetailShopper(id) {
-        window.location = '/admin/shopper-detail/' + id;
+        window.location = '/admin/device-list/' + id;
     }
 
     openFormShopper(){
@@ -94,20 +94,25 @@ export default class DeviceShopperList extends React.Component {
                 <Table selectable={false}>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
-                            <TableHeaderColumn>ID</TableHeaderColumn>
                             <TableHeaderColumn>Name</TableHeaderColumn>
                             <TableHeaderColumn>Count Purifiers</TableHeaderColumn>
                             <TableHeaderColumn>Action</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
+                        <TableRow  onClick={ id => this.openDetailShopper(0) }>
+                            <TableRowColumn>Unassigned</TableRowColumn>
+                            <TableRowColumn>0 Purifiers</TableRowColumn>
+                            <TableRowColumn>
+                                <RaisedButton label="List" primary={true} onClick={ id => this.openDetailShopper(0) }/>
+                            </TableRowColumn>
+                        </TableRow>
                         { this.state.items.map((item, key) =>
                             <TableRow  key={key} onClick={ id => this.openDetailShopper(item.id) }>
-                                <TableRowColumn>{item.id}</TableRowColumn>
                                 <TableRowColumn>{item.name}</TableRowColumn>
                                 <TableRowColumn>0 Purifiers</TableRowColumn>
                                 <TableRowColumn>
-                                    <RaisedButton label="Detail" primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
+                                    <RaisedButton label="List" primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
                                 </TableRowColumn>
                             </TableRow>
                         )}

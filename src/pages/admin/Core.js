@@ -75,7 +75,7 @@ export default class Core extends React.Component {
     }
 
     openPurifierList() {
-        window.location = '/admin/device-list';
+        window.location = '/admin/device-shopper-list';
     }
 
     openStatement() {
@@ -100,10 +100,10 @@ export default class Core extends React.Component {
                         <Col md={3}>
                             <Paper className="menu">
                                 <List>
-                                    <ListItem primaryText="Shoppers" onClick={this.openShopperList.bind(this)}/>
-                                    <ListItem primaryText="Purifiers" onClick={this.openPurifierList.bind(this)}/>
+                                    <ListItem primaryText="Shopper Management" onClick={this.openShopperList.bind(this)}/>
+                                    <ListItem primaryText="Purifier Management" onClick={this.openPurifierList.bind(this)}/>
                                     <ListItem primaryText="Statement" onClick={this.openStatement.bind(this)}/>
-                                    <ListItem primaryText="Invoice" onClick={this.openInvoice.bind(this)}/>
+                                    {/*<ListItem primaryText="Invoice" onClick={this.openInvoice.bind(this)}/>*/}
                                     <ListItem primaryText="Tester management" onClick={this.openTesterManagement.bind(this)}/>
                                 </List>
                             </Paper>
