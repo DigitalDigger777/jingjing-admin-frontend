@@ -13,7 +13,6 @@ const styles  = {
     //     fontSize: '20px'
     // }
     adminPage: {
-        position: 'absolute',
         height: '98%',
         width: '98%',
         '& .menu': {

@@ -25,6 +25,7 @@ import QRCode from 'qrcode.react';
 import SearchBar from 'material-ui-search-bar'
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
+import Pagination from 'material-ui-pagination';
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -35,6 +36,7 @@ import axios from 'axios';
 import Config from '../../../Config';
 import Core from '../Core';
 
+
 export default class DeviceList extends React.Component {
 
     constructor(props){
@@ -43,6 +45,11 @@ export default class DeviceList extends React.Component {
 
         this.state = {
             items: [],
+            pagination: {
+                page: 0,
+                total: 0,
+                display: 0
+            },
             deviceId: 0,
             shopperId: 0,
             dialog: {
@@ -66,13 +73,15 @@ export default class DeviceList extends React.Component {
         this.reset = this.reset.bind(this);
         this.assignShopper = this.assignShopper.bind(this);
         this.changeShopperId = this.changeShopperId.bind(this);
+        this.updateRows = this.updateRows.bind(this);
     }
 
     componentWillMount() {
 
-
+        //load items
         axios.get(this.state.baseUrl + 'device/items', {
             params: {
+                page: this.state.pagination.page,
                 shopperId: this.props.match.params.shopperId
             }
         })
@@ -84,6 +93,21 @@ export default class DeviceList extends React.Component {
             })
             .catch(response => {
 
+            });
+
+        //load total
+        axios.get(this.state.baseUrl + 'device/total-items', {
+            params: {
+                shopperId: this.props.match.params.shopperId
+            }
+        })
+            .then(response => {
+                let pagination = this.state.pagination;
+                pagination.total = parseInt(response.data.cnt);
+                pagination.display = Math.ceil(parseInt(response.data.cnt)/10);
+                this.setState({
+                    pagination: pagination
+                });
             });
     }
 
@@ -139,6 +163,21 @@ export default class DeviceList extends React.Component {
                     });
                 break;
         }
+    }
+
+    updateRows(number){
+        axios.get(this.state.baseUrl + 'device/items', {
+            params: {
+                page: number - 1,
+                shopperId: this.props.match.params.shopperId
+            }
+        })
+            .then(response => {
+                console.log(response);
+                this.setState({
+                    items: response.data
+                });
+            });
     }
 
     changeSearch(){
@@ -326,8 +365,8 @@ export default class DeviceList extends React.Component {
 
                                 return (<TableRow key={key} onClick={ id => this.openDetailShopper(item[0].id) }>
                                     <TableRowColumn>{item[0].id}</TableRowColumn>
-                                    <TableRowColumn className={`HpQrcode` + item[0].id}>
-                                        <QRCode value={qrURL} size="64"/>
+                                    <TableRowColumn className={`HpQrcode` + item[0].id} style={{paddingBottom: '20px', paddingTop: '20px'}}>
+                                        <QRCode value={qrURL} size={64}/>
                                         <br/>
                                         <a href="#" onClick={(e, id) => this.download(e, item[0].id)}>Download</a>
 
@@ -349,6 +388,20 @@ export default class DeviceList extends React.Component {
                         )}
                     </TableBody>
                 </Table>
+                {/*<Pagination*/}
+                    {/*total={this.state.pagination.total}*/}
+                    {/*rowsPerPage={this.state.pagination.rowsPerPage}*/}
+                    {/*page={this.state.pagination.page}*/}
+                    {/*numberOfRows={this.state.pagination.numberOfRows}*/}
+                    {/*updateRows={this.updateRows}*/}
+                {/*/>*/}
+
+                <Pagination
+                    total = { this.state.pagination.total }
+                    current = { this.state.pagination.page }
+                    display = { this.state.pagination.display }
+                    onChange = { number => this.updateRows(number) }
+                />
 
                 <Dialog
                     title="Warning"

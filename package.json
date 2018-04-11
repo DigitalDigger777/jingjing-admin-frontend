@@ -15,6 +15,7 @@
     "jss-nested": "^6.0.1",
     "jss-preset-default": "latest",
     "material-ui": "^0.20.0",
+    "material-ui-pagination": "^1.1.6",
     "material-ui-search-bar": "^0.4.1",
     "moment": "^2.19.2",
     "prop-types": "latest",
@@ -29,6 +30,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "latest",
+    "react-tap-event-plugin": "^3.0.2",
     "recompose": "latest",
     "webpack": "^3.10.0"
   },
