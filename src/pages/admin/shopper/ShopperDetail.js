@@ -77,59 +77,59 @@ export default class ShopperDetail extends React.Component {
                         <Row>
                             <Col md={6} xsOffset={3}>
                                 <Row>
-                                    <Col md={6}>
-                                        Name
+                                    <Col md={4} style={{margin: 'auto'}}>
+                                        Shopper Name
                                     </Col>
-                                    <Col md={6}>
+                                    <Col md={8}>
                                         <TextField className="formInput" hintText="Shopper Name" value={this.state.item.name} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={6}>
+                                    <Col md={4} style={{margin: 'auto'}}>
                                         Address
                                     </Col>
-                                    <Col md={6}>
+                                    <Col md={8}>
                                         <TextField className="formInput" hintText="Shopper Address" value={this.state.item.address} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={6}>
+                                    <Col md={4} style={{margin: 'auto'}}>
                                         Contact
                                     </Col>
-                                    <Col md={6}>
+                                    <Col md={8}>
                                         <TextField className="formInput" hintText="Contact Person" value={this.state.item.contact} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={6}>
+                                    <Col md={4} style={{margin: 'auto'}}>
                                         Cell
                                     </Col>
-                                    <Col md={6}>
+                                    <Col md={8}>
                                         <TextField className="formInput" hintText="Contact Person Cell Number" value={this.state.item.cell} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={6}>
+                                    <Col md={4} style={{margin: 'auto'}}>
                                         Shopper #
                                     </Col>
-                                    <Col md={6}>
-                                        <TextField className="formInput" hintText="Shopper #" value={this.state.item.cell} disabled={true}/>
+                                    <Col md={8}>
+                                        <TextField className="formInput" hintText="Shopper #" value={this.state.item.id} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={6}>
+                                    <Col md={4} style={{margin: 'auto'}}>
                                         Hour Rate
                                     </Col>
-                                    <Col md={6}>
+                                    <Col md={8}>
                                         <TextField className="formInput" hintText="Hour Rate" value={this.state.item.rate} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={6}>
+                                    <Col md={4} style={{margin: 'auto'}}>
                                         Commission
                                     </Col>
-                                    <Col md={6}>
-                                        <TextField className="formInput" hintText="Comission Rate" value={`30%`} disabled={true}/>
+                                    <Col md={8}>
+                                        <TextField className="formInput" hintText="Commission Rate" value={this.state.item.rateCommission} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
