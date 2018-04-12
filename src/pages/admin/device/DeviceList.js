@@ -239,6 +239,16 @@ export default class DeviceList extends React.Component {
                 }
             }
         });
+
+        axios.get(this.state.baseUrl + 'device/save', {
+            params: {
+                id: this.state.deviceId,
+                is_reset: true
+            }
+        })
+            .then(response => {
+                console.log(response);
+            });
     }
 
     assignShopper(){
