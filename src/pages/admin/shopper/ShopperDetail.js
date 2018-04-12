@@ -138,11 +138,11 @@ export default class ShopperDetail extends React.Component {
                                         <RaisedButton className="changeButton" label={`Change`} primary={true} onClick={id => this.changeShopper(this.state.id)}/>
                                     </Col>
                                 </Row>
-                                <Row>
-                                    <Col md={12}>
-                                        <RaisedButton className="nextButton" label="Next" primary={true} onClick={id => this.nextShopper(this.state.id)}/>
-                                    </Col>
-                                </Row>
+                                {/*<Row>*/}
+                                    {/*<Col md={12}>*/}
+                                        {/*<RaisedButton className="nextButton" label="Next" primary={true} onClick={id => this.nextShopper(this.state.id)}/>*/}
+                                    {/*</Col>*/}
+                                {/*</Row>*/}
                             </Col>
                         </Row>
                     </Grid>
