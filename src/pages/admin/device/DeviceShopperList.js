@@ -87,7 +87,7 @@ export default class ShopperList extends React.Component {
                         />
                     </ToolbarGroup>
                     <ToolbarGroup>
-                        <RaisedButton label="Add Shopper" primary={true} onClick={this.openFormShopper.bind(this)}/>
+                        {/*<RaisedButton label="Add Shopper" primary={true} onClick={this.openFormShopper.bind(this)}/>*/}
                     </ToolbarGroup>
                 </Toolbar>
 

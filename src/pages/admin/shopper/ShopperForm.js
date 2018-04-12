@@ -43,12 +43,14 @@ export default class ShopperForm extends React.Component {
         this.state = {
             id: typeof props.match.params.id != 'undefined' ? props.match.params.id : 0,
             item: {
-                email: '',
-                password: '',
-                name: '',
-                address: '',
-                contact: '',
-                cell: ''
+                email:      '',
+                password:   '',
+                name:       '',
+                address:    '',
+                contact:    '',
+                cell:       '',
+                rate:       '',
+                rateCommission: ''
             },
             load: false,
             baseUrl: config.baseUrl
@@ -123,6 +125,22 @@ export default class ShopperForm extends React.Component {
         });
     }
 
+    changeRate(e){
+        const item = this.state.item;
+        item.rate = e.target.value;
+        this.setState({
+            item: item
+        });
+    }
+
+    changeCommission(e){
+        const item = this.state.item;
+        item.rateCommission = e.target.value;
+        this.setState({
+            item: item
+        });
+    }
+
     save(){
         this.setState({
             load: true
@@ -136,7 +154,9 @@ export default class ShopperForm extends React.Component {
             address: this.state.item.address,
             contact: this.state.item.contact,
             cell: this.state.item.cell,
-            role: 'ROLE_SHOPPER'
+            role: 'ROLE_SHOPPER',
+            rate: this.state.item.rate,
+            rateCommission: this.state.item.rateCommission
         })
             .then(response => {
                 console.log(response);
@@ -199,13 +219,13 @@ export default class ShopperForm extends React.Component {
                                 <Row>
                                     <Col md={12}>
                                         <TextField className="formInput" hintText="Hour Rate"
-                                                   value={this.state.item.rate} onChange={e => this.changeCell(e)}/>
+                                                   value={this.state.item.rate} onChange={e => this.changeRate(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={12}>
                                         <TextField className="formInput" hintText="Commission Rate"
-                                                   value={this.state.item.rateCommission} onChange={e => this.changeCell(e)}/>
+                                                   value={this.state.item.rateCommission} onChange={e => this.changeCommission(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
