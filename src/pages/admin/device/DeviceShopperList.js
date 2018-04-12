@@ -27,6 +27,7 @@ export default class ShopperList extends React.Component {
         const config = new Config();
         this.state = {
             items: [],
+            countUnassigned: 0,
             baseUrl: config.baseUrl
         };
     }
@@ -45,6 +46,17 @@ export default class ShopperList extends React.Component {
             })
             .catch(response => {
                 console.log('error');
+            });
+
+        axios.get(this.state.baseUrl + 'device/total-items', {
+            params: {
+                shopperId: 0
+            }
+        })
+            .then(response => {
+                this.setState({
+                    countUnassigned: response.data.cnt
+                });
             });
     }
 
@@ -102,7 +114,7 @@ export default class ShopperList extends React.Component {
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
                         <TableRow  onClick={ id => this.openDetailShopper(0) }>
                             <TableRowColumn>Unassigned</TableRowColumn>
-                            <TableRowColumn>0 Purifiers</TableRowColumn>
+                            <TableRowColumn>{this.state.countUnassigned} Purifiers</TableRowColumn>
                             <TableRowColumn>
                                 <RaisedButton label="List" primary={true} onClick={ id => this.openDetailShopper(0) }/>
                             </TableRowColumn>
@@ -110,7 +122,7 @@ export default class ShopperList extends React.Component {
                         { this.state.items.map((item, key) =>
                             <TableRow  key={key} onClick={ id => this.openDetailShopper(item.id) }>
                                 <TableRowColumn>{item.name}</TableRowColumn>
-                                <TableRowColumn>0 Purifiers</TableRowColumn>
+                                <TableRowColumn>{item.countDevices ? item.countDevices : 0} Purifiers</TableRowColumn>
                                 <TableRowColumn>
                                     <RaisedButton label="List" primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
                                 </TableRowColumn>

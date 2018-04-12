@@ -27,6 +27,7 @@ export default class DeviceShopperList extends React.Component {
         const config = new Config();
         this.state = {
             items: [],
+            countUnassigned: 0,
             baseUrl: config.baseUrl
         };
     }
@@ -105,7 +106,7 @@ export default class DeviceShopperList extends React.Component {
                             <TableRow  key={key} onClick={ id => this.openDetailShopper(item.id) }>
                                 <TableRowColumn>{item.id}</TableRowColumn>
                                 <TableRowColumn>{item.name}</TableRowColumn>
-                                <TableRowColumn>0 Purifiers</TableRowColumn>
+                                <TableRowColumn>{item.countDevices ? item.countDevices : 0} Purifiers</TableRowColumn>
                                 <TableRowColumn>
                                     <RaisedButton label="Detail" primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
                                 </TableRowColumn>
