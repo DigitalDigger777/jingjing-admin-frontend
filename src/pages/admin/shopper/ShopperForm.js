@@ -178,52 +178,76 @@ export default class ShopperForm extends React.Component {
                 <Core>
                     <Grid className={classes.shopperForm}>
                         <Row>
-                            <Col md={6} xsOffset={3}>
+                            <Col md={7} xsOffset={2}>
                                 <Row>
-                                    <Col md={12}>
+                                    <Col md={4} style={{margin: 'auto'}}>
+                                        Email
+                                    </Col>
+                                    <Col md={8}>
                                         <TextField className="formInput" hintText="Enter Email"
                                                    value={this.state.item.email} onChange={e => this.changeEmail(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={12}>
+                                    <Col md={4} style={{margin: 'auto'}}>
+                                        Password
+                                    </Col>
+                                    <Col md={8}>
                                         <TextField className="formInput" hintText="Enter Password" type="password" onChange={e => this.changePassword(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={12}>
+                                    <Col md={4} style={{margin: 'auto'}}>
+                                        Shopper Name
+                                    </Col>
+                                    <Col md={8}>
                                         <TextField className="formInput" hintText="Shopper Name"
                                                    value={this.state.item.name} onChange={e => this.changeName(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={12}>
+                                    <Col md={4} style={{margin: 'auto'}}>
+                                        Address
+                                    </Col>
+                                    <Col md={8}>
                                         <TextField className="formInput" hintText="Shopper Address"
                                                    value={this.state.item.address}
                                                    onChange={e => this.changeAddress(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={12}>
+                                    <Col md={4} style={{margin: 'auto'}}>
+                                        Contact
+                                    </Col>
+                                    <Col md={8}>
                                         <TextField className="formInput" hintText="Contact Person"
                                                    value={this.state.item.contact}
                                                    onChange={e => this.changeContact(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={12}>
+                                    <Col md={4} style={{margin: 'auto'}}>
+                                        Cell
+                                    </Col>
+                                    <Col md={8}>
                                         <TextField className="formInput" hintText="Contact Person Cell Number"
                                                    value={this.state.item.cell} onChange={e => this.changeCell(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={12}>
+                                    <Col md={4} style={{margin: 'auto'}}>
+                                        Hour Rate
+                                    </Col>
+                                    <Col md={8}>
                                         <TextField className="formInput" hintText="Hour Rate"
                                                    value={this.state.item.rate} onChange={e => this.changeRate(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={12}>
+                                    <Col md={4} style={{margin: 'auto'}}>
+                                        Commission Rate
+                                    </Col>
+                                    <Col md={8}>
                                         <TextField className="formInput" hintText="Commission Rate"
                                                    value={this.state.item.rateCommission} onChange={e => this.changeCommission(e)}/>
                                     </Col>
@@ -232,12 +256,6 @@ export default class ShopperForm extends React.Component {
                                     <Col md={12}>
                                         <RaisedButton className="saveButton" label={this.state.id == 0 ? `Add` : `Save`}
                                                       primary={true} onClick={this.save.bind(this)}/>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={12}>
-                                        <RaisedButton className="shopperListButton" label="Access To Shopper List"
-                                                      primary={true} onClick={() => this.openShopperList()}/>
                                     </Col>
                                 </Row>
                             </Col>
