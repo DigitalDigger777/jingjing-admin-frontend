@@ -374,7 +374,7 @@ export default class DeviceList extends React.Component {
                                 const totalRevenue = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].total_revenue : 0;
 
                                 return (<TableRow key={key} onClick={ id => this.openDetailShopper(item[0].id) }>
-                                    <TableRowColumn>{item[0].id}</TableRowColumn>
+                                    <TableRowColumn>{item[0].deviceCode}</TableRowColumn>
                                     <TableRowColumn className={`HpQrcode` + item[0].id} style={{paddingBottom: '20px', paddingTop: '20px'}}>
                                         <QRCode value={qrURL} size={64}/>
                                         <br/>
