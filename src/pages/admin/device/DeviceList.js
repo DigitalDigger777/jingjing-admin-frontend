@@ -378,10 +378,9 @@ export default class DeviceList extends React.Component {
                                     <TableRowColumn className={`HpQrcode` + item[0].id} style={{paddingBottom: '20px', paddingTop: '20px'}}>
                                         <QRCode value={qrURL} size={64}/>
                                         <br/>
-                                        {item[0].deviceCode}
-                                        <br/>
                                         <a href="#" onClick={(e, id) => this.download(e, item[0].id)}>Download</a>
-
+                                        <br/>
+                                        {item[0].deviceCode}
                                     </TableRowColumn>
                                     <TableRowColumn>{date[0]} <br/> {date[1]}</TableRowColumn>
                                     <TableRowColumn>{totalHours}</TableRowColumn>
