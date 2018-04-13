@@ -1,10 +1,11 @@
 /**
  * Created by korman on 11.02.18.
  */
-import React from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import Snackbar from 'material-ui/Snackbar';
-import {List, ListItem} from 'material-ui/List';
+import {List, ListItem, makeSelectable} from 'material-ui/List';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import injectSheet from 'react-jss';
 
@@ -24,6 +25,7 @@ const styles  = {
     }
 };
 
+
 @injectSheet(styles)
 
 export default class Core extends React.Component {
@@ -38,7 +40,8 @@ export default class Core extends React.Component {
                 purifiers:  '',
                 statement:  '',
                 invoice:    ''
-            }
+            },
+            selectIndex: 1
         };
 
         const regForShopperDetail = /\/admin\/shopper-detail\/[0-9]+/;
@@ -47,26 +50,26 @@ export default class Core extends React.Component {
         switch (location)
         {
             case '/admin/shopper-list':
-                    this.state.menuItems.shoppers = 'weui-bar__item_on';
+                    this.state.selectIndex = 1;
                 break;
-            case '/admin/device-list':
-                    this.state.menuItems.purifiers = 'weui-bar__item_on';
+            case '/admin/device-shopper-list':
+                    this.state.selectIndex = 2;
                 break;
             case '/admin/statement-list':
-                    this.state.menuItems.statement = 'weui-bar__item_on';
+                    this.state.selectIndex = 3;
                 break;
-            case '/admin/invoice-list':
-                    this.state.menuItems.invoice = 'weui-bar__item_on';
+            case '/admin/tester-list':
+                    this.state.selectIndex = 4;
                 break;
         }
 
-        if (regForShopperDetail.test(location)) {
-            this.state.menuItems.shoppers = 'weui-bar__item_on';
-        }
-
-        if (regForDeviceDetail.test(location)) {
-            this.state.menuItems.purifiers = 'weui-bar__item_on';
-        }
+        // if (regForShopperDetail.test(location)) {
+        //     this.state.menuItems.shoppers = 'weui-bar__item_on';
+        // }
+        //
+        // if (regForDeviceDetail.test(location)) {
+        //     this.state.menuItems.purifiers = 'weui-bar__item_on';
+        // }
     }
 
     openShopperList() {
@@ -89,8 +92,43 @@ export default class Core extends React.Component {
         window.location = '/admin/tester-list';
     }
 
+    wrapState(ComposedComponent) {
+        return class SelectableList extends Component {
+            static propTypes = {
+                children: PropTypes.node.isRequired,
+                defaultValue: PropTypes.number.isRequired,
+            };
+
+            componentWillMount() {
+                this.setState({
+                    selectedIndex: this.props.defaultValue,
+                });
+            }
+
+            handleRequestChange = (event, index) => {
+                this.setState({
+                    selectedIndex: index,
+                });
+            };
+
+            render() {
+                return (
+                    <ComposedComponent
+                        value={this.state.selectedIndex}
+                        onChange={this.handleRequestChange}
+                    >
+                        {this.props.children}
+                    </ComposedComponent>
+                );
+            }
+        };
+    }
+
     render(){
         const {classes, children} = this.props;
+
+        let SelectableList = makeSelectable(List);
+        SelectableList = this.wrapState(SelectableList);
 
         return(
             <Paper className={classes.adminPage}>
@@ -98,13 +136,13 @@ export default class Core extends React.Component {
                     <Row>
                         <Col md={3}>
                             <Paper className="menu">
-                                <List>
-                                    <ListItem primaryText="Shopper Management" onClick={this.openShopperList.bind(this)}/>
-                                    <ListItem primaryText="Purifier Management" onClick={this.openPurifierList.bind(this)}/>
-                                    <ListItem primaryText="Statement" onClick={this.openStatement.bind(this)}/>
+                                <SelectableList defaultValue={this.state.selectIndex}>
+                                    <ListItem value={1} primaryText="Shopper Management" onClick={this.openShopperList.bind(this)}/>
+                                    <ListItem value={2} primaryText="Purifier Management" onClick={this.openPurifierList.bind(this)}/>
+                                    <ListItem value={3} primaryText="Statement" onClick={this.openStatement.bind(this)}/>
                                     {/*<ListItem primaryText="Invoice" onClick={this.openInvoice.bind(this)}/>*/}
-                                    <ListItem primaryText="Tester management" onClick={this.openTesterManagement.bind(this)}/>
-                                </List>
+                                    <ListItem value={4} primaryText="Tester management" onClick={this.openTesterManagement.bind(this)}/>
+                                </SelectableList>
                             </Paper>
                         </Col>
                         <Col md={9}>
