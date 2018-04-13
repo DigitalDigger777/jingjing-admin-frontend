@@ -88,17 +88,21 @@ export default class StatementList extends React.Component {
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
-                        { this.state.items.map((item, key) =>
-                            <TableRow  key={key} onClick={ id => this.openDetailShopper(item.id) }>
-                                <TableRowColumn>{`¥` + item[0].amount}</TableRowColumn>
-                                <TableRowColumn>{item.date}</TableRowColumn>
-                                <TableRowColumn>{item.name}</TableRowColumn>
-                                <TableRowColumn>{item[0].device.id}</TableRowColumn>
-                                <TableRowColumn>{`¥` + item[0].rate}</TableRowColumn>
-                                <TableRowColumn>{item[0].hours}</TableRowColumn>
-                                {/*<TableRowColumn>/!*revenue*!/</TableRowColumn>*/}
-                                {/*<TableRowColumn>/!*paid*!/</TableRowColumn>*/}
-                            </TableRow>
+                        { this.state.items.map((item, key) => {
+                                const date = item.date.split(' ');
+                                return (
+                                    <TableRow key={key} onClick={ id => this.openDetailShopper(item.id) }>
+                                        <TableRowColumn>{`¥` + item[0].amount}</TableRowColumn>
+                                        <TableRowColumn>{date[0]} <br/> {date[1]}</TableRowColumn>
+                                        <TableRowColumn>{item.name}</TableRowColumn>
+                                        <TableRowColumn>{item[0].device.id}</TableRowColumn>
+                                        <TableRowColumn>{`¥` + item[0].rate}</TableRowColumn>
+                                        <TableRowColumn>{item[0].hours}</TableRowColumn>
+                                        {/*<TableRowColumn>/!*revenue*!/</TableRowColumn>*/}
+                                        {/*<TableRowColumn>/!*paid*!/</TableRowColumn>*/}
+                                    </TableRow>
+                                )
+                            }
                         )}
                     </TableBody>
                 </Table>
