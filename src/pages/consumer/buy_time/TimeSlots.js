@@ -33,10 +33,6 @@ export default class TimeSlots extends React.Component {
     constructor(props){
         super(props);
         const data = [
-            {label: '￥3 1小时', style: styles.grid},
-            {label: '￥6 2小时', style: styles.grid},
-            {label: '￥9 3小时', style: styles.grid},
-            {label: '￥12 4小时', style: styles.grid},
             {label: '￥15 5小时', style: styles.grid},
             {label: '￥18 6小时', style: styles.grid},
             {label: '￥21 7小时', style: styles.grid},
