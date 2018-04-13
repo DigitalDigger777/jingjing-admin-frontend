@@ -137,11 +137,11 @@ export default class Core extends React.Component {
                         <Col md={3}>
                             <Paper className="menu">
                                 <SelectableList defaultValue={this.state.selectIndex}>
-                                    <ListItem value={1} primaryText="Shopper Management" onClick={this.openShopperList.bind(this)}/>
-                                    <ListItem value={2} primaryText="Purifier Management" onClick={this.openPurifierList.bind(this)}/>
-                                    <ListItem value={3} primaryText="Statement" onClick={this.openStatement.bind(this)}/>
+                                    <ListItem value={1} primaryText="Shopper Management" onClick={this.openShopperList.bind(this)} style={{textDecoration: 'underline'}}/>
+                                    <ListItem value={2} primaryText="Purifier Management" onClick={this.openPurifierList.bind(this)} style={{textDecoration: 'underline'}}/>
+                                    <ListItem value={3} primaryText="Statement" onClick={this.openStatement.bind(this)} style={{textDecoration: 'underline'}}/>
                                     {/*<ListItem primaryText="Invoice" onClick={this.openInvoice.bind(this)}/>*/}
-                                    <ListItem value={4} primaryText="Tester management" onClick={this.openTesterManagement.bind(this)}/>
+                                    <ListItem value={4} primaryText="Tester management" onClick={this.openTesterManagement.bind(this)} style={{textDecoration: 'underline'}}/>
                                 </SelectableList>
                             </Paper>
                         </Col>
