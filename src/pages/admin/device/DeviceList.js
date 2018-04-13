@@ -358,7 +358,7 @@ export default class DeviceList extends React.Component {
                 <Table selectable={false}>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
-                            <TableHeaderColumn>ID</TableHeaderColumn>
+                            {/*<TableHeaderColumn>ID</TableHeaderColumn>*/}
                             <TableHeaderColumn>QR Code</TableHeaderColumn>
                             <TableHeaderColumn>Add Time</TableHeaderColumn>
                             <TableHeaderColumn>Total Hour Used</TableHeaderColumn>
@@ -374,9 +374,11 @@ export default class DeviceList extends React.Component {
                                 const totalRevenue = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].total_revenue : 0;
                                 const date = item[1].split(' ');
                                 return (<TableRow key={key} onClick={ id => this.openDetailShopper(item[0].id) }>
-                                    <TableRowColumn>{item[0].deviceCode}</TableRowColumn>
+                                    {/*<TableRowColumn>{item[0].deviceCode}</TableRowColumn>*/}
                                     <TableRowColumn className={`HpQrcode` + item[0].id} style={{paddingBottom: '20px', paddingTop: '20px'}}>
                                         <QRCode value={qrURL} size={64}/>
+                                        <br/>
+                                        item[0].deviceCode
                                         <br/>
                                         <a href="#" onClick={(e, id) => this.download(e, item[0].id)}>Download</a>
 
