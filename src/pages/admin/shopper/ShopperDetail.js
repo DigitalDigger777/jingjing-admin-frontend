@@ -133,7 +133,22 @@ export default class ShopperDetail extends React.Component {
                                     </Col>
                                 </Row>
                                 <Row>
-
+                                    <Col md={4} style={{margin: 'auto'}}>
+                                        Hours
+                                    </Col>
+                                    <Col md={8}>
+                                        <TextField className="formInput" hintText="Hours" value={this.state.item.hoursObtainOwnership} disabled={true}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={4} style={{margin: 'auto'}}>
+                                        Passcode
+                                    </Col>
+                                    <Col md={8}>
+                                        <TextField className="formInput" hintText="Passcode" value={this.state.item.passCode} disabled={true}/>
+                                    </Col>
+                                </Row>
+                                <Row>
                                     <Col md={12}>
                                         <RaisedButton className="changeButton" label={`Change`} primary={true} onClick={id => this.changeShopper(this.state.id)}/>
                                     </Col>

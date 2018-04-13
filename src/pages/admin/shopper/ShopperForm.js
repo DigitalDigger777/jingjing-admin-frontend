@@ -43,14 +43,16 @@ export default class ShopperForm extends React.Component {
         this.state = {
             id: typeof props.match.params.id != 'undefined' ? props.match.params.id : 0,
             item: {
-                email:      '',
-                password:   '',
-                name:       '',
-                address:    '',
-                contact:    '',
-                cell:       '',
-                rate:       '',
-                rateCommission: ''
+                email:                  '',
+                password:               '',
+                name:                   '',
+                address:                '',
+                contact:                '',
+                cell:                   '',
+                rate:                   '',
+                rateCommission:         '',
+                passCode:               '',
+                hoursObtainOwnership:   ''
             },
             load: false,
             baseUrl: config.baseUrl
@@ -88,6 +90,7 @@ export default class ShopperForm extends React.Component {
     changePassword(e){
         const item = this.state.item;
         item.password = e.target.value;
+        item.passCode = e.target.value;
         this.setState({
             item: item
         });
@@ -141,6 +144,14 @@ export default class ShopperForm extends React.Component {
         });
     }
 
+    changeHoursObtainOwnership(e){
+        const item = this.state.item;
+        item.hoursObtainOwnership = e.target.value;
+        this.setState({
+            item: item
+        });
+    }
+
     save(){
         this.setState({
             load: true
@@ -148,7 +159,6 @@ export default class ShopperForm extends React.Component {
 
         axios.post(this.state.baseUrl + 'user/save', {
             id: this.state.id,
-            email: this.state.item.email,
             password: this.state.item.password,
             name: this.state.item.name,
             address: this.state.item.address,
@@ -156,7 +166,8 @@ export default class ShopperForm extends React.Component {
             cell: this.state.item.cell,
             role: 'ROLE_SHOPPER',
             rate: this.state.item.rate,
-            rateCommission: this.state.item.rateCommission
+            rateCommission: this.state.item.rateCommission,
+            hoursObtainOwnership: this.state.item.hoursObtainOwnership
         })
             .then(response => {
                 console.log(response);
@@ -179,23 +190,6 @@ export default class ShopperForm extends React.Component {
                     <Grid className={classes.shopperForm}>
                         <Row>
                             <Col md={7} xsOffset={2}>
-                                <Row>
-                                    <Col md={4} style={{margin: 'auto'}}>
-                                        Email
-                                    </Col>
-                                    <Col md={8}>
-                                        <TextField className="formInput" hintText="Enter Email"
-                                                   value={this.state.item.email} onChange={e => this.changeEmail(e)}/>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={4} style={{margin: 'auto'}}>
-                                        Password
-                                    </Col>
-                                    <Col md={8}>
-                                        <TextField className="formInput" hintText="Enter Password" type="password" onChange={e => this.changePassword(e)}/>
-                                    </Col>
-                                </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
                                         Shopper Name
@@ -250,6 +244,24 @@ export default class ShopperForm extends React.Component {
                                     <Col md={8}>
                                         <TextField className="formInput" hintText="Commission Rate"
                                                    value={this.state.item.rateCommission} onChange={e => this.changeCommission(e)}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={4} style={{margin: 'auto'}}>
+                                        Hours
+                                    </Col>
+                                    <Col md={8}>
+                                        <TextField className="formInput" hintText="Hours"
+                                                   value={this.state.item.hoursObtainOwnership} onChange={e => this.changeHoursObtainOwnership(e)}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={4} style={{margin: 'auto'}}>
+                                        Passcode
+                                    </Col>
+                                    <Col md={8}>
+                                        <TextField className="formInput" hintText="Passcode"
+                                                   value={this.state.item.passCode} onChange={e => this.changePassword(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
