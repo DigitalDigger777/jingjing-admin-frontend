@@ -21,6 +21,7 @@ import AdminDeviceList from './pages/admin/device/DeviceList';
 import DeviceShopperList from './pages/admin/device/DeviceShopperList';
 import AdminDeviceDetail from './pages/admin/device/DeviceDetail';
 import AdminStatementList from './pages/admin/statement/StatementList';
+import AdminDeviceStatementList from './pages/admin/device/DeviceStatementList';
 
 import AdminTesterForm from './pages/admin/tester/TesterForm';
 import AdminTesterList from './pages/admin/tester/TesterList';
@@ -59,6 +60,7 @@ class Index extends React.Component {
                             <Route exact path="/admin/device-list" component={AdminDeviceList}/>
                             <Route exact path="/admin/device-list/:shopperId" component={AdminDeviceList}/>
                             <Route exact path="/admin/device-detail/:id" component={AdminDeviceDetail}/>
+                            <Route exact path="/admin/device/statement-list/:deviceId" component={AdminDeviceStatementList}/>
                             <Route exact path="/admin/statement-list" component={AdminStatementList}/>
                             <Route exact path="/admin/invoice-list" component={AdminStatementList}/>
 

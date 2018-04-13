@@ -136,7 +136,7 @@ export default class DeviceList extends React.Component {
                 break;
             case 1:
                     //detail
-                    window.location = '/admin/device-detail/' + id;
+                    window.location = '/admin/device/statement-list/' + id;
                 break;
             case 2:
                     //assign shopper
