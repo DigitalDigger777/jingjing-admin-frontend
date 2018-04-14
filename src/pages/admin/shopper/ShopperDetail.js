@@ -81,79 +81,79 @@ export default class ShopperDetail extends React.Component {
                             <Col md={6} xsOffset={3}>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Shopper Name
+                                        {LangStrings.shopperName}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Shopper Name" value={this.state.item.name} disabled={true}/>
+                                        <TextField className="formInput" hintText={LangStrings.shopperName} value={this.state.item.name} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Address
+                                        {LangStrings.address}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Shopper Address" value={this.state.item.address} disabled={true}/>
+                                        <TextField className="formInput" hintText={LangStrings.address} value={this.state.item.address} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Contact
+                                        {LangStrings.contact}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Contact Person" value={this.state.item.contact} disabled={true}/>
+                                        <TextField className="formInput" hintText={LangStrings.contact} value={this.state.item.contact} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Cell
+                                        {LangStrings.cell}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Contact Person Cell Number" value={this.state.item.cell} disabled={true}/>
+                                        <TextField className="formInput" hintText={LangStrings.contactPersonCellNumber} value={this.state.item.cell} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Shopper #
+                                        {LangStrings.shopperId}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Shopper #" value={this.state.item.id} disabled={true}/>
+                                        <TextField className="formInput" hintText={LangStrings.shopperId} value={this.state.item.id} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Hour Rate
+                                        {LangStrings.hourRate}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Hour Rate" value={this.state.item.rate} disabled={true}/>
+                                        <TextField className="formInput" hintText={LangStrings.hourRate} value={this.state.item.rate} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Commission
+                                        {LangStrings.commission}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Commission Rate" value={this.state.item.rateCommission} disabled={true}/>
+                                        <TextField className="formInput" hintText={LangStrings.commission} value={this.state.item.rateCommission} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Hours
+                                        {LangStrings.hours}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Hours" value={this.state.item.hoursObtainOwnership} disabled={true}/>
+                                        <TextField className="formInput" hintText={LangStrings.hours} value={this.state.item.hoursObtainOwnership} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Passcode
+                                        {LangStrings.passcode}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Passcode" value={this.state.item.passCode} disabled={true}/>
+                                        <TextField className="formInput" hintText={LangStrings.passcode} value={this.state.item.passCode} disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={12}>
-                                        <RaisedButton className="changeButton" label={`Change`} primary={true} onClick={id => this.changeShopper(this.state.id)}/>
+                                        <RaisedButton className="changeButton" label={LangStrings.change} primary={true} onClick={id => this.changeShopper(this.state.id)}/>
                                     </Col>
                                 </Row>
                                 {/*<Row>*/}
@@ -164,53 +164,6 @@ export default class ShopperDetail extends React.Component {
                             </Col>
                         </Row>
                     </Grid>
-                    {/*<Cells>*/}
-                        {/*<Cell>*/}
-                            {/*<CellBody>Shopper Name</CellBody>*/}
-                            {/*<CellFooter>{this.state.item.name}</CellFooter>*/}
-                        {/*</Cell>*/}
-                    {/*</Cells>*/}
-                    {/*<Cells className={classes.cells}>*/}
-                        {/*<Cell>*/}
-                            {/*<CellBody>Address</CellBody>*/}
-                            {/*<CellFooter>{this.state.item.address}</CellFooter>*/}
-                        {/*</Cell>*/}
-                    {/*</Cells>*/}
-                    {/*<Cells className={classes.cells}>*/}
-                        {/*<Cell>*/}
-                            {/*<CellBody>Contact</CellBody>*/}
-                            {/*<CellFooter>{this.state.item.contact}</CellFooter>*/}
-                        {/*</Cell>*/}
-                    {/*</Cells>*/}
-                    {/*<Cells className={classes.cells}>*/}
-                        {/*<Cell>*/}
-                            {/*<CellBody>Cell</CellBody>*/}
-                            {/*<CellFooter>{this.state.item.cell}</CellFooter>*/}
-                        {/*</Cell>*/}
-                    {/*</Cells>*/}
-                    {/*<Cells className={classes.cells}>*/}
-                        {/*<Cell>*/}
-                            {/*<CellBody>Shopper #</CellBody>*/}
-                            {/*<CellFooter>{this.state.item.id}</CellFooter>*/}
-                        {/*</Cell>*/}
-                    {/*</Cells>*/}
-
-                    {/*<Cells>*/}
-                        {/*<Cell>*/}
-                            {/*<CellBody>*/}
-
-                                {/*<Flex>*/}
-                                    {/*<FlexItem style={{margin:'4px'}}>*/}
-                                        {/*<Button onClick={ id => this.editShopper(this.state.item.id) }>Edit</Button>*/}
-                                    {/*</FlexItem>*/}
-                                    {/*<FlexItem style={{margin:'4px'}}>*/}
-                                        {/*<Button type="warn" onClick={ id => this.deleteShopper(this.state.item.id) }>Delete</Button>*/}
-                                    {/*</FlexItem>*/}
-                                {/*</Flex>*/}
-
-                            {/*</CellBody>*/}
-                        {/*</Cell>*/}
-                    {/*</Cells>*/}
                 </Core>
             );
         } else {
