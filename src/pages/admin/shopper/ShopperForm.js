@@ -199,7 +199,8 @@ export default class ShopperForm extends React.Component {
                                     </Col>
                                     <Col md={8}>
                                         <TextField className="formInput" hintText="Shopper Name"
-                                                   value={this.state.item.name} onChange={e => this.changeName(e)}/>
+                                                   value={this.state.item.name}
+                                                   onChange={e => this.changeName(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
