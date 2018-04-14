@@ -98,10 +98,10 @@ export default class DeviceShopperList extends React.Component {
                 <Table selectable={false}>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
-                            <TableHeaderColumn>ID</TableHeaderColumn>
-                            <TableHeaderColumn>Name</TableHeaderColumn>
-                            <TableHeaderColumn>Count Purifiers</TableHeaderColumn>
-                            <TableHeaderColumn>Action</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.id}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.name}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.countPurifiers}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.action}</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
@@ -109,9 +109,9 @@ export default class DeviceShopperList extends React.Component {
                             <TableRow  key={key} onClick={ id => this.openDetailShopper(item.id) }>
                                 <TableRowColumn>{item.id}</TableRowColumn>
                                 <TableRowColumn>{item.name}</TableRowColumn>
-                                <TableRowColumn>{item.countDevices ? item.countDevices : 0} Purifiers</TableRowColumn>
+                                <TableRowColumn>{item.countDevices ? item.countDevices : 0} {LangStrings.purifiers}</TableRowColumn>
                                 <TableRowColumn>
-                                    <RaisedButton label="Detail" primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
+                                    <RaisedButton label={LangStrings.detail} primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
                                 </TableRowColumn>
                             </TableRow>
                         )}
