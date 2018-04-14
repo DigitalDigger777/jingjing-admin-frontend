@@ -14,7 +14,8 @@ import {
 } from 'material-ui/Table';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-import SearchBar from 'material-ui-search-bar'
+import SearchBar from 'material-ui-search-bar';
+import LangStrings from '../../../translations/admin/statement/StatementList';
 
 import axios from 'axios';
 import Core from '../Core';
@@ -34,6 +35,7 @@ export default class StatementList extends React.Component {
     constructor(props){
         super(props);
         const config = new Config();
+        LangStrings.setLanguage(config.language);
 
         this.state = {
             items: [],

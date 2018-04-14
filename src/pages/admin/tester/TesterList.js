@@ -14,7 +14,8 @@ import {
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-import SearchBar from 'material-ui-search-bar'
+import SearchBar from 'material-ui-search-bar';
+import LangStrings from '../../../translations/admin/tester/TesterList';
 
 import Core from '../Core';
 import axios from 'axios';
@@ -26,6 +27,8 @@ export default class TesterList extends React.Component {
         super(props);
 
         const config = new Config();
+        LangStrings.setLanguage(config.language);
+
         this.state = {
             items: [],
             baseUrl: config.baseUrl

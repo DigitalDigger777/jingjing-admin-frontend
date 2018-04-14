@@ -6,6 +6,7 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import LangStrings from '../../../translations/admin/shopper/ShopperDetail';
 
 import Core from '../Core';
 import axios from 'axios';
@@ -38,6 +39,8 @@ export default class ShopperDetail extends React.Component {
         super(props);
 
         const config = new Config();
+        LangStrings.setLanguage(config.language);
+
         this.state = {
             id: props.match.params.id,
             item: null,

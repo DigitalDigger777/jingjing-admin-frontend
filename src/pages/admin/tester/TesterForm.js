@@ -7,6 +7,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import CircularProgress from 'material-ui/CircularProgress';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import LangStrings from '../../../translations/admin/tester/TesterForm';
 
 import Core from '../Core';
 import axios from 'axios';
@@ -40,6 +41,8 @@ export default class TesterForm extends React.Component {
         super(props);
 
         const config = new Config();
+        LangStrings.setLanguage(config.language);
+
         this.state = {
             id: typeof props.match.params.id != 'undefined' ? props.match.params.id : 0,
             item: {
