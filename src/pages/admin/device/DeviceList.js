@@ -31,6 +31,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import LangStrings from '../../../translations/admin/device/DeviceList';
 
 import axios from 'axios';
 import Config from '../../../Config';
@@ -66,6 +67,7 @@ export default class DeviceList extends React.Component {
             baseFrontUrl: config.baseFrontUrl,
             baseUrl: config.baseUrl
         };
+        LangStrings.setLanguage(config.language);
 
         this.closeDialog = this.closeDialog.bind(this);
         this.actionMenuChange = this.actionMenuChange.bind(this);
@@ -359,11 +361,11 @@ export default class DeviceList extends React.Component {
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
                             {/*<TableHeaderColumn>ID</TableHeaderColumn>*/}
-                            <TableHeaderColumn>QR Code</TableHeaderColumn>
-                            <TableHeaderColumn>Add Time</TableHeaderColumn>
-                            <TableHeaderColumn>Total Hour Used</TableHeaderColumn>
-                            <TableHeaderColumn>Total Revenue</TableHeaderColumn>
-                            <TableHeaderColumn>Action</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.qrCode}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.addTime}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.totalHourUsed}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.totalRevenue}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.action}</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
@@ -378,7 +380,7 @@ export default class DeviceList extends React.Component {
                                     <TableRowColumn className={`HpQrcode` + item[0].id} style={{paddingBottom: '20px', paddingTop: '20px'}}>
                                         <QRCode value={qrURL} size={64}/>
                                         <br/>
-                                        <a href="#" onClick={(e, id) => this.download(e, item[0].id)}>Download</a>
+                                        <a href="#" onClick={(e, id) => this.download(e, item[0].id)}>{LangStrings.download}</a>
                                         <br/>
                                         {item[0].deviceCode}
                                     </TableRowColumn>
@@ -387,11 +389,11 @@ export default class DeviceList extends React.Component {
                                     <TableRowColumn>{totalRevenue}</TableRowColumn>
                                     <TableRowColumn>
                                         <DropDownMenu value={this.state.value} onChange={this.actionMenuChange}>
-                                            <MenuItem value={item[0].id + `:` + 0} primaryText="Select Action"/>
-                                            <MenuItem value={item[0].id + `:` + 1} primaryText="Detail"/>
-                                            <MenuItem value={item[0].id + `:` + 2} primaryText="Assign Shopper"/>
-                                            <MenuItem value={item[0].id + `:` + 3} primaryText="Reset"/>
-                                            <MenuItem value={item[0].id + `:` + 4} primaryText="Remove"/>
+                                            <MenuItem value={item[0].id + `:` + 0} primaryText={LangStrings.selectAction}/>
+                                            <MenuItem value={item[0].id + `:` + 1} primaryText={LangStrings.detail}/>
+                                            <MenuItem value={item[0].id + `:` + 2} primaryText={LangStrings.assignShopper}/>
+                                            <MenuItem value={item[0].id + `:` + 3} primaryText={LangStrings.reset}/>
+                                            <MenuItem value={item[0].id + `:` + 4} primaryText={LangStrings.remove}/>
                                         </DropDownMenu>
                                     </TableRowColumn>
                                 </TableRow>);

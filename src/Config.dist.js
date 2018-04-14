@@ -13,7 +13,9 @@ export default class Config
             redirectUri: 'http://coupon.ppcgclub.com/auth_group_buy.html',
             oa_appid: 'wx9d75b312364c1703',
             signature: 'a2c003134b82cd991e3c28967b5fdf99e8cb0e75'
-        }
+        };
+
+        this._language = 'en';
     }
 
     get baseUrl() {
@@ -30,6 +32,10 @@ export default class Config
 
     get weChatConfig() {
         return this._weChatConfig;
+    }
+
+    get language() {
+        return this._language;
     }
 
     buildAuthUrl() {

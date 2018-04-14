@@ -15,6 +15,7 @@ import {
 import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import SearchBar from 'material-ui-search-bar'
+import LangStrings from '../../../translations/admin/device/DeviceStatementList';
 
 import axios from 'axios';
 import Core from '../Core';
@@ -75,18 +76,17 @@ export default class DeviceStatementList extends React.Component {
                 <Table selectable={false}>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
-                            <TableHeaderColumn>Start Time</TableHeaderColumn>
-                            <TableHeaderColumn>End Time</TableHeaderColumn>
-                            <TableHeaderColumn>Total Hour Used</TableHeaderColumn>
-                            <TableHeaderColumn>Rate</TableHeaderColumn>
-                            <TableHeaderColumn>Revenue</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.startTime}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.endTime}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.totalHourUsed}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.rate}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.revenue}</TableHeaderColumn>
                             {/*<TableHeaderColumn>Revenue</TableHeaderColumn>*/}
                             {/*<TableHeaderColumn>Paid</TableHeaderColumn>*/}
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
                         { this.state.items.map((item, key) => {
-                                const date = item.date.split(' ');
                                 return (
                                     <TableRow key={key} onClick={ id => this.openDetailShopper(item.id) }>
                                         <TableRowColumn>{item.timeStart}</TableRowColumn>

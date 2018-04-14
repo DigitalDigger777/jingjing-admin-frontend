@@ -7,6 +7,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import CircularProgress from 'material-ui/CircularProgress';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import LangStrings from '../../../translations/admin/device/DeviceDetail';
 
 import axios from 'axios';
 import Config from '../../../Config';
@@ -130,7 +131,8 @@ export default class DeviceDetail extends React.Component {
                                 <Row>
                                     <Col md={12}>
                                         <TextField className="formInput" hintText="Name"
-                                                   value={this.state.item.name} onChange={ e => this.changeName(e)}/>
+                                                   value={this.state.item.name}
+                                                   onChange={ e => this.changeName(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>

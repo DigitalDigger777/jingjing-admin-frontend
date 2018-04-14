@@ -13,7 +13,8 @@ import {
 } from 'material-ui/Table';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-import SearchBar from 'material-ui-search-bar'
+import SearchBar from 'material-ui-search-bar';
+import LangStrings from '../../../translations/admin/device/DeviceShopperList';
 
 import Core from '../Core';
 import axios from 'axios';
@@ -25,6 +26,8 @@ export default class ShopperList extends React.Component {
         super(props);
 
         const config = new Config();
+        LangStrings.setLanguage(config.language);
+
         this.state = {
             items: [],
             countUnassigned: 0,
@@ -106,17 +109,17 @@ export default class ShopperList extends React.Component {
                 <Table selectable={false}>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
-                            <TableHeaderColumn>Name</TableHeaderColumn>
-                            <TableHeaderColumn>Count Purifiers</TableHeaderColumn>
-                            <TableHeaderColumn>Action</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.name}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.countPurifiers}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.action}</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
                         <TableRow  onClick={ id => this.openDetailShopper(0) }>
-                            <TableRowColumn>Unassigned</TableRowColumn>
-                            <TableRowColumn>{this.state.countUnassigned} Purifiers</TableRowColumn>
+                            <TableRowColumn>{LangStrings.unassigned}</TableRowColumn>
+                            <TableRowColumn>{this.state.countUnassigned} {LangStrings.purifiers}</TableRowColumn>
                             <TableRowColumn>
-                                <RaisedButton label="List" primary={true} onClick={ id => this.openDetailShopper(0) }/>
+                                <RaisedButton label={LangStrings.list} primary={true} onClick={ id => this.openDetailShopper(0) }/>
                             </TableRowColumn>
                         </TableRow>
                         { this.state.items.map((item, key) =>
