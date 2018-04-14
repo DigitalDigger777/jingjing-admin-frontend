@@ -125,9 +125,9 @@ export default class TesterList extends React.Component {
                 <Table selectable={false}>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
-                            <TableHeaderColumn>ID</TableHeaderColumn>
-                            <TableHeaderColumn>Name</TableHeaderColumn>
-                            <TableHeaderColumn>Pass code</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.id}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.name}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.passCode}</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>

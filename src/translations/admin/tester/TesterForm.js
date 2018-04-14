@@ -14,7 +14,12 @@ const strings = new LocalizedStrings({
 
     },
     zh: {
-
+        testerName: 'Text1',
+        passcode: 'Text2',
+        cell: 'Text3',
+        add: 'Text4',
+        save: 'Text5',
+        accessToTesterList: 'Text6',
     }
 });
 
