@@ -79,12 +79,12 @@ export default class StatementList extends React.Component {
                 <Table selectable={false}>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
-                            <TableHeaderColumn>Income</TableHeaderColumn>
-                            <TableHeaderColumn>Time</TableHeaderColumn>
-                            <TableHeaderColumn>Shopper Name</TableHeaderColumn>
-                            <TableHeaderColumn>Purifier ID</TableHeaderColumn>
-                            <TableHeaderColumn>Rate</TableHeaderColumn>
-                            <TableHeaderColumn>Hours</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.income}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.time}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.shopperName}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.purifierID}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.rate}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.hours}</TableHeaderColumn>
                             {/*<TableHeaderColumn>Revenue</TableHeaderColumn>*/}
                             {/*<TableHeaderColumn>Paid</TableHeaderColumn>*/}
                         </TableRow>
