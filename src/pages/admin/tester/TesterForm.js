@@ -134,32 +134,32 @@ export default class TesterForm extends React.Component {
                             <Col md={6} xsOffset={3}>
                                 <Row>
                                     <Col md={12}>
-                                        <TextField className="formInput" hintText="Tester Name"
+                                        <TextField className="formInput" hintText={LangStrings.testerName}
                                                    value={this.state.item.name} onChange={e => this.changeName(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={12}>
-                                        <TextField className="formInput" hintText="Passcode"
+                                        <TextField className="formInput" hintText={LangStrings.passcode}
                                                    value={this.state.item.pin}
                                                    onChange={e => this.changePin(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={12}>
-                                        <TextField className="formInput" hintText="Cell"
+                                        <TextField className="formInput" hintText={LangStrings.cell}
                                                    value={this.state.item.cell} onChange={e => this.changeCell(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={12}>
-                                        <RaisedButton className="saveButton" label={this.state.id == 0 ? `Add` : `Save`}
+                                        <RaisedButton className="saveButton" label={this.state.id == 0 ? LangStrings.add : LangStrings.save}
                                                       primary={true} onClick={this.save.bind(this)}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={12}>
-                                        <RaisedButton className="shopperListButton" label="Access To Tester List"
+                                        <RaisedButton className="shopperListButton" label={LangStrings.accessToTesterList}
                                                       primary={true} onClick={() => this.openTesterList()}/>
                                     </Col>
                                 </Row>
