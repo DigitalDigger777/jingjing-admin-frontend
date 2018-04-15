@@ -14,7 +14,7 @@ const strings = new LocalizedStrings({
         detail: 'Detail'
     },
     zh: {
-        addShopper: 'Text1',
+        addShopper: '添加商户',
         id: 'Text2',
         name: 'Text3',
         countPurifiers: 'Text4',

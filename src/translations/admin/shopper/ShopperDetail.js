@@ -18,17 +18,17 @@ const strings = new LocalizedStrings({
         change: 'Change'
     },
     zh: {
-        shopperName: 'Text1',
-        Address: 'Text2',
-        Contact: 'Text3',
-        Cell: 'Text4',
-        contactPersonCellNumber: 'Text5',
-        ShopperId: 'Text6',
-        hourRate: 'Text7',
-        commission: 'Text8',
-        hours: 'Text9',
-        passcode: 'Text10',
-        change: 'Text11'
+        shopperName: '商户名',
+        Address: '地址',
+        Contact: '联系人',
+        Cell: '手机',
+        contactPersonCellNumber: '手机',
+        ShopperId: '商户编号',
+        hourRate: '小时收费',
+        commission: '分成比例',
+        hours: '转换时间',
+        passcode: 'Passcode',
+        change: '修改'
     }
 });
 

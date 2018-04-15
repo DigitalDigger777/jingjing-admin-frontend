@@ -20,19 +20,19 @@ const strings = new LocalizedStrings({
         save: 'Save'
     },
     zh: {
-        shopperName: 'Text1',
-        address: 'Text2',
-        shopperAddress: 'Text3',
-        contact: 'Text4',
-        contactPerson: 'Text5',
-        cell: 'Text6',
-        contactPersonCellNumber: 'Text7',
-        hourRate: 'Text8',
-        commissionRate: 'Text9',
-        hours: 'Text10',
-        passcode: 'Text11',
-        add: 'Text12',
-        save: 'Text13'
+        shopperName: '商户名',
+        address: '地址',
+        shopperAddress: 'Shopper Address',
+        contact: '联系人',
+        contactPerson: 'Contact Person',
+        cell: '手机',
+        contactPersonCellNumber: 'Contact Person Cell Number',
+        hourRate: '小时收费',
+        commissionRate: '分成比例',
+        hours: '转换时间',
+        passcode: 'Passcode',
+        add: 'Add',
+        save: '修改'
     }
 });
 
