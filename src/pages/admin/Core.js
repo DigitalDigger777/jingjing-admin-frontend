@@ -5,6 +5,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import Snackbar from 'material-ui/Snackbar';
+import LangStrings from '../../translations/admin/Menu';
+import Config from '../../Config';
 import {List, ListItem, makeSelectable} from 'material-ui/List';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import injectSheet from 'react-jss';
@@ -34,6 +36,8 @@ export default class Core extends React.Component {
         super(props);
         const location = window.location.pathname;
 
+        const config = new Config();
+        LangStrings.setLanguage(config.language);
         this.state = {
             menuItems: {
                 shoppers:   '',
@@ -137,11 +141,11 @@ export default class Core extends React.Component {
                         <Col md={3}>
                             <Paper className="menu">
                                 <SelectableList defaultValue={this.state.selectIndex}>
-                                    <ListItem value={1} primaryText="Shopper Management" onClick={this.openShopperList.bind(this)} style={{textDecoration: 'underline'}}/>
-                                    <ListItem value={2} primaryText="Purifier Management" onClick={this.openPurifierList.bind(this)} style={{textDecoration: 'underline'}}/>
-                                    <ListItem value={3} primaryText="Statement" onClick={this.openStatement.bind(this)} style={{textDecoration: 'underline'}}/>
+                                    <ListItem value={1} primaryText={LangStrings.shopperManagement} onClick={this.openShopperList.bind(this)} style={{textDecoration: 'underline'}}/>
+                                    <ListItem value={2} primaryText={LangStrings.purifierManagement} onClick={this.openPurifierList.bind(this)} style={{textDecoration: 'underline'}}/>
+                                    <ListItem value={3} primaryText={LangStrings.statement} onClick={this.openStatement.bind(this)} style={{textDecoration: 'underline'}}/>
                                     {/*<ListItem primaryText="Invoice" onClick={this.openInvoice.bind(this)}/>*/}
-                                    <ListItem value={4} primaryText="Tester management" onClick={this.openTesterManagement.bind(this)} style={{textDecoration: 'underline'}}/>
+                                    <ListItem value={4} primaryText={LangStrings.testerManagement} onClick={this.openTesterManagement.bind(this)} style={{textDecoration: 'underline'}}/>
                                 </SelectableList>
                             </Paper>
                         </Col>
