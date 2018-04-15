@@ -13,12 +13,12 @@ const strings = new LocalizedStrings({
         hours: 'Hours'
     },
     zh: {
-        income: 'Income',
-        time: 'Time',
-        shopperName: 'Shopper Name',
-        purifierID: 'Purifier ID',
-        rate: 'Rate',
-        hours: 'Hours'
+        income: '此订单收入',
+        time: '订单订购时间',
+        shopperName: '商户名',
+        purifierID: '空气净化器编号',
+        rate: '小时收费',
+        hours: '使用时长'
     }
 });
 

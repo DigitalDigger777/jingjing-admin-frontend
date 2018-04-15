@@ -20,11 +20,11 @@ const strings = new LocalizedStrings({
     },
     zh: {
         //table
-        name: 'Name',
-        countPurifiers: 'Count Purifiers',
-        action: 'Action',
-        unassigned: 'Unassigned',
-        purifiers: 'Purifiers',
+        name: '商户名',
+        countPurifiers: '空气净化器数',
+        action: '操作',
+        unassigned: '未分配',
+        purifiers: '空气净化器',
 
         //Buttons
         list: 'Detail',
