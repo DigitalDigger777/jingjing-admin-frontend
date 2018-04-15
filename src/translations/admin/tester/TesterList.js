@@ -10,9 +10,9 @@ const strings = new LocalizedStrings({
         passCode: 'Pass code'
     },
     zh: {
-        id: 'Text1',
-        name: 'Text2',
-        passCode: 'Text3'
+        id: 'ID',
+        name: 'Name',
+        passCode: 'Pass code'
     }
 });
 

@@ -13,12 +13,12 @@ const strings = new LocalizedStrings({
         hours: 'Hours'
     },
     zh: {
-        income: 'Text1',
-        time: 'Text2',
-        shopperName: 'Text3',
-        purifierID: 'Text4',
-        rate: 'Text5',
-        hours: 'Text6'
+        income: 'Income',
+        time: 'Time',
+        shopperName: 'Shopper Name',
+        purifierID: 'Purifier ID',
+        rate: 'Rate',
+        hours: 'Hours'
     }
 });
 

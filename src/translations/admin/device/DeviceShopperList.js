@@ -20,17 +20,17 @@ const strings = new LocalizedStrings({
     },
     zh: {
         //table
-        name: 'Text1',
-        countPurifiers: 'Text2',
-        action: 'Text3',
-        unassigned: 'Text6',
-        purifiers: 'Text7',
+        name: 'Name',
+        countPurifiers: 'Count Purifiers',
+        action: 'Action',
+        unassigned: 'Unassigned',
+        purifiers: 'Purifiers',
 
         //Buttons
-        list: 'Text4',
+        list: 'Detail',
 
         //Inputs
-        search: 'Text5'
+        search: 'Search'
     }
 });
 

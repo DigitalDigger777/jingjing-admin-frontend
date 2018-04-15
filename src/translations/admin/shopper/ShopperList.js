@@ -15,12 +15,12 @@ const strings = new LocalizedStrings({
     },
     zh: {
         addShopper: '添加商户',
-        id: 'Text2',
-        name: 'Text3',
-        countPurifiers: 'Text4',
-        action: 'Text5',
-        purifiers: 'Text6',
-        detail: 'Text7'
+        id: 'ID',
+        name: 'Name',
+        countPurifiers: 'Count Purifiers',
+        action: 'Action',
+        purifiers: 'Purifiers',
+        detail: 'Detail'
     }
 });
 
