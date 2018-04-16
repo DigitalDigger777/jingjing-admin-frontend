@@ -7,12 +7,14 @@ const strings = new LocalizedStrings({
     en: {
         id: 'ID',
         name: 'Name',
-        passCode: 'Pass code'
+        passCode: 'Pass code',
+        addTester: 'Add tester'
     },
     zh: {
         id: '测试员编号',
         name: '测试员姓名',
-        passCode: '密码'
+        passCode: '密码',
+        addTester: '添加测试员'
     }
 });
 

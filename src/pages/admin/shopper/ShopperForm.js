@@ -195,82 +195,88 @@ export default class ShopperForm extends React.Component {
                             <Col md={7} xsOffset={2}>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Shopper Name
+                                        {LangStrings.shopperName}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Shopper Name"
+                                        <TextField className="formInput" hintText={LangStrings.shopperNameHint}
                                                    value={this.state.item.name}
                                                    onChange={e => this.changeName(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Address
+                                        {LangStrings.address}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Shopper Address"
+                                        <TextField className="formInput" hintText={LangStrings.shopperAddress}
                                                    value={this.state.item.address}
                                                    onChange={e => this.changeAddress(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Contact
+                                        {LangStrings.contact}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Contact Person"
+                                        <TextField className="formInput" hintText={LangStrings.contactPerson}
                                                    value={this.state.item.contact}
                                                    onChange={e => this.changeContact(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Cell
+                                        {LangStrings.cell}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Contact Person Cell Number"
-                                                   value={this.state.item.cell} onChange={e => this.changeCell(e)}/>
+                                        <TextField className="formInput" hintText={LangStrings.contactPersonCellNumber}
+                                                   value={this.state.item.cell}
+                                                   onChange={e => this.changeCell(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Hour Rate
+                                        {LangStrings.hourRate}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Hour Rate"
-                                                   value={this.state.item.rate} onChange={e => this.changeRate(e)}/>
+                                        <TextField className="formInput" hintText={LangStrings.hourRateHint}
+                                                   value={this.state.item.rate}
+                                                   onChange={e => this.changeRate(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Commission Rate
+                                        {LangStrings.commissionRate}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Commission Rate"
-                                                   value={this.state.item.rateCommission} onChange={e => this.changeCommission(e)}/>
+                                        <TextField className="formInput" hintText={LangStrings.commissionRateHint}
+                                                   value={this.state.item.rateCommission}
+                                                   onChange={e => this.changeCommission(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Hours
+                                        {LangStrings.hours}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Hours"
-                                                   value={this.state.item.hoursObtainOwnership} onChange={e => this.changeHoursObtainOwnership(e)}/>
+                                        <TextField className="formInput" hintText={LangStrings.hoursHint}
+                                                   value={this.state.item.hoursObtainOwnership}
+                                                   onChange={e => this.changeHoursObtainOwnership(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={4} style={{margin: 'auto'}}>
-                                        Passcode
+                                        {LangStrings.passcode}
                                     </Col>
                                     <Col md={8}>
-                                        <TextField className="formInput" hintText="Passcode"
-                                                   value={this.state.item.passCode} onChange={e => this.changePassword(e)}/>
+                                        <TextField className="formInput" hintText={LangStrings.passcode}
+                                                   value={this.state.item.passCode}
+                                                   onChange={e => this.changePassword(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col md={12}>
-                                        <RaisedButton className="saveButton" label={this.state.id == 0 ? `Add` : `Save`}
+                                        <RaisedButton className="saveButton"
+                                                      label={this.state.id == 0 ? LangStrings.add : LangStrings.save}
                                                       primary={true} onClick={this.save.bind(this)}/>
                                     </Col>
                                 </Row>

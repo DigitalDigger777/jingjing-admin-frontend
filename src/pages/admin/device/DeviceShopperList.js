@@ -119,7 +119,7 @@ export default class ShopperList extends React.Component {
                             <TableRowColumn>{LangStrings.unassigned}</TableRowColumn>
                             <TableRowColumn>{this.state.countUnassigned} {LangStrings.purifiers}</TableRowColumn>
                             <TableRowColumn>
-                                <RaisedButton label={LangStrings.list} primary={true} onClick={ id => this.openDetailShopper(0) }/>
+                                <RaisedButton label={LangStrings.detail} primary={true} onClick={ id => this.openDetailShopper(0) }/>
                             </TableRowColumn>
                         </TableRow>
                         { this.state.items.map((item, key) =>
@@ -127,7 +127,7 @@ export default class ShopperList extends React.Component {
                                 <TableRowColumn>{item.name}</TableRowColumn>
                                 <TableRowColumn>{item.countDevices ? item.countDevices : 0} Purifiers</TableRowColumn>
                                 <TableRowColumn>
-                                    <RaisedButton label="List" primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
+                                    <RaisedButton label={LangStrings.list} primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
                                 </TableRowColumn>
                             </TableRow>
                         )}

@@ -118,7 +118,7 @@ export default class TesterList extends React.Component {
                         />
                     </ToolbarGroup>
                     <ToolbarGroup>
-                        <RaisedButton label="Add Tester" primary={true} onClick={this.openFormTester.bind(this)}/>
+                        <RaisedButton label={LangStrings.addTester} primary={true} onClick={this.openFormTester.bind(this)}/>
                     </ToolbarGroup>
                 </Toolbar>
 

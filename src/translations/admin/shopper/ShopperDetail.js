@@ -6,11 +6,11 @@ import LocalizedStrings from 'react-localization';
 const strings = new LocalizedStrings({
     en: {
         shopperName: 'Shopper Name',
-        Address: 'Address',
-        Contact: 'Contact',
-        Cell: 'Cell',
+        address: 'Address',
+        contact: 'Contact',
+        cell: 'Cell',
         contactPersonCellNumber: 'Contact Person Cell Number',
-        ShopperId: 'Shopper #',
+        shopperId: 'Shopper #',
         hourRate: 'Hour Rate',
         commission: 'Commission',
         hours: 'Hours',
@@ -19,15 +19,15 @@ const strings = new LocalizedStrings({
     },
     zh: {
         shopperName: '商户名',
-        Address: '地址',
-        Contact: '联系人',
-        Cell: '手机',
+        address: '地址',
+        contact: '联系人',
+        cell: '手机',
         contactPersonCellNumber: '手机',
-        ShopperId: '商户编号',
+        shopperId: '商户编号',
         hourRate: '小时收费',
         commission: '分成比例',
         hours: '转换时间',
-        passcode: 'Passcode',
+        passcode: '密码',
         change: '修改'
     }
 });

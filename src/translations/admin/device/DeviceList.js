@@ -31,7 +31,7 @@ const strings = new LocalizedStrings({
         action: '操作',
 
         //context menu
-        selectAction: 'Select Action',
+        selectAction: '选择操作',
         detail: '详情',
         assignShopper: '分配商户',
         reset: '重置控制器',

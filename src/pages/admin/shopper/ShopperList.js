@@ -91,7 +91,7 @@ export default class DeviceShopperList extends React.Component {
                         />
                     </ToolbarGroup>
                     <ToolbarGroup>
-                        <RaisedButton label="Add Shopper" primary={true} onClick={this.openFormShopper.bind(this)}/>
+                        <RaisedButton label={LangStrings.addShopper} primary={true} onClick={this.openFormShopper.bind(this)}/>
                     </ToolbarGroup>
                 </Toolbar>
 
@@ -109,7 +109,7 @@ export default class DeviceShopperList extends React.Component {
                             <TableRow  key={key} onClick={ id => this.openDetailShopper(item.id) }>
                                 <TableRowColumn>{item.id}</TableRowColumn>
                                 <TableRowColumn>{item.name}</TableRowColumn>
-                                <TableRowColumn>{item.countDevices ? item.countDevices : 0} {LangStrings.purifiers}</TableRowColumn>
+                                <TableRowColumn>{item.countDevices ? item.countDevices : 0}</TableRowColumn>
                                 <TableRowColumn>
                                     <RaisedButton label={LangStrings.detail} primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
                                 </TableRowColumn>

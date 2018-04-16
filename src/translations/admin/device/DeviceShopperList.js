@@ -27,7 +27,8 @@ const strings = new LocalizedStrings({
         purifiers: '空气净化器',
 
         //Buttons
-        list: 'Detail',
+        list: '详情',
+        detail: '详情',
 
         //Inputs
         search: 'Search'
