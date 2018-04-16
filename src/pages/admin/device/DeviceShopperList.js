@@ -117,7 +117,7 @@ export default class ShopperList extends React.Component {
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
                         <TableRow  onClick={ id => this.openDetailShopper(0) }>
                             <TableRowColumn>{LangStrings.unassigned}</TableRowColumn>
-                            <TableRowColumn>{this.state.countUnassigned} {LangStrings.purifiers}</TableRowColumn>
+                            <TableRowColumn>{this.state.countUnassigned}</TableRowColumn>
                             <TableRowColumn>
                                 <RaisedButton label={LangStrings.detail} primary={true} onClick={ id => this.openDetailShopper(0) }/>
                             </TableRowColumn>
@@ -125,7 +125,7 @@ export default class ShopperList extends React.Component {
                         { this.state.items.map((item, key) =>
                             <TableRow  key={key} onClick={ id => this.openDetailShopper(item.id) }>
                                 <TableRowColumn>{item.name}</TableRowColumn>
-                                <TableRowColumn>{item.countDevices ? item.countDevices : 0} Purifiers</TableRowColumn>
+                                <TableRowColumn>{item.countDevices ? item.countDevices : 0}</TableRowColumn>
                                 <TableRowColumn>
                                     <RaisedButton label={LangStrings.list} primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
                                 </TableRowColumn>
