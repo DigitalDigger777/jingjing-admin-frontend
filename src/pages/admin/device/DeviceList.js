@@ -21,7 +21,7 @@ import {
     TableRowColumn,
 } from 'material-ui/Table';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-import QRCode from 'qrcode.react';
+import QRCode from '../../../components/QRCode';
 import SearchBar from 'material-ui-search-bar'
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -378,11 +378,11 @@ export default class DeviceList extends React.Component {
                                 return (<TableRow key={key} onClick={ id => this.openDetailShopper(item[0].id) }>
                                     {/*<TableRowColumn>{item[0].deviceCode}</TableRowColumn>*/}
                                     <TableRowColumn className={`HpQrcode` + item[0].id} style={{paddingBottom: '20px', paddingTop: '20px'}}>
-                                        <QRCode value={qrURL} size={64}/>
+                                        <QRCode value={qrURL} size={64} labelheight={20} label={`#` + item[0].deviceCode}/>
                                         <br/>
                                         <a href="#" onClick={(e, id) => this.download(e, item[0].id)}>{LangStrings.download}</a>
                                         <br/>
-                                        {item[0].deviceCode}
+                                        {/*{item[0].deviceCode}*/}
                                     </TableRowColumn>
                                     <TableRowColumn>{date[0]} <br/> {date[1]}</TableRowColumn>
                                     <TableRowColumn>{totalHours}</TableRowColumn>
