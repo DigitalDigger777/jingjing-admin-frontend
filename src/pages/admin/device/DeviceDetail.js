@@ -140,7 +140,7 @@ export default class DeviceDetail extends React.Component {
                                     <Col md={8}>
 
                                         <TextField className="formInput" hintText="Massage ID"
-                                                   value={this.state.item.id}  disabled={true}/>
+                                                   value={this.state.item.deviceCode}  disabled={true}/>
                                     </Col>
                                 </Row>
                                 <Row>
