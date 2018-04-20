@@ -376,7 +376,7 @@ export default class DeviceList extends React.Component {
                                 const qrURL = 'http://xin.jjpanda.com/public/index.php/payment/start/' + item[0].id;
                                 const totalHours = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].total_hours : 0;
                                 const totalRevenue = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].total_revenue : 0;
-                                const date = item[1].split(' ');
+                                const date = item[1] ? item[1].split(' ') : ['', ''];
                                 return (<TableRow key={key} onClick={ id => this.openDetailShopper(item[0].id) }>
                                     <TableRowColumn>{item[0].deviceCode}</TableRowColumn>
                                     {/*<TableRowColumn>*/}
