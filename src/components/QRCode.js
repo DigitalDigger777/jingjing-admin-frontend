@@ -172,7 +172,7 @@ function (_React$Component) {
         canvas.height += labelheight;
 
         ctx.scale(scale, scale);
-        ctx.font = "14px";
+        ctx.font = "17px";
         ctx.fillText(label, 0, canvas.height);
 
         cells.forEach(function (row, rdx) {
