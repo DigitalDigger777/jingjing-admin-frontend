@@ -380,7 +380,7 @@ export default class DeviceList extends React.Component {
                                 return (<TableRow key={key} onClick={ id => this.openDetailShopper(item[0].id) }>
                                     <TableRowColumn>{item[0].deviceCode}</TableRowColumn>
                                     <TableRowColumn>
-                                        <QRCode1 value={qrURL} size={64} labelheight={20} label={`#` + item[0].deviceCode}/>
+                                        <QRCode1 value={qrURL} size={64} labelheight={20} label={`#` + item[0].deviceCode} renderAs="canvas"/>
                                     </TableRowColumn>
                                     <TableRowColumn className={`HpQrcode` + item[0].id} style={{paddingBottom: '20px', paddingTop: '20px'}}>
                                         <QRCode value={qrURL} size={64} labelheight={20} label={`#` + item[0].deviceCode}/>
