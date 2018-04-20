@@ -6,6 +6,7 @@ import LocalizedStrings from 'react-localization';
 const strings = new LocalizedStrings({
     en: {
         //header for table
+        id: 'id',
         qrCode: 'QR Code',
         addTime: 'Add Time',
         totalHourUsed: 'Total Hour Used',
@@ -24,6 +25,7 @@ const strings = new LocalizedStrings({
     },
     zh: {
         //header for table
+        id: '空气净化器编号',
         qrCode: '二维码',
         addTime: '添加时间',
         totalHourUsed: '总使用时间',
