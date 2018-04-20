@@ -96,7 +96,7 @@ export default class StatementList extends React.Component {
                                     <TableRow key={key} onClick={ id => this.openDetailShopper(item.id) }>
                                         <TableRowColumn>{`¥` + item[0].amount}</TableRowColumn>
                                         <TableRowColumn>{date[0]} <br/> {date[1]}</TableRowColumn>
-                                        <TableRowColumn>{item.name}</TableRowColumn>
+                                        <TableRowColumn style={{ whiteSpace: 'pre-line'}}>{item.name}</TableRowColumn>
                                         <TableRowColumn>{item[0].device.deviceCode}</TableRowColumn>
                                         <TableRowColumn>{`¥` + item[0].rate}</TableRowColumn>
                                         <TableRowColumn>{item[0].hours}</TableRowColumn>
