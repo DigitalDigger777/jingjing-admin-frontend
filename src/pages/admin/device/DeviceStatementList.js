@@ -93,7 +93,7 @@ export default class DeviceStatementList extends React.Component {
                                         <TableRowColumn>{item.timeEnd}</TableRowColumn>
                                         <TableRowColumn>{item[0].hours}</TableRowColumn>
                                         <TableRowColumn>{`¥` + item[0].rate + `/HR`}</TableRowColumn>
-                                        <TableRowColumn>{`¥` + item[0].amount}</TableRowColumn>
+                                        <TableRowColumn>{`¥` + item[0].revenue}</TableRowColumn>
                                         {/*<TableRowColumn>/!*revenue*!/</TableRowColumn>*/}
                                         {/*<TableRowColumn>/!*paid*!/</TableRowColumn>*/}
                                     </TableRow>
