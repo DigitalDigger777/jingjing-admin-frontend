@@ -109,14 +109,16 @@ export default class ShopperList extends React.Component {
                 <Table selectable={false}>
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
-                            <TableHeaderColumn>{LangStrings.name}</TableHeaderColumn>
+                            <TableHeaderColumn style={{width: '10%'}}>{LangStrings.shopperId}</TableHeaderColumn>
+                            <TableHeaderColumn style={{width: '40%'}}>{LangStrings.name}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.countPurifiers}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.action}</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
                         <TableRow  onClick={ id => this.openDetailShopper(0) }>
-                            <TableRowColumn>{LangStrings.unassigned}</TableRowColumn>
+                            <TableRowColumn style={{width: '10%'}}>-</TableRowColumn>
+                            <TableRowColumn style={{width: '40%'}}>{LangStrings.unassigned}</TableRowColumn>
                             <TableRowColumn>{this.state.countUnassigned}</TableRowColumn>
                             <TableRowColumn>
                                 <RaisedButton label={LangStrings.detail} primary={true} onClick={ id => this.openDetailShopper(0) }/>
@@ -124,7 +126,8 @@ export default class ShopperList extends React.Component {
                         </TableRow>
                         { this.state.items.map((item, key) =>
                             <TableRow  key={key} onClick={ id => this.openDetailShopper(item.id) }>
-                                <TableRowColumn>{item.name}</TableRowColumn>
+                                <TableRowColumn style={{width: '10%'}}>{item.id}</TableRowColumn>
+                                <TableRowColumn style={{width: '40%'}}>{item.name}</TableRowColumn>
                                 <TableRowColumn>{item.countDevices ? item.countDevices : 0}</TableRowColumn>
                                 <TableRowColumn>
                                     <RaisedButton label={LangStrings.list} primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
