@@ -85,6 +85,7 @@ export default class StatementList extends React.Component {
                             <TableHeaderColumn>{LangStrings.purifierID}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.rate}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.hours}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.paymentMethod}</TableHeaderColumn>
                             {/*<TableHeaderColumn>Revenue</TableHeaderColumn>*/}
                             {/*<TableHeaderColumn>Paid</TableHeaderColumn>*/}
                         </TableRow>
@@ -92,6 +93,22 @@ export default class StatementList extends React.Component {
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
                         { this.state.items.map((item, key) => {
                                 const date = item.date.split(' ');
+                                const paymentSystem = item[0].paymentSystem ? item[0].paymentSystem : 0;
+                                let paymentSystemString = '';
+
+                                switch (parseInt(paymentSystem))
+                                {
+                                    case 0:
+                                            paymentSystemString = 'N/A';
+                                        break;
+                                    case 1:
+                                            paymentSystemString = LangStrings.wechat;
+                                        break;
+                                    case 2:
+                                            paymentSystemString = LangStrings.alipay;
+                                        break;
+                                }
+
                                 return (
                                     <TableRow key={key} onClick={ id => this.openDetailShopper(item.id) }>
                                         <TableRowColumn>{`¥` + item[0].amount}</TableRowColumn>
@@ -100,6 +117,7 @@ export default class StatementList extends React.Component {
                                         <TableRowColumn>{item[0].device.deviceCode}</TableRowColumn>
                                         <TableRowColumn>{`¥` + item[0].rate}</TableRowColumn>
                                         <TableRowColumn>{item[0].hours}</TableRowColumn>
+                                        <TableRowColumn>{paymentSystemString }</TableRowColumn>
                                         {/*<TableRowColumn>/!*revenue*!/</TableRowColumn>*/}
                                         {/*<TableRowColumn>/!*paid*!/</TableRowColumn>*/}
                                     </TableRow>
