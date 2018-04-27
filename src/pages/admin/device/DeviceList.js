@@ -65,6 +65,7 @@ export default class DeviceList extends React.Component {
                     open: false
                 }
             },
+            onlinePurifiers: [],
             baseFrontUrl: config.baseFrontUrl,
             baseUrl: config.baseUrl
         };
@@ -110,6 +111,18 @@ export default class DeviceList extends React.Component {
                 pagination.display = Math.ceil(parseInt(response.data.cnt)/10);
                 this.setState({
                     pagination: pagination
+                });
+            });
+
+
+        axios.get(this.state.baseUrl + 'device/redis-load-all-online-for-shopper', {
+            params: {
+                shopperId: this.props.match.params.shopperId
+            }
+        })
+            .then(response => {
+                this.setState({
+                    onlinePurifiers: response.data.purifiers
                 });
             });
     }
@@ -367,6 +380,7 @@ export default class DeviceList extends React.Component {
                             <TableHeaderColumn>{LangStrings.addTime}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.totalHourUsed}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.totalRevenue}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.status}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.action}</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
@@ -392,6 +406,7 @@ export default class DeviceList extends React.Component {
                                     <TableRowColumn>{date[0]} <br/> {date[1]}</TableRowColumn>
                                     <TableRowColumn>{totalHours}</TableRowColumn>
                                     <TableRowColumn>{totalRevenue}</TableRowColumn>
+                                    <TableRowColumn>{this.state.onlinePurifiers.indexOf(item[0].mac) > -1 ? LangStrings.online : LangStrings.offline}</TableRowColumn>
                                     <TableRowColumn>
                                         <DropDownMenu value={this.state.value} onChange={this.actionMenuChange}>
                                             <MenuItem value={item[0].id + `:` + 0} primaryText={LangStrings.selectAction}/>

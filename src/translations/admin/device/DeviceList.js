@@ -20,6 +20,9 @@ const strings = new LocalizedStrings({
         reset: 'Reset',
         remove: 'Remove',
 
+        status: 'Status',
+        online: 'Online',
+        offline: 'Offline',
         //Other
         download: 'Download'
     },
@@ -39,6 +42,9 @@ const strings = new LocalizedStrings({
         reset: '重置控制器',
         remove: '删除控制器',
 
+        status: '状态',
+        online: '在线',
+        offline: '离线',
         //Other
         download: 'Download'
     }
