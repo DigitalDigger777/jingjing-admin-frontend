@@ -31,6 +31,7 @@ export default class ShopperList extends React.Component {
         this.state = {
             items: [],
             countUnassigned: 0,
+            onlinePurifiers: [],
             baseUrl: config.baseUrl
         };
     }
@@ -59,6 +60,14 @@ export default class ShopperList extends React.Component {
             .then(response => {
                 this.setState({
                     countUnassigned: response.data.cnt
+                });
+            });
+
+
+        axios.get(this.state.baseUrl + 'device/redis-count-online')
+            .then(response => {
+                this.setState({
+                    onlinePurifiers: response.data.data
                 });
             });
     }
@@ -131,7 +140,7 @@ export default class ShopperList extends React.Component {
                                 <TableRowColumn style={{width: '10%'}}>{item.id}</TableRowColumn>
                                 <TableRowColumn style={{width: '40%'}}>{item.name}</TableRowColumn>
                                 <TableRowColumn>{item.countDevices ? item.countDevices : 0}</TableRowColumn>
-                                <TableHeaderColumn>0</TableHeaderColumn>
+                                <TableHeaderColumn>{this.state.onlinePurifiers[item.id]}</TableHeaderColumn>
                                 <TableRowColumn>
                                     <RaisedButton label={LangStrings.list} primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
                                 </TableRowColumn>
