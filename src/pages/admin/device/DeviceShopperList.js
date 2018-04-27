@@ -140,7 +140,7 @@ export default class ShopperList extends React.Component {
                                 <TableRowColumn style={{width: '10%'}}>{item.id}</TableRowColumn>
                                 <TableRowColumn style={{width: '40%'}}>{item.name}</TableRowColumn>
                                 <TableRowColumn>{item.countDevices ? item.countDevices : 0}</TableRowColumn>
-                                <TableHeaderColumn>{this.state.onlinePurifiers[item.id].length}</TableHeaderColumn>
+                                <TableHeaderColumn>{typeof this.state.onlinePurifiers[item.id] == 'undefined' ? this.state.onlinePurifiers[item.id].length : 0}</TableHeaderColumn>
                                 <TableRowColumn>
                                     <RaisedButton label={LangStrings.list} primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
                                 </TableRowColumn>
