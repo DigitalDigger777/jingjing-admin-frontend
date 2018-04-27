@@ -12,6 +12,7 @@ const strings = new LocalizedStrings({
         unassigned: 'Unassigned',
         purifiers: 'Purifiers',
         shopperId: 'ShopperId',
+        onlineMachine: 'Online Machine',
         //Buttons
         list: 'Detail',
 
@@ -26,6 +27,7 @@ const strings = new LocalizedStrings({
         unassigned: '未分配',
         purifiers: '空气净化器',
         shopperId: 'ShopperId',
+        onlineMachine: '在线机器',
 
         //Buttons
         list: '详情',

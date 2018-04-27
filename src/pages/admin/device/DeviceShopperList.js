@@ -111,6 +111,7 @@ export default class ShopperList extends React.Component {
                         <TableRow>
                             <TableHeaderColumn style={{width: '10%'}}>{LangStrings.shopperId}</TableHeaderColumn>
                             <TableHeaderColumn style={{width: '40%'}}>{LangStrings.name}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.onlineMachine}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.countPurifiers}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.action}</TableHeaderColumn>
                         </TableRow>
@@ -119,6 +120,7 @@ export default class ShopperList extends React.Component {
                         <TableRow  onClick={ id => this.openDetailShopper(0) }>
                             <TableRowColumn style={{width: '10%'}}>-</TableRowColumn>
                             <TableRowColumn style={{width: '40%'}}>{LangStrings.unassigned}</TableRowColumn>
+                            <TableHeaderColumn>-</TableHeaderColumn>
                             <TableRowColumn>{this.state.countUnassigned}</TableRowColumn>
                             <TableRowColumn>
                                 <RaisedButton label={LangStrings.detail} primary={true} onClick={ id => this.openDetailShopper(0) }/>
@@ -128,6 +130,7 @@ export default class ShopperList extends React.Component {
                             <TableRow  key={key} onClick={ id => this.openDetailShopper(item.id) }>
                                 <TableRowColumn style={{width: '10%'}}>{item.id}</TableRowColumn>
                                 <TableRowColumn style={{width: '40%'}}>{item.name}</TableRowColumn>
+                                <TableHeaderColumn>0</TableHeaderColumn>
                                 <TableRowColumn>{item.countDevices ? item.countDevices : 0}</TableRowColumn>
                                 <TableRowColumn>
                                     <RaisedButton label={LangStrings.list} primary={true} onClick={ id => this.openDetailShopper(item.id) }/>
