@@ -53,7 +53,7 @@ export default class DeviceList extends React.Component {
                 display: 0
             },
             deviceId: 0,
-            shopperId: 0,
+            shopperId: this.props.match.params.shopperId,
             dialog: {
                 assignShopper: {
                     open: false
@@ -354,6 +354,12 @@ export default class DeviceList extends React.Component {
             />,
         ];
 
+        let qrColumnHeadre = '';
+
+        if (this.state.shopperId != 0) {
+            qrColumnHeadre = <TableHeaderColumn>{LangStrings.qrCode}</TableHeaderColumn>
+        }
+
         return (
             <Core>
                 <Toolbar style={{marginTop: '15px', paddingTop: '15px', paddingBottom: '15px'}}>
@@ -376,7 +382,7 @@ export default class DeviceList extends React.Component {
                         <TableRow>
                             <TableHeaderColumn>{LangStrings.id}</TableHeaderColumn>
                             {/*<TableHeaderColumn>Temp</TableHeaderColumn>*/}
-                            <TableHeaderColumn>{LangStrings.qrCode}</TableHeaderColumn>
+                            {qrColumnHeadre}
                             <TableHeaderColumn>{LangStrings.addTime}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.totalHourUsed}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.totalRevenue}</TableHeaderColumn>
@@ -391,18 +397,25 @@ export default class DeviceList extends React.Component {
                                 const totalHours = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].total_hours : 0;
                                 const totalRevenue = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].total_revenue : 0;
                                 const date = item[1].split(' ');
+                                let qrColumn = '';
+
+                                if (this.state.shopperId != 0) {
+                                    qrColumn =
+                                        <TableRowColumn className={`HpQrcode` + item[0].id} style={{paddingBottom: '20px', paddingTop: '20px'}}>
+                                            <QRCode value={qrURL} size={64} labelheight={20} label={`#` + item[0].deviceCode}/>
+                                            <br/>
+                                            <a href="#" onClick={(e, id) => this.download(e, item[0].id)}>{LangStrings.download}</a>
+                                            <br/>
+                                            {/*{item[0].deviceCode}*/}
+                                        </TableRowColumn>
+                                }
+
                                 return (<TableRow key={key} onClick={ id => this.openDetailShopper(item[0].id) }>
                                     <TableRowColumn>{item[0].deviceCode}</TableRowColumn>
                                     {/*<TableRowColumn>*/}
                                         {/*<QRCode1 value={qrURL} size={64} labelheight={20} label={`#` + item[0].deviceCode} renderAs="canvas"/>*/}
                                     {/*</TableRowColumn>*/}
-                                    <TableRowColumn className={`HpQrcode` + item[0].id} style={{paddingBottom: '20px', paddingTop: '20px'}}>
-                                        <QRCode value={qrURL} size={64} labelheight={20} label={`#` + item[0].deviceCode}/>
-                                        <br/>
-                                        <a href="#" onClick={(e, id) => this.download(e, item[0].id)}>{LangStrings.download}</a>
-                                        <br/>
-                                        {/*{item[0].deviceCode}*/}
-                                    </TableRowColumn>
+                                    {qrColumn}
                                     <TableRowColumn>{date[0]} <br/> {date[1]}</TableRowColumn>
                                     <TableRowColumn>{totalHours}</TableRowColumn>
                                     <TableRowColumn>{totalRevenue}</TableRowColumn>
