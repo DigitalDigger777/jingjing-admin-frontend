@@ -39,6 +39,7 @@ export default class DeviceStatementList extends React.Component {
         this.state = {
             items: [],
             deviceId: props.match.params.deviceId,
+            shopperId: props.match.params.shopperId,
             baseUrl: config.baseUrl
         };
     }
@@ -46,7 +47,8 @@ export default class DeviceStatementList extends React.Component {
     componentWillMount(){
         axios.get(this.state.baseUrl + 'statement/items', {
             params: {
-                deviceId: this.state.deviceId
+                deviceId: this.state.deviceId,
+                shopperId: this.state.shopperId
             }
         })
             .then(response => {

@@ -60,7 +60,7 @@ class Index extends React.Component {
                             <Route exact path="/admin/device-list" component={AdminDeviceList}/>
                             <Route exact path="/admin/device-list/:shopperId" component={AdminDeviceList}/>
                             <Route exact path="/admin/device-detail/:id" component={AdminDeviceDetail}/>
-                            <Route exact path="/admin/device/statement-list/:deviceId" component={AdminDeviceStatementList}/>
+                            <Route exact path="/admin/device/statement-list/:deviceId/:shopperId" component={AdminDeviceStatementList}/>
                             <Route exact path="/admin/statement-list" component={AdminStatementList}/>
                             <Route exact path="/admin/invoice-list" component={AdminStatementList}/>
 
