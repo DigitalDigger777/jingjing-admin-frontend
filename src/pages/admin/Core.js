@@ -96,6 +96,10 @@ export default class Core extends React.Component {
         window.location = '/admin/tester-list';
     }
 
+    openCouponManagement(){
+        window.location = '/admin/coupon-list';
+    }
+
     wrapState(ComposedComponent) {
         return class SelectableList extends Component {
             static propTypes = {
@@ -146,6 +150,7 @@ export default class Core extends React.Component {
                                     <ListItem value={3} primaryText={LangStrings.statement} onClick={this.openStatement.bind(this)} style={{textDecoration: 'underline'}}/>
                                     {/*<ListItem primaryText="Invoice" onClick={this.openInvoice.bind(this)}/>*/}
                                     <ListItem value={4} primaryText={LangStrings.testerManagement} onClick={this.openTesterManagement.bind(this)} style={{textDecoration: 'underline'}}/>
+                                    <ListItem value={5} primaryText={LangStrings.couponManagement} onClick={this.openCouponManagement.bind(this)} style={{textDecoration: 'underline'}}/>
                                 </SelectableList>
                             </Paper>
                         </Col>
