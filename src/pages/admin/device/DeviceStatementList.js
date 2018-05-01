@@ -90,6 +90,9 @@ export default class DeviceStatementList extends React.Component {
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
                         { this.state.items.map((item, key) => {
+                                const startTime = item.timeStart.split(' ');
+                                const endTime   = item.timeEnd.split(' ');
+
                                 const paymentSystem = item[0].paymentSystem ? item[0].paymentSystem : 0;
                                 let paymentSystemString = '';
 
@@ -108,8 +111,8 @@ export default class DeviceStatementList extends React.Component {
 
                                 return (
                                     <TableRow key={key} onClick={ id => this.openDetailShopper(item.id) }>
-                                        <TableRowColumn>{item.timeStart}</TableRowColumn>
-                                        <TableRowColumn>{item.timeEnd}</TableRowColumn>
+                                        <TableRowColumn>{startTime[0]} <br/> {startTime[1]}</TableRowColumn>
+                                        <TableRowColumn>{endTime[0]} <br/> {endTime[1]}</TableRowColumn>
                                         <TableRowColumn>{item[0].hours}</TableRowColumn>
                                         <TableRowColumn>{`¥` + item[0].rate + `/HR`}</TableRowColumn>
                                         <TableRowColumn>{`¥` + item[0].revenue}</TableRowColumn>
