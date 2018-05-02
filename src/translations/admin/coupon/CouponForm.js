@@ -3,6 +3,7 @@
  */
 import LocalizedStrings from 'react-localization';
 
+
 const strings = new LocalizedStrings({
     en: {
         shopperId: 'Shopper Id',
@@ -14,13 +15,13 @@ const strings = new LocalizedStrings({
         accessToCouponList: 'Coupon List'
     },
     zh: {
-        shopperId: 'Shopper Id',
-        fromNumber: 'From Number',
-        toNumber: 'To Number',
-        expiredDate: 'Expired Date',
-        add: '添加测试员',
+        shopperId: '商户编号',
+        fromNumber: '体验券开始号码',
+        toNumber: '体验券结束号码',
+        expiredDate: '到期日期',
+        add: '添加体验券',
         save: '保存',
-        accessToCouponList: 'Coupon List'
+        accessToCouponList: '体验券列表'
     }
 });
 
