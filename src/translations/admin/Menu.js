@@ -16,7 +16,7 @@ const strings = new LocalizedStrings({
         purifierManagement: '空气净化器管理',
         statement: '对账单',
         testerManagement: '测试员管理',
-        couponManagement: 'Coupon management'
+        couponManagement: '体验券管理'
     }
 });
 
