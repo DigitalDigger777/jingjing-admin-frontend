@@ -70,19 +70,42 @@ export default class CouponList extends React.Component {
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
                             <TableHeaderColumn>{LangStrings.code}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.shopperName}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.expiredDate}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.status}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.redeemedDate}</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
-                        { this.state.items.map((item, key) =>
-                            <TableRow  key={key} onClick={ id => this.openDetailShopper(item.id) }>
-                                <TableRowColumn>{item[0].code}</TableRowColumn>
-                                <TableRowColumn>{item.expiredDate}</TableRowColumn>
-                                <TableRowColumn>{item[0].status}</TableRowColumn>
-                                <TableRowColumn>{item.redeemedDate}</TableRowColumn>
-                            </TableRow>
+                        { this.state.items.map((item, key) => {
+                                const status = item[0].status;
+                                let statusStr = '';
+
+                                switch (status)
+                                {
+                                    case 1:
+                                        statusStr = LangStrings.redeemed;
+                                        break;
+                                    case 2:
+                                        statusStr = LangStrings.issued;
+                                        break;
+                                    case 3:
+                                        statusStr = LangStrings.available;
+                                        break;
+                                    case 4:
+                                        statusStr = LangStrings.expired;
+                                        break;
+                                }
+                                return (
+                                    <TableRow key={key} onClick={ id => this.openDetailShopper(item.id) }>
+                                        <TableRowColumn>{item[0].code}</TableRowColumn>
+                                        <TableRowColumn style={{whiteSpace: 'normal'}}>{item[0].shopper.name}</TableRowColumn>
+                                        <TableRowColumn>{item.expiredDate}</TableRowColumn>
+                                        <TableRowColumn>{statusStr}</TableRowColumn>
+                                        <TableRowColumn>{item.redeemedDate}</TableRowColumn>
+                                    </TableRow>
+                                )
+                            }
                         )}
                     </TableBody>
                 </Table>

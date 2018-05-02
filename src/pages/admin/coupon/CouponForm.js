@@ -8,6 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import CircularProgress from 'material-ui/CircularProgress';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import LangStrings from '../../../translations/admin/coupon/CouponForm';
+import DatePicker from 'material-ui/DatePicker';
 
 import Core from '../Core';
 import axios from 'axios';
@@ -84,12 +85,14 @@ export default class CouponForm extends React.Component {
         });
     }
 
-    changeExpiredDate(e){
+    changeExpiredDate(e, date){
+        console.log(date);
         const item = this.state.item;
-        item.expiredDate = e.target.value;
+        item.expiredDate = date;
         this.setState({
             item: item
         });
+
     }
 
     save(){
@@ -145,9 +148,11 @@ export default class CouponForm extends React.Component {
                                 </Row>
                                 <Row>
                                     <Col md={12}>
-                                        <TextField className="formInput" hintText={LangStrings.expiredDate}
-                                                   value={this.state.item.expiredDate}
-                                                   onChange={e => this.changeExpiredDate(e)}/>
+                                        <DatePicker hintText={LangStrings.expiredDate}
+                                                    onChange={e => this.changeExpiredDate}/>
+                                        {/*<TextField className="formInput" hintText={LangStrings.expiredDate}*/}
+                                                   {/*value={this.state.item.expiredDate}*/}
+                                                   {/*onChange={e => this.changeExpiredDate(e)}/>*/}
                                     </Col>
                                 </Row>
                                 <Row>
