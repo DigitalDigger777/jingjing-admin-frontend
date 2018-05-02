@@ -13,7 +13,8 @@ const strings = new LocalizedStrings({
         hours: 'Hours',
         paymentMethod: 'Payment Method',
         wechat: 'Wechat',
-        alipay: 'Alipay'
+        alipay: 'Alipay',
+        coupon: 'Coupon'
     },
     zh: {
         income: '此订单收入',
@@ -24,7 +25,8 @@ const strings = new LocalizedStrings({
         hours: '使用时长',
         paymentMethod: '支付方式',
         wechat: '微信支付',
-        alipay: '支付宝'
+        alipay: '支付宝',
+        coupon: '体验券'
     }
 });
 

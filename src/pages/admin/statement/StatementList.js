@@ -107,6 +107,9 @@ export default class StatementList extends React.Component {
                                     case 3:
                                             paymentSystemString = LangStrings.alipay;
                                         break;
+                                    case 4:
+                                            paymentSystemString = LangStrings.coupon;
+                                        break;
                                 }
 
                                 return (

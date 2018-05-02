@@ -101,11 +101,14 @@ export default class DeviceStatementList extends React.Component {
                                     case 0:
                                         paymentSystemString = 'N/A';
                                         break;
-                                    case 1:
+                                    case 2:
                                         paymentSystemString = LangStrings.wechat;
                                         break;
-                                    case 2:
+                                    case 3:
                                         paymentSystemString = LangStrings.alipay;
+                                        break;
+                                    case 4:
+                                        paymentSystemString = LangStrings.coupon
                                         break;
                                 }
 
