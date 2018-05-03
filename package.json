@@ -19,6 +19,7 @@
     "material-ui-search-bar": "^0.4.1",
     "moment": "^2.19.2",
     "prop-types": "latest",
+    "qrjs": "^0.1.2",
     "react": "^16.2.0",
     "react-copy-to-clipboard": "^5.0.1",
     "react-day-picker": "^6.2.1",
