@@ -50,7 +50,7 @@ export default class CouponForm extends React.Component {
                 shopperId: '',
                 fromNumber: '',
                 toNumber: '',
-                expiredDate: '',
+                expiredDate: null,
             },
             load: false,
             baseUrl: config.baseUrl
@@ -86,13 +86,13 @@ export default class CouponForm extends React.Component {
     }
 
     changeExpiredDate(e, date){
-        console.log(date);
+
         const item = this.state.item;
-        item.expiredDate = date;
+        item.expiredDate = date.toLocaleDateString('en-US');
         this.setState({
             item: item
         });
-
+        console.log(e, date, this.state.item.expiredDate);
     }
 
     save(){
@@ -111,7 +111,7 @@ export default class CouponForm extends React.Component {
                 this.setState({
                     load: false
                 });
-                window.location = '/admin/coupon-list';
+                //window.location = '/admin/coupon-list';
             })
             .catch(response => {
 
@@ -149,7 +149,8 @@ export default class CouponForm extends React.Component {
                                 <Row>
                                     <Col md={12}>
                                         <DatePicker hintText={LangStrings.expiredDate}
-                                                    onChange={e => this.changeExpiredDate}/>
+                                                    onChange={this.changeExpiredDate.bind(this)}
+                                                    locale="en-US"/>
                                         {/*<TextField className="formInput" hintText={LangStrings.expiredDate}*/}
                                                    {/*value={this.state.item.expiredDate}*/}
                                                    {/*onChange={e => this.changeExpiredDate(e)}/>*/}
