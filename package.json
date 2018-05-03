@@ -33,7 +33,7 @@
     "react-scripts": "latest",
     "react-tap-event-plugin": "^3.0.2",
     "recompose": "latest",
-    "webpack": "^3.10.0"
+    "webpack": "^3.11.0"
   },
   "scripts": {
     "start": "react-scripts start",
