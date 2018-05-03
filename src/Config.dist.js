@@ -30,12 +30,12 @@ export default class Config
         return this._baseFrontUrl;
     }
 
-    get weChatConfig() {
-        return this._weChatConfig;
-    }
-
     get language() {
         return this._language;
+    }
+
+    get weChatConfig() {
+        return this._weChatConfig;
     }
 
     buildAuthUrl() {
