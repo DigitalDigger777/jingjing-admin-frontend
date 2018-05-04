@@ -48,8 +48,41 @@ export default class Core extends React.Component {
             selectIndex: 1
         };
 
-        const regForShopperDetail = /\/admin\/shopper-detail\/[0-9]+/;
-        const regForDeviceDetail = /\/admin\/device-detail\/[0-9]+/;
+        //const regForShopperDetail = /\/admin\/shopper-detail\/[0-9]+/;
+        //const regForDeviceDetail = /\/admin\/device-detail\/[0-9]+/;
+        const regForDeviceDetail = /\/admin\/device-list\/[0-9]+/;
+
+        const regsPurifierList = [];
+        regsPurifierList.push(/\/admin\/device-list\/[0-9]+/);
+        regsPurifierList.push(/\/admin\/device-shopper-list/);
+        regsPurifierList.push(/\/admin\/device\/statement-list\/[0-9]+\/[0-9]+/);
+        regsPurifierList.push(/\/admin\/device\/statement-list\/[0-9]+\/[0-9]+/);
+
+        const regsTesterManage = [];
+        regsTesterManage.push(/\/admin\/tester-list/);
+        regsTesterManage.push(/\/admin\/tester-form/);
+
+        const regsCouponManagment = [];
+        regsCouponManagment.push(/\/admin\/coupon-list/);
+        regsCouponManagment.push(/\/admin\/coupon-form/);
+
+        for(let i = 0; i < regsPurifierList.length; i++) {
+            if (regsPurifierList[i].test(location)) {
+                this.state.selectIndex = 2;
+            }
+        }
+
+        for(let i = 0; i < regsTesterManage.length; i++) {
+            if (regsTesterManage[i].test(location)) {
+                this.state.selectIndex = 4;
+            }
+        }
+
+        for(let i = 0; i < regsCouponManagment.length; i++) {
+            if (regsCouponManagment[i].test(location)) {
+                this.state.selectIndex = 5;
+            }
+        }
 
         switch (location)
         {
