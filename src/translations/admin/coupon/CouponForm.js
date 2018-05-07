@@ -22,7 +22,26 @@ const strings = new LocalizedStrings({
         add: '添加体验券',
         save: '保存',
         accessToCouponList: '体验券列表'
-    }
+    },
+    en_xin: {
+        shopperId: 'Shopper Id',
+        fromNumber: 'From Number',
+        toNumber: 'To Number',
+        expiredDate: 'Expired Date',
+        add: 'Add',
+        save: 'Save',
+        accessToCouponList: 'Coupon List'
+    },
+    zh_xin: {
+        shopperId: '商户编号',
+        fromNumber: '体验券开始号码',
+        toNumber: '体验券结束号码',
+        expiredDate: '到期日期',
+        add: '添加体验券',
+        save: '保存',
+        accessToCouponList: '体验券列表'
+    },
+
 });
 
 export default strings;

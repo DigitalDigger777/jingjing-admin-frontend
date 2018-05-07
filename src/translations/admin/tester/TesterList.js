@@ -15,6 +15,18 @@ const strings = new LocalizedStrings({
         name: '测试员姓名',
         passCode: '密码',
         addTester: '添加测试员'
+    },
+    en_xin: {
+        id: 'ID',
+        name: 'Name',
+        passCode: 'Pass code',
+        addTester: 'Add tester'
+    },
+    zh_xin: {
+        id: '测试员编号',
+        name: '测试员姓名',
+        passCode: '密码',
+        addTester: '添加测试员'
     }
 });
 
