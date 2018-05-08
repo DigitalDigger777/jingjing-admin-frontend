@@ -9,6 +9,8 @@ import CircularProgress from 'material-ui/CircularProgress';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import LangStrings from '../../../translations/admin/coupon/CouponForm';
 import DatePicker from 'material-ui/DatePicker';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 
 import Core from '../Core';
 import axios from 'axios';
@@ -51,6 +53,10 @@ export default class CouponForm extends React.Component {
                 fromNumber: '',
                 toNumber: '',
                 expiredDate: null,
+            },
+            error: {
+                open: false,
+                message: ''
             },
             load: false,
             baseUrl: config.baseUrl
@@ -113,15 +119,36 @@ export default class CouponForm extends React.Component {
                 });
                 //window.location = '/admin/coupon-list';
             })
-            .catch(response => {
-
+            .catch(error => {
+                console.log(error.response.data);
+                this.setState({
+                    error: {
+                        open: true,
+                        message: error.response.data.message
+                    },
+                    load: false
+                });
             });
     }
+
+    dialogClose = () => {
+        let error = this.state.error;
+        error.open = false;
+        this.setState({error: error});
+    };
 
     render() {
         const {classes, children} = this.props;
 
         if (!this.state.load) {
+            const actions = [
+                <FlatButton
+                    label="Ok"
+                    primary={true}
+                    onClick={this.dialogClose}
+                />
+            ];
+
             return (
                 <Core>
                     <Grid className={classes.shopperForm}>
@@ -171,6 +198,14 @@ export default class CouponForm extends React.Component {
                             </Col>
                         </Row>
                     </Grid>
+                    <Dialog
+                        actions={actions}
+                        modal={false}
+                        open={this.state.error.open}
+                        onRequestClose={this.dialogClose}
+                    >
+                        {this.state.error.message}
+                    </Dialog>
                 </Core>
             );
         } else {
