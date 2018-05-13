@@ -201,11 +201,6 @@ export default class DeviceList extends React.Component {
                         });
                 break;
             case 6:
-                    //remove
-                    dialog.remove.open = true;
-                    this.setState({
-                        dialog: dialog
-                    });
                     window.location = '/admin/device/log-list/' + id + '/' + this.state.shopperId;
                 break;
         }
