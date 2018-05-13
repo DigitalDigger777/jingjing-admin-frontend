@@ -15,7 +15,7 @@ import {
 import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import SearchBar from 'material-ui-search-bar'
-import LangStrings from '../../../translations/admin/device/DeviceStatementList';
+import LangStrings from '../../../translations/admin/device/DeviceLog';
 
 import axios from 'axios';
 import Core from '../Core';
