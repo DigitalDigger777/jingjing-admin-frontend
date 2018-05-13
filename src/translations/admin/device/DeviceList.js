@@ -24,7 +24,9 @@ const strings = new LocalizedStrings({
         online: 'Online',
         offline: 'Offline',
         //Other
-        download: 'Download'
+        download: 'Download',
+        updateFirmware: 'Update Firmware',
+        log: 'Log'
     },
     zh: {
         //header for table
@@ -46,7 +48,9 @@ const strings = new LocalizedStrings({
         online: '在线',
         offline: '离线',
         //Other
-        download: 'Download'
+        download: 'Download',
+        updateFirmware: 'Update Firmware',
+        log: 'Log'
     },
     en_xin: {
         //header for table
@@ -68,7 +72,9 @@ const strings = new LocalizedStrings({
         online: 'Online',
         offline: 'Offline',
         //Other
-        download: 'Download'
+        download: 'Download',
+        updateFirmware: 'Update Firmware',
+        log: 'Log'
     },
     zh_xin: {
         //header for table
@@ -90,7 +96,9 @@ const strings = new LocalizedStrings({
         online: '在线',
         offline: '离线',
         //Other
-        download: 'Download'
+        download: 'Download',
+        updateFirmware: 'Update Firmware',
+        log: 'Log'
     }
 });
 

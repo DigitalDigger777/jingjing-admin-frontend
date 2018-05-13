@@ -63,6 +63,9 @@ export default class DeviceList extends React.Component {
                 },
                 remove: {
                     open: false
+                },
+                firmwareUpdate: {
+                    open: false
                 }
             },
             onlinePurifiers: [],
@@ -177,6 +180,33 @@ export default class DeviceList extends React.Component {
                     this.setState({
                         dialog: dialog
                     });
+                break;
+            case 5:
+                    //remove
+                    dialog.firmwareUpdate.open = true;
+                    this.setState({
+                        dialog: dialog
+                    });
+
+                    axios.get(this.state.baseUrl + 'update-firmware/start', {
+                        params: {
+                            deviceId: id
+                        }
+                    })
+                        .then(response => {
+                            console.log(response.data);
+                        })
+                        .catch(error => {
+                            console.log(error.response.data);
+                        });
+                break;
+            case 6:
+                    //remove
+                    dialog.remove.open = true;
+                    this.setState({
+                        dialog: dialog
+                    });
+                    window.location = '/admin/device/log-list/' + id + '/' + this.state.shopperId;
                 break;
         }
     }
@@ -305,6 +335,9 @@ export default class DeviceList extends React.Component {
                 },
                 remove: {
                     open: false
+                },
+                firmwareUpdate: {
+                    open: false
                 }
             }
         });
@@ -352,6 +385,15 @@ export default class DeviceList extends React.Component {
                 keyboardFocused={true}
                 onClick={this.assignShopper}
             />,
+        ];
+
+        const actionsFirmwareUpdate = [
+            <FlatButton
+                label="Ok"
+                primary={true}
+                keyboardFocused={true}
+                onClick={this.closeDialog}
+            />
         ];
 
         let qrColumnHeadre = '';
@@ -427,6 +469,8 @@ export default class DeviceList extends React.Component {
                                             <MenuItem value={item[0].id + `:` + 2} primaryText={LangStrings.assignShopper}/>
                                             <MenuItem value={item[0].id + `:` + 3} primaryText={LangStrings.reset}/>
                                             <MenuItem value={item[0].id + `:` + 4} primaryText={LangStrings.remove}/>
+                                            <MenuItem value={item[0].id + `:` + 5} primaryText={LangStrings.updateFirmware}/>
+                                            <MenuItem value={item[0].id + `:` + 6} primaryText={LangStrings.log}/>
                                         </DropDownMenu>
                                     </TableRowColumn>
                                 </TableRow>);
@@ -468,6 +512,16 @@ export default class DeviceList extends React.Component {
                     onRequestClose={this.closeDialog}
                 >
                     Are you sure you want to reset this Purifier?
+                </Dialog>
+
+                <Dialog
+                    title="Firmware Update"
+                    actions={actionsFirmwareUpdate}
+                    modal={false}
+                    open={this.state.dialog.firmwareUpdate.open}
+                    onRequestClose={this.closeDialog}
+                >
+                    The firmware update is running, after the end, your device will be rebooted
                 </Dialog>
 
                 <Dialog
