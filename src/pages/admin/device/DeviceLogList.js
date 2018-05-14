@@ -92,10 +92,10 @@ export default class DeviceLogList extends React.Component {
 
                                 switch (item[0].action) {
                                     case 0:
-                                        action = LangStrings.online;
+                                            action = LangStrings.offline;
                                         break;
                                     case 1:
-                                        action = LangStrings.offline;
+                                            action = LangStrings.online;
                                         break;
                                 }
 
