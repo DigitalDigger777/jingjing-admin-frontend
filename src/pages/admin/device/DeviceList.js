@@ -74,13 +74,13 @@ export default class DeviceList extends React.Component {
         };
         LangStrings.setLanguage(config.language);
 
-        this.closeDialog = this.closeDialog.bind(this);
-        this.actionMenuChange = this.actionMenuChange.bind(this);
-        this.remove = this.remove.bind(this);
-        this.reset = this.reset.bind(this);
-        this.assignShopper = this.assignShopper.bind(this);
-        this.changeShopperId = this.changeShopperId.bind(this);
-        this.updateRows = this.updateRows.bind(this);
+        this.closeDialog        = this.closeDialog.bind(this);
+        this.actionMenuChange   = this.actionMenuChange.bind(this);
+        this.remove             = this.remove.bind(this);
+        this.reset              = this.reset.bind(this);
+        this.assignShopper      = this.assignShopper.bind(this);
+        this.changeShopperId    = this.changeShopperId.bind(this);
+        this.updateRows         = this.updateRows.bind(this);
     }
 
     componentWillMount() {
@@ -241,6 +241,9 @@ export default class DeviceList extends React.Component {
                 },
                 remove: {
                     open: false
+                },
+                firmwareUpdate: {
+                    open: false
                 }
             }
         });
@@ -277,6 +280,9 @@ export default class DeviceList extends React.Component {
                 },
                 remove: {
                     open: false
+                },
+                firmwareUpdate: {
+                    open: false
                 }
             }
         });
@@ -302,6 +308,9 @@ export default class DeviceList extends React.Component {
                     open: false
                 },
                 remove: {
+                    open: false
+                },
+                firmwareUpdate: {
                     open: false
                 }
             }
