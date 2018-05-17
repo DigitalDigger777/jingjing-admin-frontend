@@ -81,10 +81,14 @@ export default class DeviceList extends React.Component {
         this.assignShopper      = this.assignShopper.bind(this);
         this.changeShopperId    = this.changeShopperId.bind(this);
         this.updateRows         = this.updateRows.bind(this);
+        this.initData           = this.initData.bind(this);
     }
 
     componentWillMount() {
+        this.initData();
+    }
 
+    initData(){
         //load items
         axios.get(this.state.baseUrl + 'device/items', {
             params: {
@@ -93,7 +97,6 @@ export default class DeviceList extends React.Component {
             }
         })
             .then(response => {
-                console.log(response);
                 this.setState({
                     items: response.data
                 });
@@ -117,7 +120,7 @@ export default class DeviceList extends React.Component {
                 });
             });
 
-
+        //load online/offline statuses
         axios.get(this.state.baseUrl + 'device/redis-load-all-online-for-shopper', {
             params: {
                 shopperId: this.props.match.params.shopperId
@@ -322,6 +325,7 @@ export default class DeviceList extends React.Component {
         })
             .then(response => {
                 console.log(response);
+                this.initData();
             })
             .catch(response => {
 
@@ -456,28 +460,30 @@ export default class DeviceList extends React.Component {
                                         </TableRowColumn>
                                 }
 
-                                return (<TableRow key={key} onClick={ id => this.openDetailShopper(item[0].id) }>
-                                    <TableRowColumn>{item[0].deviceCode}</TableRowColumn>
-                                    {/*<TableRowColumn>*/}
-                                        {/*<QRCode1 value={qrURL} size={64} labelheight={20} label={`#` + item[0].deviceCode} renderAs="canvas"/>*/}
-                                    {/*</TableRowColumn>*/}
-                                    {qrColumn}
-                                    <TableRowColumn>{date[0]} <br/> {date[1]}</TableRowColumn>
-                                    <TableRowColumn>{totalHours}</TableRowColumn>
-                                    <TableRowColumn>{totalRevenue}</TableRowColumn>
-                                    <TableRowColumn>{this.state.onlinePurifiers.indexOf(item[0].mac) > -1 ? LangStrings.online : LangStrings.offline}</TableRowColumn>
-                                    <TableRowColumn>
-                                        <DropDownMenu value={this.state.value} onChange={this.actionMenuChange}>
-                                            <MenuItem value={item[0].id + `:` + 0} primaryText={LangStrings.selectAction}/>
-                                            <MenuItem value={item[0].id + `:` + 1} primaryText={LangStrings.detail}/>
-                                            <MenuItem value={item[0].id + `:` + 2} primaryText={LangStrings.assignShopper}/>
-                                            <MenuItem value={item[0].id + `:` + 3} primaryText={LangStrings.reset}/>
-                                            <MenuItem value={item[0].id + `:` + 4} primaryText={LangStrings.remove}/>
-                                            <MenuItem value={item[0].id + `:` + 5} primaryText={LangStrings.updateFirmware}/>
-                                            <MenuItem value={item[0].id + `:` + 6} primaryText={LangStrings.log}/>
-                                        </DropDownMenu>
-                                    </TableRowColumn>
-                                </TableRow>);
+                                return (
+                                    <TableRow key={key} onClick={ id => this.openDetailShopper(item[0].id) }>
+                                        <TableRowColumn>{item[0].deviceCode}</TableRowColumn>
+                                        {/*<TableRowColumn>*/}
+                                            {/*<QRCode1 value={qrURL} size={64} labelheight={20} label={`#` + item[0].deviceCode} renderAs="canvas"/>*/}
+                                        {/*</TableRowColumn>*/}
+                                        {qrColumn}
+                                        <TableRowColumn>{date[0]} <br/> {date[1]}</TableRowColumn>
+                                        <TableRowColumn>{totalHours}</TableRowColumn>
+                                        <TableRowColumn>{totalRevenue}</TableRowColumn>
+                                        <TableRowColumn>{this.state.onlinePurifiers.indexOf(item[0].mac) > -1 ? LangStrings.online : LangStrings.offline}</TableRowColumn>
+                                        <TableRowColumn>
+                                            <DropDownMenu value={this.state.value} onChange={this.actionMenuChange}>
+                                                <MenuItem value={item[0].id + `:` + 0} primaryText={LangStrings.selectAction}/>
+                                                <MenuItem value={item[0].id + `:` + 1} primaryText={LangStrings.detail}/>
+                                                <MenuItem value={item[0].id + `:` + 2} primaryText={LangStrings.assignShopper}/>
+                                                <MenuItem value={item[0].id + `:` + 3} primaryText={LangStrings.reset}/>
+                                                <MenuItem value={item[0].id + `:` + 4} primaryText={LangStrings.remove}/>
+                                                <MenuItem value={item[0].id + `:` + 5} primaryText={LangStrings.updateFirmware}/>
+                                                <MenuItem value={item[0].id + `:` + 6} primaryText={LangStrings.log}/>
+                                            </DropDownMenu>
+                                        </TableRowColumn>
+                                    </TableRow>
+                                );
                             }
                         )}
                     </TableBody>
