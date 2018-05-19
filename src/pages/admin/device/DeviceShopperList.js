@@ -32,6 +32,7 @@ export default class ShopperList extends React.Component {
             items: [],
             countUnassigned: 0,
             onlinePurifiers: [],
+            search: '',
             baseUrl: config.baseUrl
         };
     }
@@ -84,8 +85,43 @@ export default class ShopperList extends React.Component {
         axios.post();
     }
 
-    changeSearch(){
+    changeSearch(search){
+        console.log(search);
+        this.setState({
+            search: search
+        });
+    }
 
+    search() {
+        console.log(this.state.search);
+        axios.get(this.state.baseUrl + 'device/items', {
+            params: {
+                search: this.state.search
+            }
+        })
+            .then(response => {
+                // console.log(response.data);
+                let shopperIds = [];
+                response.data.forEach(item => {
+                    console.log(item[0].shopperId);
+                    shopperIds.push(item[0].shopperId);
+                });
+
+                axios.get(this.state.baseUrl + 'shopper/items', {
+                    params: {
+                        ids: shopperIds
+                    }
+                })
+                    .then(response => {
+                        this.setState({
+                            items: response.data
+                        });
+                    })
+                    .catch(response => {
+                        console.log('error');
+                    });
+
+            });
     }
 
     render() {
@@ -102,12 +138,13 @@ export default class ShopperList extends React.Component {
                 <Toolbar style={{marginTop: '15px', paddingTop: '15px', paddingBottom: '15px'}}>
                     <ToolbarGroup>
                         <SearchBar
-                            onChange={() => console.log('onChange')}
-                            onRequestSearch={() => console.log('onRequestSearch')}
+                            onChange={this.changeSearch.bind(this)}
+                            onRequestSearch={this.search.bind(this)}
                             style={{
                                 margin: '0 auto',
                                 maxWidth: 800
                             }}
+                            hintText={`Search by code`}
                         />
                     </ToolbarGroup>
                     <ToolbarGroup>

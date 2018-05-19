@@ -69,6 +69,7 @@ export default class DeviceList extends React.Component {
                 }
             },
             onlinePurifiers: [],
+            search: '',
             baseFrontUrl: config.baseFrontUrl,
             baseUrl: config.baseUrl
         };
@@ -93,7 +94,8 @@ export default class DeviceList extends React.Component {
         axios.get(this.state.baseUrl + 'device/items', {
             params: {
                 page: this.state.pagination.page,
-                shopperId: this.props.match.params.shopperId
+                shopperId: this.props.match.params.shopperId,
+                search: this.state.search
             }
         })
             .then(response => {
@@ -351,6 +353,18 @@ export default class DeviceList extends React.Component {
         });
     }
 
+    changeSearch(search){
+        console.log(search);
+        this.setState({
+            search: search
+        });
+    }
+
+    search() {
+        console.log(this.state.search);
+        this.initData();
+    }
+
     render() {
 
         const actionsReset = [
@@ -415,12 +429,13 @@ export default class DeviceList extends React.Component {
                 <Toolbar style={{marginTop: '15px', paddingTop: '15px', paddingBottom: '15px'}}>
                     <ToolbarGroup>
                         <SearchBar
-                            onChange={() => console.log('onChange')}
-                            onRequestSearch={() => console.log('onRequestSearch')}
+                            onChange={this.changeSearch.bind(this)}
+                            onRequestSearch={this.search.bind(this)}
                             style={{
                                 margin: '0 auto',
                                 maxWidth: 800
                             }}
+                            hintText={`Search by code`}
                         />
                     </ToolbarGroup>
                     <ToolbarGroup>
