@@ -16,6 +16,7 @@ export default class Config
         };
 
         this._language = 'en';
+        this._system = 'xin'; //xin or jingjing
     }
 
     get baseUrl() {
@@ -32,6 +33,10 @@ export default class Config
 
     get language() {
         return this._language;
+    }
+
+    get system() {
+        return this._system;
     }
 
     get weChatConfig() {

@@ -2,16 +2,6 @@
  * Created by korman on 06.02.18.
  */
 import React from 'react';
-// import {Page,
-//         Cells,
-//         CellsTitle,
-//         Cell,
-//         CellHeader,
-//         CellBody,
-//         CellFooter,
-//         SearchBar
-// } from 'react-weui';
-
 import {
     Table,
     TableBody,
@@ -39,7 +29,7 @@ import Config from '../../../Config';
 import Core from '../Core';
 
 
-export default class DeviceList extends React.Component {
+class JingJingDeviceList extends React.Component {
 
     constructor(props){
         super(props);
@@ -231,10 +221,6 @@ export default class DeviceList extends React.Component {
                     items: response.data
                 });
             });
-    }
-
-    changeSearch(){
-
     }
 
     changeShopperId(e, val) {
@@ -589,3 +575,610 @@ export default class DeviceList extends React.Component {
         );
     };
 }
+
+class XinDeviceList extends React.Component {
+
+    constructor(props){
+        super(props);
+        const config = new Config();
+        const user = JSON.parse(window.localStorage.getItem('user'));
+
+        this.state = {
+            items: [],
+            user: user,
+            pagination: {
+                page: 0,
+                total: 0,
+                display: 0
+            },
+            deviceId: 0,
+            shopperId: this.props.match.params.shopperId,
+            room: 0,
+            dialog: {
+                assignShopper: {
+                    open: false
+                },
+                assignRoom: {
+                    open: false
+                },
+                reset: {
+                    open: false
+                },
+                remove: {
+                    open: false
+                },
+                firmwareUpdate: {
+                    open: false
+                }
+            },
+            onlinePurifiers: [],
+            search: '',
+            baseFrontUrl: config.baseFrontUrl,
+            baseUrl: config.baseUrl
+        };
+        LangStrings.setLanguage(config.language);
+
+        this.closeDialog        = this.closeDialog.bind(this);
+        this.actionMenuChange   = this.actionMenuChange.bind(this);
+        this.remove             = this.remove.bind(this);
+        this.reset              = this.reset.bind(this);
+        this.assignShopper      = this.assignShopper.bind(this);
+        this.assignRoom         = this.assignRoom.bind(this);
+        this.changeShopperId    = this.changeShopperId.bind(this);
+        this.changeRoom         = this.changeRoom.bind(this);
+        this.updateRows         = this.updateRows.bind(this);
+        this.initData           = this.initData.bind(this);
+    }
+
+    componentWillMount() {
+        this.initData();
+    }
+
+    initData(){
+        //load items
+        axios.get(this.state.baseUrl + 'device/items', {
+            params: {
+                page: this.state.pagination.page,
+                shopperId: this.props.match.params.shopperId,
+                search: this.state.search,
+                token: this.state.user.token
+            }
+        })
+            .then(response => {
+                this.setState({
+                    items: response.data
+                });
+            })
+            .catch(response => {
+
+            });
+
+        //load total
+        axios.get(this.state.baseUrl + 'device/total-items', {
+            params: {
+                shopperId: this.props.match.params.shopperId,
+                token: this.state.user.token
+            }
+        })
+            .then(response => {
+                let pagination = this.state.pagination;
+                pagination.total = parseInt(response.data.cnt);
+                pagination.display = Math.ceil(parseInt(response.data.cnt)/10);
+                this.setState({
+                    pagination: pagination
+                });
+            });
+
+        //load online/offline statuses
+        axios.get(this.state.baseUrl + 'device/redis-load-all-online-for-shopper', {
+            params: {
+                shopperId: this.props.match.params.shopperId,
+                token: this.state.user.token
+            }
+        })
+            .then(response => {
+                this.setState({
+                    onlinePurifiers: response.data.purifiers
+                });
+            });
+    }
+
+    openDeviceDetail(id){
+        window.location = '/admin/device-detail/' + id;
+    }
+
+    actionMenuChange(e, index, value) {
+        const action = value.split(':');
+        const id = action[0];
+
+        console.log(action[1], id);
+
+        this.state.deviceId = id;
+        let dialog = this.state.dialog;
+
+        switch (parseInt(action[1]))
+        {
+            case 0:
+                break;
+            case 1:
+                //detail
+                window.location = '/admin/device/statement-list/' + id + '/' + this.state.shopperId;
+                break;
+            case 2:
+                //assign shopper
+
+                dialog.assignShopper.open = true;
+
+                this.setState({
+                    dialog: dialog
+                });
+                break;
+            case 3:
+                //reset
+                dialog.reset.open = true;
+
+                this.setState({
+                    dialog: dialog
+                });
+                break;
+            case 4:
+                //remove
+                dialog.remove.open = true;
+                this.setState({
+                    dialog: dialog
+                });
+                break;
+            case 5:
+                //remove
+                dialog.firmwareUpdate.open = true;
+                this.setState({
+                    dialog: dialog
+                });
+
+                axios.get(this.state.baseUrl + 'update-firmware/start', {
+                    params: {
+                        deviceId: id,
+                        token: this.state.user.token
+                    }
+                })
+                    .then(response => {
+                        console.log(response.data);
+                    })
+                    .catch(error => {
+                        console.log(error.response.data);
+                    });
+                break;
+            case 6:
+                    window.location = '/admin/device/log-list/' + id + '/' + this.state.shopperId;
+                break;
+            case 7:
+                    dialog.assignRoom.open = true;
+                    this.setState({
+                        dialog: dialog
+                    });
+                break;
+        }
+    }
+
+    updateRows(number){
+        axios.get(this.state.baseUrl + 'device/items', {
+            params: {
+                page: number - 1,
+                shopperId: this.props.match.params.shopperId,
+                token: this.state.user.token
+            }
+        })
+            .then(response => {
+                console.log(response);
+                this.setState({
+                    items: response.data
+                });
+            });
+    }
+
+    changeShopperId(e, val) {
+        console.log(val);
+        this.state.shopperId = val;
+    }
+
+    changeRoom(e, val) {
+        console.log(val);
+        this.state.room = val;
+    }
+
+    remove(){
+        this.setState({
+            dialog: {
+                assignShopper: {
+                    open: false
+                },
+                assignRoom: {
+                    open: false
+                },
+                reset: {
+                    open: false
+                },
+                remove: {
+                    open: false
+                },
+                firmwareUpdate: {
+                    open: false
+                }
+            }
+        });
+
+        axios.get(this.state.baseUrl + 'device/delete', {
+            params: {
+                id: this.state.deviceId,
+                token: this.state.user.token
+            }
+        })
+            .then(response => {
+                console.log(response);
+
+                axios.get(this.state.baseUrl + 'device/items', {
+                    params: {
+                        token: this.state.user.token
+                    }
+                })
+                    .then(deviceResponse => {
+                        console.log(deviceResponse);
+                        this.setState({
+                            items: deviceResponse.data
+                        });
+                    })
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    reset(){
+        this.setState({
+            dialog: {
+                assignShopper: {
+                    open: false
+                },
+                assignRoom: {
+                    open: false
+                },
+                reset: {
+                    open: false
+                },
+                remove: {
+                    open: false
+                },
+                firmwareUpdate: {
+                    open: false
+                }
+            }
+        });
+
+        axios.get(this.state.baseUrl + 'device/save', {
+            params: {
+                id: this.state.deviceId,
+                is_reset: true,
+                token: this.state.user.token
+            }
+        })
+            .then(response => {
+                console.log(response);
+            });
+    }
+
+    assignShopper(){
+        this.setState({
+            dialog: {
+                assignShopper: {
+                    open: false
+                },
+                assignRoom: {
+                    open: false
+                },
+                reset: {
+                    open: false
+                },
+                remove: {
+                    open: false
+                },
+                firmwareUpdate: {
+                    open: false
+                }
+            }
+        });
+
+        axios.post(this.state.baseUrl + 'device/save', {
+            id: this.state.deviceId,
+            shopperId: this.state.shopperId,
+            token: this.state.user.token
+        })
+            .then(response => {
+                console.log(response);
+                this.initData();
+            })
+            .catch(response => {
+
+            });
+    }
+
+    assignRoom(){
+        this.setState({
+            dialog: {
+                assignShopper: {
+                    open: false
+                },
+                assignRoom: {
+                    open: false
+                },
+                reset: {
+                    open: false
+                },
+                remove: {
+                    open: false
+                },
+                firmwareUpdate: {
+                    open: false
+                }
+            }
+        });
+
+        axios.post(this.state.baseUrl + 'device/save', {
+            id: this.state.deviceId,
+            room: this.state.room,
+            token: this.state.user.token
+        })
+            .then(response => {
+                console.log(response);
+                this.initData();
+            })
+            .catch(response => {
+
+            });
+    }
+
+    closeDialog(){
+        this.setState({
+            dialog: {
+                assignShopper: {
+                    open: false
+                },
+                assignRoom: {
+                    open: false
+                },
+                reset: {
+                    open: false
+                },
+                remove: {
+                    open: false
+                },
+                firmwareUpdate: {
+                    open: false
+                }
+            }
+        });
+    }
+
+    changeSearch(search){
+        console.log(search);
+        this.setState({
+            search: search
+        });
+    }
+
+    search() {
+        console.log(this.state.search);
+        this.initData();
+    }
+
+    render() {
+
+        const actionsReset = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onClick={this.closeDialog}
+            />,
+            <FlatButton
+                label="Ok"
+                primary={true}
+                keyboardFocused={true}
+                onClick={this.reset}
+            />,
+        ];
+
+        const actionsRmv = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onClick={this.closeDialog}
+            />,
+            <FlatButton
+                label="Ok"
+                primary={true}
+                keyboardFocused={true}
+                onClick={this.remove}
+            />,
+        ];
+
+        const actionsAssignShopper = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onClick={this.closeDialog}
+            />,
+            <FlatButton
+                label="Ok"
+                primary={true}
+                keyboardFocused={true}
+                onClick={this.assignShopper}
+            />,
+        ];
+
+        const actionsAssignRoom = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onClick={this.closeDialog}
+            />,
+            <FlatButton
+                label="Ok"
+                primary={true}
+                keyboardFocused={true}
+                onClick={this.assignRoom}
+            />,
+        ];
+
+        const actionsFirmwareUpdate = [
+            <FlatButton
+                label="Ok"
+                primary={true}
+                keyboardFocused={true}
+                onClick={this.closeDialog}
+            />
+        ];
+
+        return (
+            <Core>
+                <Toolbar style={{marginTop: '15px', paddingTop: '15px', paddingBottom: '15px'}}>
+                    <ToolbarGroup>
+                        <SearchBar
+                            onChange={this.changeSearch.bind(this)}
+                            onRequestSearch={this.search.bind(this)}
+                            style={{
+                                margin: '0 auto',
+                                maxWidth: 800
+                            }}
+                            hintText={`Search by code`}
+                        />
+                    </ToolbarGroup>
+                    <ToolbarGroup>
+                        {/*<RaisedButton label="Add Device" primary={true} />*/}
+                    </ToolbarGroup>
+                </Toolbar>
+                <Table selectable={false}>
+                    <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                        <TableRow>
+                            <TableHeaderColumn>{LangStrings.id}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.addTime}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.room}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.status}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.totalHourUsed}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.totalRevenue}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.action}</TableHeaderColumn>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody displayRowCheckbox={false} showRowHover={true}>
+                        { this.state.items.map((item, key) => {
+
+                                const totalUsed = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].totalUsed : 0;
+                                const totalRevenue = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].total_revenue : 0;
+                                const date = item[1].split(' ');
+
+
+                                return (
+                                    <TableRow key={key} onClick={ id => this.openDetailShopper(item[0].id) }>
+                                        <TableRowColumn>{item[0].deviceCode}</TableRowColumn>
+
+                                        <TableRowColumn>{date[0]} <br/> {date[1]}</TableRowColumn>
+                                        <TableRowColumn>{item[0].room}</TableRowColumn>
+                                        <TableRowColumn>{this.state.onlinePurifiers.indexOf(item[0].mac) > -1 ? LangStrings.online : LangStrings.offline}</TableRowColumn>
+                                        <TableRowColumn>{totalUsed}</TableRowColumn>
+                                        <TableRowColumn>{totalRevenue}</TableRowColumn>
+                                        <TableRowColumn>
+                                            <DropDownMenu value={this.state.value} onChange={this.actionMenuChange}>
+                                                <MenuItem value={item[0].id + `:` + 0} primaryText={LangStrings.selectAction}/>
+                                                <MenuItem value={item[0].id + `:` + 1} primaryText={LangStrings.detail}/>
+                                                <MenuItem value={item[0].id + `:` + 2} primaryText={LangStrings.assignShopper}/>
+                                                <MenuItem value={item[0].id + `:` + 7} primaryText={LangStrings.assignRoom}/>
+                                                <MenuItem value={item[0].id + `:` + 3} primaryText={LangStrings.reset}/>
+                                                <MenuItem value={item[0].id + `:` + 4} primaryText={LangStrings.remove}/>
+                                                <MenuItem value={item[0].id + `:` + 5} primaryText={LangStrings.updateFirmware}/>
+                                                <MenuItem value={item[0].id + `:` + 6} primaryText={LangStrings.log}/>
+                                            </DropDownMenu>
+                                        </TableRowColumn>
+                                    </TableRow>
+                                );
+                            }
+                        )}
+                    </TableBody>
+                </Table>
+
+                <Pagination
+                    total = { this.state.pagination.total }
+                    current = { this.state.pagination.page }
+                    display = { this.state.pagination.display }
+                    onChange = { number => this.updateRows(number) }
+                />
+
+                <Dialog
+                    title="Warning"
+                    actions={actionsRmv}
+                    modal={false}
+                    open={this.state.dialog.remove.open}
+                    onRequestClose={this.closeDialog}
+                >
+                    Are you sure you want to remove this Purifier?
+
+                </Dialog>
+
+                <Dialog
+                    title="Warning"
+                    actions={actionsReset}
+                    modal={false}
+                    open={this.state.dialog.reset.open}
+                    onRequestClose={this.closeDialog}
+                >
+                    Are you sure you want to reset this Purifier?
+                </Dialog>
+
+                <Dialog
+                    title="Firmware Update"
+                    actions={actionsFirmwareUpdate}
+                    modal={false}
+                    open={this.state.dialog.firmwareUpdate.open}
+                    onRequestClose={this.closeDialog}
+                >
+                    The firmware update is running, after the end, your device will be rebooted
+                </Dialog>
+
+                <Dialog
+                    title="Change Shopper ID"
+                    actions={actionsAssignShopper}
+                    modal={false}
+                    open={this.state.dialog.assignShopper.open}
+                    onRequestClose={this.closeDialog}
+                >
+
+                    <span>Please Assign Shopper to This Purifier</span>
+                    <br/>
+                    <TextField hintText="Input shopper ID" onChange={ this.changeShopperId}/>
+                </Dialog>
+                <Dialog
+                    title="Change Room"
+                    actions={actionsAssignRoom}
+                    modal={false}
+                    open={this.state.dialog.assignRoom.open}
+                    onRequestClose={this.closeDialog}
+                >
+
+                    <span>Please Assign Room to This Massager</span>
+                    <br/>
+                    <TextField hintText="Input Room" onChange={ this.changeRoom}/>
+                </Dialog>
+            </Core>
+        );
+    };
+}
+
+const config = new Config();
+let DeviceList = {};
+
+if (config.system == 'xin') {
+    DeviceList = XinDeviceList;
+}
+
+if (config.system == 'jingjing') {
+    DeviceList = JingJingDeviceList;
+}
+
+export default DeviceList;

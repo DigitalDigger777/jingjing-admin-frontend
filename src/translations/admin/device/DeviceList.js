@@ -26,7 +26,8 @@ const strings = new LocalizedStrings({
         //Other
         download: 'Download',
         updateFirmware: 'Update Firmware',
-        log: 'Log'
+        log: 'Log',
+        assignRoom: 'Assign room'
     },
     zh: {
         //header for table
@@ -50,14 +51,15 @@ const strings = new LocalizedStrings({
         //Other
         download: 'Download',
         updateFirmware: 'Update Firmware',
-        log: 'Log'
+        log: 'Log',
+        assignRoom: 'Assign room'
     },
     en_xin: {
         //header for table
-        id: 'id',
+        id: 'Massager Id',
         qrCode: 'QR Code',
         addTime: 'Add Time',
-        totalHourUsed: 'Total Hour Used',
+        totalHourUsed: 'Total Used',
         totalRevenue: 'Total Revenue',
         action: 'Action',
 
@@ -74,14 +76,16 @@ const strings = new LocalizedStrings({
         //Other
         download: 'Download',
         updateFirmware: 'Update Firmware',
-        log: 'Log'
+        log: 'Log',
+        assignRoom: 'Assign room',
+        room: 'Room'
     },
     zh_xin: {
         //header for table
-        id: '空气净化器编号',
+        id: 'Massager Id',
         qrCode: '二维码',
         addTime: '添加时间',
-        totalHourUsed: '总使用时间',
+        totalHourUsed: 'Total Used',
         totalRevenue: '总收入',
         action: '操作',
 
@@ -98,7 +102,9 @@ const strings = new LocalizedStrings({
         //Other
         download: 'Download',
         updateFirmware: 'Update Firmware',
-        log: 'Log'
+        log: 'Log',
+        assignRoom: 'Assign room',
+        room: 'Room'
     }
 });
 
