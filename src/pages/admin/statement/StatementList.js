@@ -36,15 +36,21 @@ export default class StatementList extends React.Component {
         super(props);
         const config = new Config();
         LangStrings.setLanguage(config.language);
+        const user = JSON.parse(window.localStorage.getItem('user'));
 
         this.state = {
             items: [],
+            user: user,
             baseUrl: config.baseUrl
         };
     }
 
     componentWillMount(){
-        axios.get(this.state.baseUrl + 'statement/items')
+        axios.get(this.state.baseUrl + 'statement/items', {
+            params: {
+                token: this.state.user.token
+            }
+        })
             .then(response => {
                 this.setState({
                     items: response.data

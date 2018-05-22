@@ -46,6 +46,8 @@ export default class CouponForm extends React.Component {
         const config = new Config();
         LangStrings.setLanguage(config.language);
 
+        const user = JSON.parse(window.localStorage.getItem('user'));
+
         this.state = {
             id: typeof props.match.params.id != 'undefined' ? props.match.params.id : 0,
             item: {
@@ -58,6 +60,7 @@ export default class CouponForm extends React.Component {
                 open: false,
                 message: ''
             },
+            user: user,
             load: false,
             baseUrl: config.baseUrl
         };
@@ -110,7 +113,8 @@ export default class CouponForm extends React.Component {
             shopperId: this.state.item.shopperId,
             fromNumber: this.state.item.fromNumber,
             toNumber: this.state.item.toNumber,
-            expiredDate: this.state.item.expiredDate
+            expiredDate: this.state.item.expiredDate,
+            token: this.state.user.token
         })
             .then(response => {
                 console.log(response);

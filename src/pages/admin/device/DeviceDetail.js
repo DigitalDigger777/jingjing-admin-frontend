@@ -39,6 +39,7 @@ export default class DeviceDetail extends React.Component {
     constructor(props){
         super(props);
         const config = new Config();
+        const user = JSON.parse(window.localStorage.getItem('user'));
 
         this.state = {
 
@@ -51,6 +52,7 @@ export default class DeviceDetail extends React.Component {
                 room: '',
                 shopperId: ''
             },
+            user: user,
             shopper: '',
             load: false,
             baseUrl: config.baseUrl
@@ -60,7 +62,11 @@ export default class DeviceDetail extends React.Component {
     }
 
     componentWillMount() {
-        axios.get(this.state.baseUrl + 'device/load/' + this.state.id)
+        axios.get(this.state.baseUrl + 'device/load/' + this.state.id, {
+            params: {
+                token: this.state.user.token
+            }
+        })
             .then(response => {
                 console.log(response);
                 this.setState({
@@ -101,7 +107,8 @@ export default class DeviceDetail extends React.Component {
         axios.post(this.state.baseUrl + 'device/save', {
             id: this.state.item.id,
             name: this.state.item.name,
-            shopperId: this.state.item.shopperId
+            shopperId: this.state.item.shopperId,
+            token: this.state.user.token
         })
             .then(response => {
                 console.log(response);

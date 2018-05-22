@@ -27,9 +27,11 @@ export default class ShopperList extends React.Component {
 
         const config = new Config();
         LangStrings.setLanguage(config.language);
+        const user = JSON.parse(window.localStorage.getItem('user'));
 
         this.state = {
             items: [],
+            user: user,
             countUnassigned: 0,
             onlinePurifiers: [],
             search: '',
@@ -40,7 +42,8 @@ export default class ShopperList extends React.Component {
     componentDidMount() {
         axios.get(this.state.baseUrl + 'user/items', {
             params: {
-                role: 'ROLE_SHOPPER'
+                role: 'ROLE_SHOPPER',
+                token: this.state.user.token
             }
         })
             .then(response => {
@@ -55,7 +58,8 @@ export default class ShopperList extends React.Component {
 
         axios.get(this.state.baseUrl + 'device/total-items', {
             params: {
-                shopperId: 0
+                shopperId: 0,
+                token: this.state.user.token
             }
         })
             .then(response => {
@@ -65,7 +69,11 @@ export default class ShopperList extends React.Component {
             });
 
 
-        axios.get(this.state.baseUrl + 'device/redis-count-online')
+        axios.get(this.state.baseUrl + 'device/redis-count-online', {
+            params: {
+                token: this.state.user.token
+            }
+        })
             .then(response => {
                 this.setState({
                     onlinePurifiers: response.data.data
@@ -96,7 +104,8 @@ export default class ShopperList extends React.Component {
         console.log(this.state.search);
         axios.get(this.state.baseUrl + 'device/items', {
             params: {
-                search: this.state.search
+                search: this.state.search,
+                token: this.state.user.token
             }
         })
             .then(response => {

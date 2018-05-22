@@ -28,9 +28,11 @@ export default class TesterList extends React.Component {
 
         const config = new Config();
         LangStrings.setLanguage(config.language);
+        const user = JSON.parse(window.localStorage.getItem('user'));
 
         this.state = {
             items: [],
+            user: user,
             baseUrl: config.baseUrl
         };
     }
@@ -38,6 +40,7 @@ export default class TesterList extends React.Component {
     componentDidMount() {
         axios.get(this.state.baseUrl + 'user/items', {
             params: {
+                token: this.state.user.token,
                 role: 'ROLE_TESTER'
             }
         })
@@ -58,7 +61,7 @@ export default class TesterList extends React.Component {
     }
 
     save(){
-        axios.post();
+
     }
 
 
@@ -69,6 +72,7 @@ export default class TesterList extends React.Component {
             axios.post(this.state.baseUrl + 'user/save', {
                 id: id,
                 name: name,
+                token: this.state.user.token,
                 role: 'ROLE_TESTER'
             })
                 .then(response => {
@@ -88,6 +92,7 @@ export default class TesterList extends React.Component {
             axios.post(this.state.baseUrl + 'user/save', {
                 id: id,
                 pin: pin,
+                token: this.state.user.token,
                 role: 'ROLE_TESTER'
             })
                 .then(response => {

@@ -40,17 +40,23 @@ export default class ShopperDetail extends React.Component {
 
         const config = new Config();
         LangStrings.setLanguage(config.language);
+        const user = JSON.parse(window.localStorage.getItem('user'));
 
         this.state = {
             id: props.match.params.id,
             item: null,
+            user: user,
             baseUrl: config.baseUrl
         };
     }
 
     componentWillMount() {
         //shopper/load/10
-        axios.get(this.state.baseUrl + 'shopper/load/' + this.state.id)
+        axios.get(this.state.baseUrl + 'shopper/load/' + this.state.id, {
+            params: {
+                token: this.state.user.token
+            }
+        })
             .then(response => {
                 this.setState({
                     item: response.data

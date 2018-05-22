@@ -44,9 +44,11 @@ export default class DeviceList extends React.Component {
     constructor(props){
         super(props);
         const config = new Config();
+        const user = JSON.parse(window.localStorage.getItem('user'));
 
         this.state = {
             items: [],
+            user: user,
             pagination: {
                 page: 0,
                 total: 0,
@@ -95,7 +97,8 @@ export default class DeviceList extends React.Component {
             params: {
                 page: this.state.pagination.page,
                 shopperId: this.props.match.params.shopperId,
-                search: this.state.search
+                search: this.state.search,
+                token: this.state.user.token
             }
         })
             .then(response => {
@@ -110,7 +113,8 @@ export default class DeviceList extends React.Component {
         //load total
         axios.get(this.state.baseUrl + 'device/total-items', {
             params: {
-                shopperId: this.props.match.params.shopperId
+                shopperId: this.props.match.params.shopperId,
+                token: this.state.user.token
             }
         })
             .then(response => {
@@ -125,7 +129,8 @@ export default class DeviceList extends React.Component {
         //load online/offline statuses
         axios.get(this.state.baseUrl + 'device/redis-load-all-online-for-shopper', {
             params: {
-                shopperId: this.props.match.params.shopperId
+                shopperId: this.props.match.params.shopperId,
+                token: this.state.user.token
             }
         })
             .then(response => {
@@ -195,7 +200,8 @@ export default class DeviceList extends React.Component {
 
                     axios.get(this.state.baseUrl + 'update-firmware/start', {
                         params: {
-                            deviceId: id
+                            deviceId: id,
+                            token: this.state.user.token
                         }
                     })
                         .then(response => {
@@ -215,7 +221,8 @@ export default class DeviceList extends React.Component {
         axios.get(this.state.baseUrl + 'device/items', {
             params: {
                 page: number - 1,
-                shopperId: this.props.match.params.shopperId
+                shopperId: this.props.match.params.shopperId,
+                token: this.state.user.token
             }
         })
             .then(response => {
@@ -255,13 +262,18 @@ export default class DeviceList extends React.Component {
 
         axios.get(this.state.baseUrl + 'device/delete', {
             params: {
-                id: this.state.deviceId
+                id: this.state.deviceId,
+                token: this.state.user.token
             }
         })
             .then(response => {
                 console.log(response);
 
-                axios.get(this.state.baseUrl + 'device/items')
+                axios.get(this.state.baseUrl + 'device/items', {
+                    params: {
+                        token: this.state.user.token
+                    }
+                })
                     .then(deviceResponse => {
                         console.log(deviceResponse);
                         this.setState({
@@ -295,7 +307,8 @@ export default class DeviceList extends React.Component {
         axios.get(this.state.baseUrl + 'device/save', {
             params: {
                 id: this.state.deviceId,
-                is_reset: true
+                is_reset: true,
+                token: this.state.user.token
             }
         })
             .then(response => {
@@ -323,7 +336,8 @@ export default class DeviceList extends React.Component {
 
         axios.post(this.state.baseUrl + 'device/save', {
             id: this.state.deviceId,
-            shopperId: this.state.shopperId
+            shopperId: this.state.shopperId,
+            token: this.state.user.token
         })
             .then(response => {
                 console.log(response);

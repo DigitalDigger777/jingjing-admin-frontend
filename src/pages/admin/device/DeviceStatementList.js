@@ -35,9 +35,11 @@ export default class DeviceStatementList extends React.Component {
     constructor(props){
         super(props);
         const config = new Config();
+        const user = JSON.parse(window.localStorage.getItem('user'));
 
         this.state = {
             items: [],
+            user: user,
             deviceId: props.match.params.deviceId,
             shopperId: props.match.params.shopperId,
             baseUrl: config.baseUrl
@@ -48,7 +50,8 @@ export default class DeviceStatementList extends React.Component {
         axios.get(this.state.baseUrl + 'statement/items', {
             params: {
                 deviceId: this.state.deviceId,
-                shopperId: this.state.shopperId
+                shopperId: this.state.shopperId,
+                token: this.state.user.token
             }
         })
             .then(response => {

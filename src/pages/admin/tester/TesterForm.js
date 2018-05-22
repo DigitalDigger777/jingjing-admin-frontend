@@ -42,9 +42,11 @@ export default class TesterForm extends React.Component {
 
         const config = new Config();
         LangStrings.setLanguage(config.language);
+        const user = JSON.parse(window.localStorage.getItem('user'));
 
         this.state = {
             id: typeof props.match.params.id != 'undefined' ? props.match.params.id : 0,
+            user: user,
             item: {
                 name: '',
                 cell: '',
@@ -59,7 +61,11 @@ export default class TesterForm extends React.Component {
         //shopper/load/10
 
         if (this.state.id > 0) {
-            axios.get(this.state.baseUrl + 'shopper/load/' + this.state.id)
+            axios.get(this.state.baseUrl + 'shopper/load/' + this.state.id, {
+                params: {
+                    token: this.state.user.token
+                }
+            })
                 .then(response => {
                     this.setState({
                         item: response.data
@@ -109,6 +115,7 @@ export default class TesterForm extends React.Component {
             name: this.state.item.name,
             cell: this.state.item.cell,
             pin: this.state.item.pin,
+            token: this.state.user.token,
             role: 'ROLE_TESTER'
         })
             .then(response => {

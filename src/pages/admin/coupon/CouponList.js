@@ -29,8 +29,11 @@ export default class CouponList extends React.Component {
         const config = new Config();
         LangStrings.setLanguage(config.language);
 
+        const user = JSON.parse(window.localStorage.getItem('user'));
+
         this.state = {
             items: [],
+            user: user,
             baseUrl: config.baseUrl
         };
     }
@@ -38,7 +41,8 @@ export default class CouponList extends React.Component {
     componentDidMount() {
         axios.get(this.state.baseUrl + 'coupon/items', {
             params: {
-                shopperId: 151
+                shopperId: 151,
+                token: this.state.user.token
             }
         })
             .then(response => {

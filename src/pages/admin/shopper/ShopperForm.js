@@ -42,6 +42,7 @@ export default class ShopperForm extends React.Component {
 
         const config = new Config();
         LangStrings.setLanguage(config.language);
+        const user = JSON.parse(window.localStorage.getItem('user'));
 
         this.state = {
             id: typeof props.match.params.id != 'undefined' ? props.match.params.id : 0,
@@ -57,6 +58,7 @@ export default class ShopperForm extends React.Component {
                 passCode:               '',
                 hoursObtainOwnership:   ''
             },
+            user: user,
             load: false,
             baseUrl: config.baseUrl
         };
@@ -66,7 +68,11 @@ export default class ShopperForm extends React.Component {
         //shopper/load/10
 
         if (this.state.id > 0) {
-            axios.get(this.state.baseUrl + 'shopper/load/' + this.state.id)
+            axios.get(this.state.baseUrl + 'shopper/load/' + this.state.id, {
+                params: {
+                    token: this.state.user.token
+                }
+            })
                 .then(response => {
                     this.setState({
                         item: response.data
@@ -170,7 +176,8 @@ export default class ShopperForm extends React.Component {
             role: 'ROLE_SHOPPER',
             rate: this.state.item.rate,
             rateCommission: this.state.item.rateCommission,
-            hoursObtainOwnership: this.state.item.hoursObtainOwnership
+            hoursObtainOwnership: this.state.item.hoursObtainOwnership,
+            token: this.state.user.token
         })
             .then(response => {
                 console.log(response);
