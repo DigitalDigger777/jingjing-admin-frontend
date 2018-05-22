@@ -20,7 +20,7 @@ const strings = new LocalizedStrings({
     },
     en_xin: {
         shopperManagement: 'Shopper Management',
-        purifierManagement: 'Purifier Management',
+        purifierManagement: 'Massager Management',
         statement: 'Statement',
         testerManagement: 'Tester management',
         couponManagement: 'Coupon management'

@@ -30,7 +30,7 @@ const styles = {
 
 @injectSheet(styles)
 
-export default class DeviceStatementList extends React.Component {
+class JingJingDeviceStatementList extends React.Component {
 
     constructor(props){
         super(props);
@@ -135,3 +135,98 @@ export default class DeviceStatementList extends React.Component {
         );
     };
 }
+
+@injectSheet(styles)
+
+class XinDeviceStatementList extends React.Component {
+
+    constructor(props){
+        super(props);
+        const config = new Config();
+        const user = JSON.parse(window.localStorage.getItem('user'));
+
+        this.state = {
+            items: [],
+            user: user,
+            deviceId: props.match.params.deviceId,
+            shopperId: props.match.params.shopperId,
+            baseUrl: config.baseUrl
+        };
+    }
+
+    componentWillMount(){
+        axios.get(this.state.baseUrl + 'statement/items', {
+            params: {
+                deviceId: this.state.deviceId,
+                shopperId: this.state.shopperId,
+                token: this.state.user.token
+            }
+        })
+            .then(response => {
+                this.setState({
+                    items: response.data
+                });
+            })
+            .catch(response => {
+
+            });
+    }
+
+    changeSearch(){
+
+    }
+
+    render() {
+        const {classes, children} = this.props;
+
+        return (
+            <Core>
+                <Toolbar style={{marginTop: '15px', paddingTop: '15px', paddingBottom: '15px'}}>
+                    <ToolbarGroup>
+                        <h4></h4>
+                    </ToolbarGroup>
+                </Toolbar>
+                <Table selectable={false}>
+                    <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                        <TableRow>
+                            <TableHeaderColumn>{LangStrings.startTime}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.endTime}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.rate}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.revenue}</TableHeaderColumn>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody displayRowCheckbox={false} showRowHover={true}>
+                        { this.state.items.map((item, key) => {
+                                const startTime = item.timeStart.split(' ');
+                                const endTime   = item.timeEnd.split(' ');
+
+
+                                return (
+                                    <TableRow key={key} onClick={ id => this.openDetailShopper(item.id) }>
+                                        <TableRowColumn>{startTime[0]} <br/> {startTime[1]}</TableRowColumn>
+                                        <TableRowColumn>{endTime[0]} <br/> {endTime[1]}</TableRowColumn>
+                                        <TableRowColumn>{`¥` + item[0].rate + `/HR`}</TableRowColumn>
+                                        <TableRowColumn>{`¥` + item[0].revenue}</TableRowColumn>
+                                    </TableRow>
+                                )
+                            }
+                        )}
+                    </TableBody>
+                </Table>
+            </Core>
+        );
+    };
+}
+
+const config = new Config();
+let DeviceStatementList = {};
+
+if (config.system == 'xin') {
+    DeviceStatementList = XinDeviceStatementList;
+}
+
+if (config.system == 'jingjing') {
+    DeviceStatementList = JingJingDeviceStatementList;
+}
+
+export default DeviceStatementList;

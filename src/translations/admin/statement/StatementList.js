@@ -32,13 +32,14 @@ const strings = new LocalizedStrings({
         income: 'Income',
         time: 'Time',
         shopperName: 'Shopper Name',
-        purifierID: 'Purifier ID',
+        purifierID: 'Massager ID',
         rate: 'Rate',
         hours: 'Hours',
         paymentMethod: 'Payment Method',
         wechat: 'Wechat',
         alipay: 'Alipay',
-        coupon: 'Coupon'
+        coupon: 'Coupon',
+        room: 'Room'
     },
     zh_xin: {
         income: '此订单收入',
@@ -50,7 +51,8 @@ const strings = new LocalizedStrings({
         paymentMethod: '支付方式',
         wechat: '微信支付',
         alipay: '支付宝',
-        coupon: '体验券'
+        coupon: '体验券',
+        room: 'Room'
     }
 });
 

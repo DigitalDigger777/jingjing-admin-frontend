@@ -26,7 +26,7 @@ const strings = new LocalizedStrings({
         addShopper: 'Add Shopper',
         id: 'ID',
         name: 'Name',
-        countPurifiers: 'Count Purifiers',
+        countPurifiers: 'Count Massagers',
         action: 'Action',
         purifiers: 'Purifiers',
         detail: 'Detail'

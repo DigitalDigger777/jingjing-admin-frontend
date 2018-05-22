@@ -39,7 +39,7 @@ const strings = new LocalizedStrings({
     en_xin: {
         //table
         name: 'Name',
-        countPurifiers: 'Count Purifiers',
+        countPurifiers: 'Count Massagers',
         action: 'Action',
         unassigned: 'Unassigned',
         purifiers: 'Purifiers',

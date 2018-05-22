@@ -30,7 +30,7 @@ const styles = {
 
 @injectSheet(styles)
 
-export default class StatementList extends React.Component {
+class JingJingStatementList extends React.Component {
 
     constructor(props){
         super(props);
@@ -162,3 +162,106 @@ export default class StatementList extends React.Component {
         );
     };
 }
+
+@injectSheet(styles)
+
+class XinStatementList extends React.Component {
+
+    constructor(props){
+        super(props);
+        const config = new Config();
+        LangStrings.setLanguage(config.language);
+        const user = JSON.parse(window.localStorage.getItem('user'));
+
+        this.state = {
+            items: [],
+            user: user,
+            baseUrl: config.baseUrl
+        };
+    }
+
+    componentWillMount(){
+        axios.get(this.state.baseUrl + 'statement/items', {
+            params: {
+                token: this.state.user.token
+            }
+        })
+            .then(response => {
+                this.setState({
+                    items: response.data
+                });
+            })
+            .catch(response => {
+
+            });
+    }
+
+    changeSearch(){
+
+    }
+
+    render() {
+        const {classes, children} = this.props;
+
+        return (
+            <Core>
+                <Toolbar style={{marginTop: '15px', paddingTop: '15px', paddingBottom: '15px'}}>
+                    <ToolbarGroup>
+                        <SearchBar
+                            onChange={() => console.log('onChange')}
+                            onRequestSearch={() => console.log('onRequestSearch')}
+                            style={{
+                                margin: '0 auto',
+                                maxWidth: 800
+                            }}
+                        />
+                    </ToolbarGroup>
+                </Toolbar>
+                <Table selectable={false}>
+                    <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+                        <TableRow>
+                            <TableHeaderColumn>{LangStrings.income}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.time}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.shopperName}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.room}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.purifierID}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.rate}</TableHeaderColumn>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody displayRowCheckbox={false} showRowHover={true}>
+                        { this.state.items.map((item, key) => {
+                                const date = item.date.split(' ');
+
+                                return (
+                                    <TableRow key={key} onClick={ id => this.openDetailShopper(item.id) }>
+                                        {/*<TableRowColumn>{`¥` + item[0].amount}</TableRowColumn>*/}
+                                        <TableRowColumn>{`¥` + (item[0].rate * item[0].hours)}</TableRowColumn>
+                                        <TableRowColumn>{date[0]} <br/> {date[1]}</TableRowColumn>
+                                        <TableRowColumn style={{ whiteSpace: 'pre-line'}}>{item.name}</TableRowColumn>
+                                        <TableRowColumn>{item[0].device.room}</TableRowColumn>
+                                        <TableRowColumn>{item[0].device.deviceCode}</TableRowColumn>
+                                        <TableRowColumn>{`¥` + item[0].rate}</TableRowColumn>
+                                    </TableRow>
+                                )
+                            }
+                        )}
+                    </TableBody>
+                </Table>
+            </Core>
+        );
+    };
+}
+
+
+const config = new Config();
+let StatementList = {};
+
+if (config.system == 'xin') {
+    StatementList = XinStatementList;
+}
+
+if (config.system == 'jingjing') {
+    StatementList = JingJingStatementList;
+}
+
+export default StatementList;
