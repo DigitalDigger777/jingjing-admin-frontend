@@ -29,6 +29,10 @@ export default class DeviceShopperList extends React.Component {
         LangStrings.setLanguage(config.language);
         const user = JSON.parse(window.localStorage.getItem('user'));
 
+        if (!user) {
+            window.location = '/login';
+        }
+
         this.state = {
             items: [],
             countUnassigned: 0,
@@ -38,9 +42,8 @@ export default class DeviceShopperList extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(this.state.baseUrl + 'user/items', {
+        axios.get(this.state.baseUrl + 'shopper/items', {
             params: {
-                role: 'ROLE_SHOPPER',
                 token: this.state.user.token
             }
         })
