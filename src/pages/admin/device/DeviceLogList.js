@@ -83,6 +83,7 @@ export default class DeviceLogList extends React.Component {
                         <TableRow>
                             <TableHeaderColumn>{LangStrings.action}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.date}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.endDate}</TableHeaderColumn>
                             <TableHeaderColumn></TableHeaderColumn>
                             {/*<TableHeaderColumn>Revenue</TableHeaderColumn>*/}
                             {/*<TableHeaderColumn>Paid</TableHeaderColumn>*/}
@@ -106,6 +107,7 @@ export default class DeviceLogList extends React.Component {
                                     <TableRow key={key}>
                                         <TableRowColumn>{action}</TableRowColumn>
                                         <TableRowColumn>{item.date}</TableRowColumn>
+                                        <TableRowColumn>{item.endDate}</TableRowColumn>
                                         <TableRowColumn>{item[0].minutes}</TableRowColumn>
                                     </TableRow>
                                 )

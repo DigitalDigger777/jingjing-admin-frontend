@@ -1074,10 +1074,9 @@ class XinDeviceList extends React.Component {
                                 const totalRevenue = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].total_revenue : 0;
                                 const date = item[1].split(' ');
 
-
                                 return (
                                     <TableRow key={key} onClick={ id => this.openDetailShopper(item[0].id) }>
-                                        <TableRowColumn>{item[0].deviceCode}</TableRowColumn>
+                                        <TableRowColumn tooltip={item[0].mac}>{item[0].deviceCode}</TableRowColumn>
 
                                         <TableRowColumn>{date[0]} <br/> {date[1]}</TableRowColumn>
                                         <TableRowColumn>{item[0].room}</TableRowColumn>
