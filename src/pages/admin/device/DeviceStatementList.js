@@ -205,8 +205,8 @@ class XinDeviceStatementList extends React.Component {
                                     <TableRow key={key} onClick={ id => this.openDetailShopper(item.id) }>
                                         <TableRowColumn>{startTime[0]} <br/> {startTime[1]}</TableRowColumn>
                                         <TableRowColumn>{endTime[0]} <br/> {endTime[1]}</TableRowColumn>
-                                        <TableRowColumn>{`¥` + item[0].rate + `/HR`}</TableRowColumn>
-                                        <TableRowColumn>{`¥` + item[0].revenue}</TableRowColumn>
+                                        <TableRowColumn>{`$` + item[0].rate + `/HR`}</TableRowColumn>
+                                        <TableRowColumn>{`$` + item[0].revenue}</TableRowColumn>
                                     </TableRow>
                                 )
                             }
