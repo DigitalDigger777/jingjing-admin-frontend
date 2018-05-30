@@ -235,12 +235,12 @@ class XinStatementList extends React.Component {
                                 return (
                                     <TableRow key={key} onClick={ id => this.openDetailShopper(item.id) }>
                                         {/*<TableRowColumn>{`¥` + item[0].amount}</TableRowColumn>*/}
-                                        <TableRowColumn>{`¥` + (item[0].rate * item[0].hours)}</TableRowColumn>
+                                        <TableRowColumn>{`$` + (item[0].revenue)}</TableRowColumn>
                                         <TableRowColumn>{date[0]} <br/> {date[1]}</TableRowColumn>
                                         <TableRowColumn style={{ whiteSpace: 'pre-line'}}>{item.name}</TableRowColumn>
                                         <TableRowColumn>{item[0].device.room}</TableRowColumn>
                                         <TableRowColumn>{item[0].device.deviceCode}</TableRowColumn>
-                                        <TableRowColumn>{`¥` + item[0].rate}</TableRowColumn>
+                                        <TableRowColumn>{`$` + item[0].rate}</TableRowColumn>
                                     </TableRow>
                                 )
                             }
