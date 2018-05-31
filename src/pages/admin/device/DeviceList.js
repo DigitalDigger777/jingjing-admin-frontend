@@ -1072,6 +1072,7 @@ class XinDeviceList extends React.Component {
 
                                 const totalUsed = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].totalUsed : 0;
                                 const totalRevenue = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].total_revenue : 0;
+                                const totalAmount = typeof item[0].deviceStatistics[0] != 'undefined' ? item[0].deviceStatistics[0].total_amount : 0;
                                 const date = item[1].split(' ');
 
                                 return (
@@ -1082,7 +1083,7 @@ class XinDeviceList extends React.Component {
                                         <TableRowColumn>{item[0].room}</TableRowColumn>
                                         <TableRowColumn>{this.state.onlinePurifiers.indexOf(item[0].mac) > -1 ? LangStrings.online : LangStrings.offline}</TableRowColumn>
                                         <TableRowColumn>{totalUsed}</TableRowColumn>
-                                        <TableRowColumn>{totalRevenue}</TableRowColumn>
+                                        <TableRowColumn>{totalAmount}</TableRowColumn>
                                         <TableRowColumn>
                                             <DropDownMenu value={this.state.value} onChange={this.actionMenuChange}>
                                                 <MenuItem value={item[0].id + `:` + 0} primaryText={LangStrings.selectAction}/>
