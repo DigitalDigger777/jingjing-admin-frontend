@@ -51,7 +51,7 @@ class Index extends React.Component {
         const config = new Config();
 
         if (config.system == 'xin') {
-            document.title = "Xin";
+            document.title = "PPCG - Xin admin";
         } else {
             document.title = 'JingJing';
         }
