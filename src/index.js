@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { render } from 'react-dom';
-
+import Config from './Config';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 //weui
@@ -47,6 +47,15 @@ const history = createBrowserHistory();
 
 class Index extends React.Component {
 
+    componentDidMount(){
+        const config = new Config();
+
+        if (config.system == 'xin') {
+            document.title = "Xin";
+        } else {
+            document.title = 'JingJing';
+        }
+    }
 
     render(){
         return(
