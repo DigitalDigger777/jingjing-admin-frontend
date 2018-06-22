@@ -770,8 +770,12 @@ class XinDeviceList extends React.Component {
         })
             .then(response => {
                 console.log(response);
+                let pagination = this.state.pagination;
+                pagination.page = number;
+
                 this.setState({
-                    items: response.data
+                    items: response.data,
+                    pagination: pagination
                 });
             });
     }
@@ -1103,13 +1107,14 @@ class XinDeviceList extends React.Component {
                     </TableBody>
                 </Table>
 
-                <Pagination
-                    total = { this.state.pagination.total }
-                    current = { this.state.pagination.page }
-                    display = { this.state.pagination.display }
-                    onChange = { number => this.updateRows(number) }
-                />
-
+                <div style={{paddingBottom: '15px', paddingLeft: '15px'}}>
+                    <Pagination
+                        total = { this.state.pagination.total }
+                        current = { this.state.pagination.page }
+                        display = { this.state.pagination.display }
+                        onChange = { number => this.updateRows(number) }
+                    />
+                </div>
                 <Dialog
                     title="Warning"
                     actions={actionsRmv}
