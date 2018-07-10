@@ -12,7 +12,8 @@ const strings = new LocalizedStrings({
         expiredDate: 'Expired Date',
         add: 'Add',
         save: 'Save',
-        accessToCouponList: 'Coupon List'
+        accessToCouponList: 'Coupon List',
+        salePrice: 'Sale Price'
     },
     zh: {
         shopperId: '商户编号',
@@ -21,7 +22,8 @@ const strings = new LocalizedStrings({
         expiredDate: '到期日期',
         add: '添加体验券',
         save: '保存',
-        accessToCouponList: '体验券列表'
+        accessToCouponList: '体验券列表',
+        salePrice: 'Sale Price'
     },
     en_xin: {
         shopperId: 'Shopper Id',
@@ -30,7 +32,8 @@ const strings = new LocalizedStrings({
         expiredDate: 'Expired Date',
         add: 'Add',
         save: 'Save',
-        accessToCouponList: 'Coupon List'
+        accessToCouponList: 'Coupon List',
+        salePrice: 'Sale Price'
     },
     zh_xin: {
         shopperId: '商户编号',
@@ -39,7 +42,8 @@ const strings = new LocalizedStrings({
         expiredDate: '到期日期',
         add: '添加体验券',
         save: '保存',
-        accessToCouponList: '体验券列表'
+        accessToCouponList: '体验券列表',
+        salePrice: 'Sale Price'
     },
 
 });

@@ -52,6 +52,7 @@ export default class CouponForm extends React.Component {
             id: typeof props.match.params.id != 'undefined' ? props.match.params.id : 0,
             item: {
                 shopperId: '',
+                salePrice: '',
                 fromNumber: '',
                 toNumber: '',
                 expiredDate: null,
@@ -73,6 +74,14 @@ export default class CouponForm extends React.Component {
     changeShopperId(e) {
         const item = this.state.item;
         item.shopperId = e.target.value;
+        this.setState({
+            item: item
+        });
+    }
+
+    changeSalePrice(e){
+        const item = this.state.item;
+        item.salePrice = e.target.value;
         this.setState({
             item: item
         });
@@ -111,6 +120,7 @@ export default class CouponForm extends React.Component {
 
         axios.post(this.state.baseUrl + 'coupon/save', {
             shopperId: this.state.item.shopperId,
+            salePrice: this.state.item.salePrice,
             fromNumber: this.state.item.fromNumber,
             toNumber: this.state.item.toNumber,
             expiredDate: this.state.item.expiredDate,
@@ -121,7 +131,7 @@ export default class CouponForm extends React.Component {
                 this.setState({
                     load: false
                 });
-                //window.location = '/admin/coupon-list';
+                window.location = '/admin/coupon-list';
             })
             .catch(error => {
                 console.log(error.response.data);
@@ -163,6 +173,13 @@ export default class CouponForm extends React.Component {
                                         <TextField className="formInput" hintText={LangStrings.shopperId}
                                                    value={this.state.item.shopperId}
                                                    onChange={e => this.changeShopperId(e)}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={12}>
+                                        <TextField className="formInput" hintText={LangStrings.salePrice}
+                                                   value={this.state.item.salePrice}
+                                                   onChange={e => this.changeSalePrice(e)}/>
                                     </Col>
                                 </Row>
                                 <Row>

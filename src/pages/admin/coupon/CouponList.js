@@ -74,7 +74,8 @@ export default class CouponList extends React.Component {
                     <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                         <TableRow>
                             <TableHeaderColumn>{LangStrings.code}</TableHeaderColumn>
-                            <TableHeaderColumn>{LangStrings.shopperName}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.shopperId}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.salePrice}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.expiredDate}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.status}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.redeemedDate}</TableHeaderColumn>
@@ -103,7 +104,8 @@ export default class CouponList extends React.Component {
                                 return (
                                     <TableRow key={key} onClick={ id => this.openDetailShopper(item.id) }>
                                         <TableRowColumn>{item[0].code}</TableRowColumn>
-                                        <TableRowColumn style={{whiteSpace: 'normal'}}>{item[0].shopper.name}</TableRowColumn>
+                                        <TableRowColumn style={{whiteSpace: 'normal'}}>{item[0].shopper.id}</TableRowColumn>
+                                        <TableRowColumn>{item[0].salePrice}$</TableRowColumn>
                                         <TableRowColumn>{item.expiredDate}</TableRowColumn>
                                         <TableRowColumn>{statusStr}</TableRowColumn>
                                         <TableRowColumn>{item.redeemedDate}</TableRowColumn>

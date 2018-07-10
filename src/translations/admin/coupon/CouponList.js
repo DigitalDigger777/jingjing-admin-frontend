@@ -14,8 +14,9 @@ const strings = new LocalizedStrings({
         issued: 'Issued',
         available: 'Available',
         expired: 'Expired',
-        shopperName: 'Shopper Name'
-
+        shopperName: 'Shopper Name',
+        shopperId: 'Shopper ID',
+        salePrice: 'Sale Price'
     },
     zh: {
         code: '体验券号码',
@@ -27,7 +28,9 @@ const strings = new LocalizedStrings({
         issued: '已生成',
         available: '可用',
         expired: '过期',
-        shopperName: '商户名'
+        shopperName: '商户名',
+        shopperId: 'Shopper ID',
+        salePrice: 'Sale Price'
     },
     en_xin: {
         code: 'code',
@@ -39,8 +42,9 @@ const strings = new LocalizedStrings({
         issued: 'Issued',
         available: 'Available',
         expired: 'Expired',
-        shopperName: 'Shopper Name'
-
+        shopperName: 'Shopper Name',
+        shopperId: 'Shopper ID',
+        salePrice: 'Sale Price'
     },
     zh_xin: {
         code: '体验券号码',
@@ -52,7 +56,9 @@ const strings = new LocalizedStrings({
         issued: '已生成',
         available: '可用',
         expired: '过期',
-        shopperName: '商户名'
+        shopperName: '商户名',
+        shopperId: 'Shopper ID',
+        salePrice: 'Sale Price'
     },
 });
 
