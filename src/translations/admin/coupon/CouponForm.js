@@ -13,7 +13,8 @@ const strings = new LocalizedStrings({
         add: 'Add',
         save: 'Save',
         accessToCouponList: 'Coupon List',
-        salePrice: 'Sale Price'
+        salePrice: 'Sale Price',
+        code: 'Coupon Code'
     },
     zh: {
         shopperId: '商户编号',
@@ -23,7 +24,8 @@ const strings = new LocalizedStrings({
         add: '添加体验券',
         save: '保存',
         accessToCouponList: '体验券列表',
-        salePrice: 'Sale Price'
+        salePrice: 'Sale Price',
+        code: 'Coupon Code'
     },
     en_xin: {
         shopperId: 'Shopper Id',
@@ -33,7 +35,8 @@ const strings = new LocalizedStrings({
         add: 'Add',
         save: 'Save',
         accessToCouponList: 'Coupon List',
-        salePrice: 'Sale Price'
+        salePrice: 'Sale Price',
+        code: 'Coupon Code'
     },
     zh_xin: {
         shopperId: '商户编号',
@@ -43,7 +46,8 @@ const strings = new LocalizedStrings({
         add: '添加体验券',
         save: '保存',
         accessToCouponList: '体验券列表',
-        salePrice: 'Sale Price'
+        salePrice: 'Sale Price',
+        code: 'Coupon Code'
     },
 
 });

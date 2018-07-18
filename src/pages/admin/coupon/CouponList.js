@@ -78,7 +78,7 @@ export default class CouponList extends React.Component {
                             <TableHeaderColumn>{LangStrings.salePrice}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.expiredDate}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.status}</TableHeaderColumn>
-                            <TableHeaderColumn>{LangStrings.redeemedDate}</TableHeaderColumn>
+                            {/*<TableHeaderColumn>{LangStrings.redeemedDate}</TableHeaderColumn>*/}
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
@@ -108,7 +108,7 @@ export default class CouponList extends React.Component {
                                         <TableRowColumn>{item[0].salePrice}$</TableRowColumn>
                                         <TableRowColumn>{item.expiredDate}</TableRowColumn>
                                         <TableRowColumn>{statusStr}</TableRowColumn>
-                                        <TableRowColumn>{item.redeemedDate}</TableRowColumn>
+                                        {/*<TableRowColumn>{item.redeemedDate}</TableRowColumn>*/}
                                     </TableRow>
                                 )
                             }

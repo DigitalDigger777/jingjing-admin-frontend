@@ -56,6 +56,7 @@ export default class CouponForm extends React.Component {
                 fromNumber: '',
                 toNumber: '',
                 expiredDate: null,
+                code: ''
             },
             error: {
                 open: false,
@@ -87,6 +88,10 @@ export default class CouponForm extends React.Component {
         });
     }
 
+    /**
+     * @param e
+     * @deprecated
+     */
     changeFromNumber(e){
         const item = this.state.item;
         item.fromNumber = e.target.value;
@@ -95,9 +100,20 @@ export default class CouponForm extends React.Component {
         });
     }
 
+    /**
+     * @deprecated
+     */
     changeToNumber(e){
         const item = this.state.item;
         item.toNumber = e.target.value;
+        this.setState({
+            item: item
+        });
+    }
+
+    changeCouponCode(e){
+        const item = this.state.item;
+        item.code = e.target.value;
         this.setState({
             item: item
         });
@@ -121,8 +137,9 @@ export default class CouponForm extends React.Component {
         axios.post(this.state.baseUrl + 'coupon/save', {
             shopperId: this.state.item.shopperId,
             salePrice: this.state.item.salePrice,
-            fromNumber: this.state.item.fromNumber,
-            toNumber: this.state.item.toNumber,
+            code: this.state.item.code,
+            //fromNumber: this.state.item.fromNumber,
+            //toNumber: this.state.item.toNumber,
             expiredDate: this.state.item.expiredDate,
             token: this.state.user.token
         })
@@ -170,6 +187,23 @@ export default class CouponForm extends React.Component {
                             <Col md={6} xsOffset={3}>
                                 <Row>
                                     <Col md={12}>
+                                        <TextField className="formInput" hintText={LangStrings.code}
+                                                   value={this.state.item.code}
+                                                   onChange={e => this.changeCouponCode(e)}/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={12}>
+                                        <DatePicker hintText={LangStrings.expiredDate}
+                                                    onChange={this.changeExpiredDate.bind(this)}
+                                                    locale="en-US"/>
+                                        {/*<TextField className="formInput" hintText={LangStrings.expiredDate}*/}
+                                        {/*value={this.state.item.expiredDate}*/}
+                                        {/*onChange={e => this.changeExpiredDate(e)}/>*/}
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={12}>
                                         <TextField className="formInput" hintText={LangStrings.shopperId}
                                                    value={this.state.item.shopperId}
                                                    onChange={e => this.changeShopperId(e)}/>
@@ -180,28 +214,6 @@ export default class CouponForm extends React.Component {
                                         <TextField className="formInput" hintText={LangStrings.salePrice}
                                                    value={this.state.item.salePrice}
                                                    onChange={e => this.changeSalePrice(e)}/>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={6}>
-                                        <TextField className="formInput" hintText={LangStrings.fromNumber}
-                                                   value={this.state.item.fromNumber}
-                                                   onChange={e => this.changeFromNumber(e)}/>
-                                    </Col>
-                                    <Col md={6}>
-                                        <TextField className="formInput" hintText={LangStrings.toNumber}
-                                                   value={this.state.item.toNumber}
-                                                   onChange={e => this.changeToNumber(e)}/>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={12}>
-                                        <DatePicker hintText={LangStrings.expiredDate}
-                                                    onChange={this.changeExpiredDate.bind(this)}
-                                                    locale="en-US"/>
-                                        {/*<TextField className="formInput" hintText={LangStrings.expiredDate}*/}
-                                                   {/*value={this.state.item.expiredDate}*/}
-                                                   {/*onChange={e => this.changeExpiredDate(e)}/>*/}
                                     </Col>
                                 </Row>
                                 <Row>
