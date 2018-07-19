@@ -192,6 +192,7 @@ class XinDeviceStatementList extends React.Component {
                             <TableHeaderColumn>{LangStrings.startTime}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.endTime}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.rate}</TableHeaderColumn>
+                            <TableHeaderColumn>{LangStrings.couponPrice}</TableHeaderColumn>
                             <TableHeaderColumn>{LangStrings.revenue}</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
@@ -205,7 +206,8 @@ class XinDeviceStatementList extends React.Component {
                                         <TableRowColumn>{startTime[0]} <br/> {startTime[1]}</TableRowColumn>
                                         <TableRowColumn>{endTime[0]} <br/> {endTime[1]}</TableRowColumn>
                                         <TableRowColumn>{`$` + item[0].rate}</TableRowColumn>
-                                        <TableRowColumn>{`$` + item[0].rate}</TableRowColumn>
+                                        <TableRowColumn>{`$` + item[0].amount}</TableRowColumn>
+                                        <TableRowColumn>{`$` + item[0].revenue}</TableRowColumn>
                                     </TableRow>
                                 )
                             }
