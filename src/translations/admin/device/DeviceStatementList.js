@@ -13,7 +13,8 @@ const strings = new LocalizedStrings({
         paymentMethod: 'Payment Method',
         wechat: 'Wechat',
         alipay: 'Alipay',
-        coupon: 'Coupon'
+        coupon: 'Coupon',
+        couponPrice: 'Coupon Price'
     },
     zh: {
         startTime: '订单开始时间',
@@ -24,7 +25,8 @@ const strings = new LocalizedStrings({
         paymentMethod: '支付方式',
         wechat: '微信支付',
         alipay: '支付宝',
-        coupon: '体验券'
+        coupon: '体验券',
+        couponPrice: 'Coupon Price'
     },
     en_xin: {
         startTime: 'Start Time',
@@ -35,7 +37,8 @@ const strings = new LocalizedStrings({
         paymentMethod: 'Payment Method',
         wechat: 'Wechat',
         alipay: 'Alipay',
-        coupon: 'Coupon'
+        coupon: 'Coupon',
+        couponPrice: 'Coupon Price'
     },
     zh_xin: {
         startTime: '订单开始时间',
@@ -46,7 +49,8 @@ const strings = new LocalizedStrings({
         paymentMethod: '支付方式',
         wechat: '微信支付',
         alipay: '支付宝',
-        coupon: '体验券'
+        coupon: '体验券',
+        couponPrice: 'Coupon Price'
     }
 });
 
