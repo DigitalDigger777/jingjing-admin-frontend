@@ -206,6 +206,9 @@ export default class DeviceList extends React.Component {
             case 6:
                     window.location = '/admin/device/log-list/' + id + '/' + this.state.shopperId;
                 break;
+            case 7:
+                    window.location = '/admin/device-form/' + id;
+                break;
         }
     }
 
@@ -424,7 +427,7 @@ export default class DeviceList extends React.Component {
                         />
                     </ToolbarGroup>
                     <ToolbarGroup>
-                        {/*<RaisedButton label="Add Device" primary={true} />*/}
+                        <RaisedButton label={LangStrings.addDevice} primary={true} onClick={() => { window.location = '/admin/device-form'; }}/>
                     </ToolbarGroup>
                 </Toolbar>
                 <Table selectable={false}>
@@ -480,6 +483,7 @@ export default class DeviceList extends React.Component {
                                                 <MenuItem value={item[0].id + `:` + 4} primaryText={LangStrings.remove}/>
                                                 <MenuItem value={item[0].id + `:` + 5} primaryText={LangStrings.updateFirmware}/>
                                                 <MenuItem value={item[0].id + `:` + 6} primaryText={LangStrings.log}/>
+                                                <MenuItem value={item[0].id + `:` + 7} primaryText={LangStrings.edit}/>
                                             </DropDownMenu>
                                         </TableRowColumn>
                                     </TableRow>

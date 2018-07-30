@@ -19,6 +19,7 @@ const strings = new LocalizedStrings({
         assignShopper: 'Assign Shopper',
         reset: 'Reset',
         remove: 'Remove',
+        edit: 'Edit',
 
         status: 'Status',
         online: 'Online',
@@ -26,7 +27,8 @@ const strings = new LocalizedStrings({
         //Other
         download: 'Download',
         updateFirmware: 'Update Firmware',
-        log: 'Log'
+        log: 'Log',
+        addDevice: 'Add Device'
     },
     zh: {
         //header for table
@@ -43,6 +45,7 @@ const strings = new LocalizedStrings({
         assignShopper: '分配商户',
         reset: '重置控制器',
         remove: '删除控制器',
+        edit: 'Edit',
 
         status: '状态',
         online: '在线',
@@ -50,7 +53,8 @@ const strings = new LocalizedStrings({
         //Other
         download: 'Download',
         updateFirmware: 'Update Firmware',
-        log: 'Log'
+        log: 'Log',
+        addDevice: 'Add Device'
     },
     en_xin: {
         //header for table
@@ -67,6 +71,7 @@ const strings = new LocalizedStrings({
         assignShopper: 'Assign Shopper',
         reset: 'Reset',
         remove: 'Remove',
+        edit: 'Edit',
 
         status: 'Status',
         online: 'Online',
@@ -74,7 +79,8 @@ const strings = new LocalizedStrings({
         //Other
         download: 'Download',
         updateFirmware: 'Update Firmware',
-        log: 'Log'
+        log: 'Log',
+        addDevice: 'Add Device'
     },
     zh_xin: {
         //header for table
@@ -91,6 +97,7 @@ const strings = new LocalizedStrings({
         assignShopper: '分配商户',
         reset: '重置控制器',
         remove: '删除控制器',
+        edit: 'Edit',
 
         status: '状态',
         online: '在线',
@@ -98,7 +105,8 @@ const strings = new LocalizedStrings({
         //Other
         download: 'Download',
         updateFirmware: 'Update Firmware',
-        log: 'Log'
+        log: 'Log',
+        addDevice: 'Add Device'
     }
 });
 
