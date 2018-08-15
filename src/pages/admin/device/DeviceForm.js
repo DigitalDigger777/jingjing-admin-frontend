@@ -49,7 +49,8 @@ export default class ShopperForm extends React.Component {
                 id: 0,
                 shopperId: '',
                 iccid: '',
-                imei: ''
+                imei: '',
+                boardId: ''
             },
             load: false,
             baseUrl: config.baseUrl
@@ -71,7 +72,8 @@ export default class ShopperForm extends React.Component {
                             id: response.data.id,
                             shopperId: response.data.shopperId,
                             iccid: response.data.iccid ? response.data.iccid : '',
-                            imei: response.data.imei ? response.data.imei : ''
+                            imei: response.data.imei ? response.data.imei : '',
+                            boardId: response.data.boardId ? response.data.boardId : ''
                         }
                     });
                 })
@@ -146,7 +148,16 @@ export default class ShopperForm extends React.Component {
                                                    onChange={e => this.changeHandler(e, 'imei')}/>
                                     </Col>
                                 </Row>
-
+                                <Row>
+                                    <Col md={4} style={{margin: 'auto'}}>
+                                        {LangStrings.BoardID}
+                                    </Col>
+                                    <Col md={8}>
+                                        <TextField className="formInput" hintText={LangStrings.BoardID}
+                                                   value={this.state.item.boardId}
+                                                   onChange={e => this.changeHandler(e, 'boardId')}/>
+                                    </Col>
+                                </Row>
 
                                 <Row>
                                     <Col md={12}>

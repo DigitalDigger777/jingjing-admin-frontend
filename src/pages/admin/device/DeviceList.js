@@ -144,6 +144,7 @@ export default class DeviceList extends React.Component {
     }
 
     actionMenuChange(e, index, value) {
+
         const action = value.split(':');
         const id = action[0];
 
