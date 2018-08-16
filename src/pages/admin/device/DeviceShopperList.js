@@ -118,7 +118,8 @@ export default class ShopperList extends React.Component {
 
                 axios.get(this.state.baseUrl + 'shopper/items', {
                     params: {
-                        ids: shopperIds
+                        ids: shopperIds,
+                        token: this.state.user.token
                     }
                 })
                     .then(response => {
