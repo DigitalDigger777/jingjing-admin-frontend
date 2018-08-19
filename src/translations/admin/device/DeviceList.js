@@ -54,7 +54,7 @@ const strings = new LocalizedStrings({
         download: 'Download',
         updateFirmware: 'Update Firmware',
         log: 'Log',
-        addDevice: 'Add Device'
+        addDevice: '添加机器'
     },
     en_xin: {
         //header for table
@@ -106,7 +106,7 @@ const strings = new LocalizedStrings({
         download: 'Download',
         updateFirmware: 'Update Firmware',
         log: 'Log',
-        addDevice: 'Add Device'
+        addDevice: '添加机器'
     }
 });
 

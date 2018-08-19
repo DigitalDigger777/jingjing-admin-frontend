@@ -34,7 +34,8 @@ const strings = new LocalizedStrings({
         detail: '详情',
 
         //Inputs
-        search: 'Search'
+        search: 'Search',
+        addDevice: '添加机器'
     },
     en_xin: {
         //table
@@ -66,7 +67,8 @@ const strings = new LocalizedStrings({
         detail: '详情',
 
         //Inputs
-        search: 'Search'
+        search: 'Search',
+        addDevice: '添加机器'
     }
 });
 
