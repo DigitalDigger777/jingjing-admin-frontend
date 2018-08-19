@@ -13,12 +13,12 @@ const strings = new LocalizedStrings({
         BoardID: 'Board ID'
     },
     zh: {
-        shopperId: 'Shopper ID',
-        ICCID: 'ICCID',
+        shopperId: '商户编号',
+        ICCID: 'Onenet 编号',
         IMEI: 'IMEI',
         add: '添加',
         save: '修改',
-        BoardID: 'Board ID'
+        BoardID: '工厂二维码编号'
     },
     en_xin: {
         shopperId: 'Shopper ID',
@@ -29,12 +29,12 @@ const strings = new LocalizedStrings({
         BoardID: 'Board ID'
     },
     zh_xin: {
-        shopperId: 'Shopper ID',
-        ICCID: 'ICCID',
+        shopperId: '商户编号',
+        ICCID: 'Onenet 编号',
         IMEI: 'IMEI',
         add: '添加',
         save: '修改',
-        BoardID: 'Board ID'
+        BoardID: '工厂二维码编号'
     }
 });
 
