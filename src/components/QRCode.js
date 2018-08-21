@@ -154,6 +154,7 @@ function (_React$Component) {
       if (this._canvas != null) {
         var canvas = this._canvas;
         var ctx = canvas.getContext('2d');
+        var textCtx = canvas.getContext('2d');
 
         if (!ctx) {
           return;
@@ -171,9 +172,13 @@ function (_React$Component) {
         canvas.height = canvas.width = size * scale;
         canvas.height += labelheight;
 
+        //ctx.fillStyle = "rgb(255,255,255)";
+        //ctx.fillRect(size, size, size, size);
         ctx.scale(scale, scale);
-        ctx.font = "17px";
-        ctx.fillText(label, 0, canvas.height);
+
+        textCtx.font = "17px";
+        textCtx.fillText(label, 10, canvas.height-8);
+
 
         cells.forEach(function (row, rdx) {
           row.forEach(function (cell, cdx) {
