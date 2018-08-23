@@ -474,7 +474,7 @@ export default class DeviceList extends React.Component {
                                         <TableRowColumn>{date[0]} <br/> {date[1]}</TableRowColumn>
                                         <TableRowColumn>{totalHours}</TableRowColumn>
                                         <TableRowColumn>{totalRevenue}</TableRowColumn>
-                                        <TableRowColumn>{item[0].isOnline == true ? LangStrings.online : LangStrings.offline}</TableRowColumn>
+                                        <TableRowColumn>{item[0].isOnline}{item[0].isOnline == true ? LangStrings.online : LangStrings.offline}</TableRowColumn>
                                         <TableRowColumn>
                                             <DropDownMenu value={this.state.value} onChange={this.actionMenuChange}>
                                                 <MenuItem value={item[0].id + `:` + 0} primaryText={LangStrings.selectAction}/>
